@@ -16,25 +16,35 @@ public class usuario {
     private String email;
     private String password;
     private String nombre;
-    private String Apellido;
+    private String apellido;
     private Date fechaNacimiento;
-
-    public usuario(int dni, String usuario, String email, String password, String nombre, String Apellido, Date fechaNacimiento) {
+    
+    public usuario() {}
+    
+    public usuario(int dni, String usuario, String email, String password, String nombre, String apellido, Date fechaNacimiento) {
         this.dni = dni;
         this.usuario = usuario;
         this.email = email;
         this.password = password;
         this.nombre = nombre;
-        this.Apellido = Apellido;
+        this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public usuario(int id_usuario) {
+    public usuario(int id_usuario, int dni, String usuario, String email, String password, String nombre, String apellido, Date fechaNacimiento) {
         this.id_usuario = id_usuario;
+        this.dni = dni;
+        this.usuario = usuario;
+        this.email = email;
+        this.password = password;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
     }
 
-    public usuario() {
-    }
+    
+
+    
     
     
 
@@ -87,11 +97,11 @@ public class usuario {
     }
 
     public String getApellido() {
-        return Apellido;
+        return apellido;
     }
 
     public void setApellido(String Apellido) {
-        this.Apellido = Apellido;
+        this.apellido = Apellido;
     }
 
     public Date getFechaNacimiento() {

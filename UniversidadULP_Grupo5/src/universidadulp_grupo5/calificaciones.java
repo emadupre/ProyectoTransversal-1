@@ -9,17 +9,18 @@ public class calificaciones {
     private int id_calificaciones;
     private int id_inscripcion;
     private double calificacion;
+    
+        public calificaciones() {}
 
     public calificaciones(int id_inscripcion, double calificacion) {
         this.id_inscripcion = id_inscripcion;
         this.calificacion = calificacion;
     }
 
-    public calificaciones(int id_calificaciones) {
+    public calificaciones(int id_calificaciones, int id_inscripcion, double calificacion) {
         this.id_calificaciones = id_calificaciones;
-    }
-
-    public calificaciones() {
+        this.id_inscripcion = id_inscripcion;
+        this.calificacion = calificacion;
     }
 
     public int getId_calificaciones() {

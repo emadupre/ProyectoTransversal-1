@@ -5,7 +5,6 @@
  */
 package universidadulp_grupo5;
 
-import java.util.Date;
 
 /**
  *
@@ -15,22 +14,23 @@ public class inscripciones {
     private int id_inscripcion;
     private int id_usuario;
     private int id_materia;
-    private String estado;
-    private Date FechaInscripcion;
+    private boolean estado;
+    
+    public inscripciones() {}
 
-    public inscripciones(int id_usuario, int id_materia, String estado, Date FechaInscripcion) {
+    public inscripciones(int id_usuario, int id_materia, boolean estado) {
         this.id_usuario = id_usuario;
         this.id_materia = id_materia;
         this.estado = estado;
-        this.FechaInscripcion = FechaInscripcion;
     }
 
-    public inscripciones(int id_inscripcion) {
+    public inscripciones(int id_inscripcion, int id_usuario, int id_materia, boolean estado) {
         this.id_inscripcion = id_inscripcion;
+        this.id_usuario = id_usuario;
+        this.id_materia = id_materia;
+        this.estado = estado;
     }
 
-    public inscripciones() {
-    }
 
     public int getId_inscripcion() {
         return id_inscripcion;
@@ -56,22 +56,15 @@ public class inscripciones {
         this.id_materia = id_materia;
     }
 
-    public String getEstado() {
+    public boolean isEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 
-    public Date getFechaInscripcion() {
-        return FechaInscripcion;
-    }
-
-    public void setFechaInscripcion(Date FechaInscripcion) {
-        this.FechaInscripcion = FechaInscripcion;
-    }
-
+    
     
     
 }

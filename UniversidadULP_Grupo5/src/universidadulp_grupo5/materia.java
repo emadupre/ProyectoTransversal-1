@@ -12,24 +12,34 @@ package universidadulp_grupo5;
 public class materia {
     
     private int id_materia;
-    private int id_usuario;
     private String nombre;
+    private String descripcion;
     private String codigo_materia;
+    
+    public materia() {}
 
-    public materia(int id_usuario, String nombre, String codigo_materia) {
-        this.id_usuario = id_usuario;
+    public materia(int id_materia, String nombre,String descripcion, String codigo_materia) {
         this.nombre = nombre;
+        this.codigo_materia = codigo_materia;
+        this.id_materia = id_materia;
+        this.descripcion = descripcion;
+    }
+
+    public materia(String nombre, String descripcion, String codigo_materia) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
         this.codigo_materia = codigo_materia;
     }
 
-    public materia(int id_materia) {
-        this.id_materia = id_materia;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public materia() {
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    
+   
 
     public int getId_materia() {
         return id_materia;
@@ -39,13 +49,6 @@ public class materia {
         this.id_materia = id_materia;
     }
 
-    public int getId_usuario() {
-        return id_usuario;
-    }
-
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
-    }
 
     public String getNombre() {
         return nombre;
