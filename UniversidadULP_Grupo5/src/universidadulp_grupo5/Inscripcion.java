@@ -5,26 +5,28 @@
  */
 package universidadulp_grupo5;
 
+import java.util.Objects;
+
 
 /**
  *
  * @author Jose Bossa
  */
-public class inscripciones {
+public class Inscripcion {
     private int id_inscripcion;
     private int id_usuario;
     private int id_materia;
     private boolean estado;
     
-    public inscripciones() {}
+    public Inscripcion() {}
 
-    public inscripciones(int id_usuario, int id_materia, boolean estado) {
+    public Inscripcion(int id_usuario, int id_materia, boolean estado) {
         this.id_usuario = id_usuario;
         this.id_materia = id_materia;
         this.estado = estado;
     }
 
-    public inscripciones(int id_inscripcion, int id_usuario, int id_materia, boolean estado) {
+    public Inscripcion(int id_inscripcion, int id_usuario, int id_materia, boolean estado) {
         this.id_inscripcion = id_inscripcion;
         this.id_usuario = id_usuario;
         this.id_materia = id_materia;
@@ -64,7 +66,20 @@ public class inscripciones {
         this.estado = estado;
     }
 
+    @Override
+    public boolean equals(Object i){
+        if(i == this){
+            return true;
+        }
+        if(i.getClass() != this.getClass() || this.id_inscripcion ==0){
+            return false;
+        }
+        Inscripcion inscripcion = (Inscripcion) i;
+        return this.id_inscripcion == inscripcion.getId_inscripcion();
+    }
     
-    
+    public int HashCode(){
+        return Objects.hashCode(this.id_inscripcion);
+    }
     
 }

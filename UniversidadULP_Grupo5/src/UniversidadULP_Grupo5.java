@@ -5,7 +5,7 @@
  */
 
 
-import conexiones.conexion_BD;
+import conexiones.Conexion_BD;
 import java.sql.Connection;
 /**
  *
@@ -17,7 +17,7 @@ public class UniversidadULP_Grupo5 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Connection cn = conexion_BD.getConnection();
+        Connection cn = Conexion_BD.getConnection();
 
     }
 }

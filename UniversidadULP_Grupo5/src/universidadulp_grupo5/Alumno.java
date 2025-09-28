@@ -5,57 +5,60 @@
  */
 package universidadulp_grupo5;
 import java.util.Date;
+import java.util.Objects;
 /**
  *
  * @author Jose Bossa
  */
-public class usuario {
-    private int id_usuario;
+public class Alumno implements Comparable<Alumno>{
+    private int id_alumno;
     private int dni;
-    private String usuario;
     private String email;
     private String password;
     private String nombre;
     private String apellido;
     private Date fechaNacimiento;
+    private boolean estado;
     
-    public usuario() {}
-    
-    public usuario(int dni, String usuario, String email, String password, String nombre, String apellido, Date fechaNacimiento) {
+    public Alumno() {}
+
+    public Alumno(int id_alumno, int dni, String email, String password, String nombre, String apellido, Date fechaNacimiento, boolean estado) {
+        this.id_alumno = id_alumno;
         this.dni = dni;
-        this.usuario = usuario;
         this.email = email;
         this.password = password;
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;
+        this.estado = estado;
     }
 
-    public usuario(int id_usuario, int dni, String usuario, String email, String password, String nombre, String apellido, Date fechaNacimiento) {
-        this.id_usuario = id_usuario;
+    public Alumno(int dni, String email, String password, String nombre, String apellido, Date fechaNacimiento, boolean estado) {
         this.dni = dni;
-        this.usuario = usuario;
         this.email = email;
         this.password = password;
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;
+        this.estado = estado;
     }
 
-    
-
-    
-    
-    
-
-    public int getId_usuario() {
-        return id_usuario;
+    public int getId_alumno() {
+        return id_alumno;
     }
 
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setId_alumno(int id_alumno) {
+        this.id_alumno = id_alumno;
     }
 
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+    
     public int getDni() {
         return dni;
     }
@@ -64,13 +67,6 @@ public class usuario {
         this.dni = dni;
     }
 
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
 
     public String getEmail() {
         return email;
@@ -112,9 +108,25 @@ public class usuario {
         this.fechaNacimiento = fechaNacimiento;
     }
             
-
+    @Override
+    public boolean equals(Object a){
+        if(a == this){
+            return true;
+        }
+        if(a.getClass() != this.getClass() || this.id_alumno == 0){
+            return false;
+        }
+        Alumno alum = (Alumno) a;
+        return alum.id_alumno == this.id_alumno;
+    }
     
+    public int HashCode(){
+        return Objects.hashCode(this.id_alumno);
+    }
     
+    @Override
+    public int compareTo(Alumno a){
+        return this.apellido.compareTo(a.apellido);    }
     
     
     

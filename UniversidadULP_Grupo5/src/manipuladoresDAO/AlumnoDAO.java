@@ -9,6 +9,6 @@ package manipuladoresDAO;
  *
  * @author Enzo_2
  */
-public class usuarioDAO {
+public class AlumnoDAO {
     
 }
