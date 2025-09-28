@@ -5,10 +5,39 @@
  */
 package manipuladoresDAO;
 
+import java.util.ArrayList;
+import java.util.List;
+import universidadulp_grupo5.Alumno;
+
 /**
  *
  * @author Enzo_2
  */
-public class AlumnoDAO {
-    
+public class AlumnoDAO implements manipuladorGeneral <Alumno> {
+
+    @Override
+    public void agregar(Alumno alumno) {
+        
+    }
+
+    @Override
+    public Alumno buscarPorId(int id) {
+        return new Alumno();
+    }
+
+    @Override
+    public List<Alumno> listar() {
+        return new ArrayList<>();
+    }
+
+    @Override
+    public void actualizar(Alumno alumno) {
+        
+    }
+
+    @Override
+    public void eliminar(int id) {
+        
+    }
+
 }
