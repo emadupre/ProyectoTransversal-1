@@ -26,7 +26,7 @@ public class AdministrativoDAO implements manipuladorGeneral <Administrativo> {
     }
 
     @Override
-    public List<Administrativo> listar() {
+    public List<Administrativo> listar(int id) {
         return new ArrayList<>();
     }
 

@@ -14,7 +14,7 @@ public interface manipuladorGeneral <T> {
     
     void agregar (T entidad);
     T buscarPorId (int id);
-    List <T> listar();
+    List <T> listar(int id);
     void actualizar(T entidad);
     void eliminar(int id);
     

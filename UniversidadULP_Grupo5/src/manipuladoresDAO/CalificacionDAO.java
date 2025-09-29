@@ -26,7 +26,7 @@ public class CalificacionDAO implements manipuladorGeneral <Calificacion> {
     }
 
     @Override
-    public List<Calificacion> listar() {
+    public List<Calificacion> listar(int id) {
         return new ArrayList<>();
     }
 

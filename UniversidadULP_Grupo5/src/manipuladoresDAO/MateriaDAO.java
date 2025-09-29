@@ -26,7 +26,7 @@ public class MateriaDAO implements manipuladorGeneral <Materia> {
     }
 
     @Override
-    public List<Materia> listar() {
+    public List<Materia> listar(int id) {
         return new ArrayList<>();
     }
 
