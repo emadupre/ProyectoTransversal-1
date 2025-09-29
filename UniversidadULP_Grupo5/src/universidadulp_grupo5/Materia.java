@@ -36,6 +36,16 @@ public class Materia implements Comparable<Materia>{
         this.estado = estado;
     }
 
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    
+    
     public String getDescripcion() {
         return descripcion;
     }
