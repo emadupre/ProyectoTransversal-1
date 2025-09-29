@@ -1,4 +1,5 @@
 
+import java.util.List;
 import manipuladoresDAO.InscripcionDAO;
 import universidadulp_grupo5.Inscripcion;
 
@@ -21,7 +22,17 @@ public class UniversidadULP_Grupo5 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        InscripcionDAO manipulador = new InscripcionDAO();
+        
 
+        Inscripcion ins1 = new Inscripcion(1, 2, false);
+        manipulador.eliminar(1);
+        List<Inscripcion> inscripciones = manipulador.listar(1);
+        
+        for(Inscripcion i : inscripciones){
+            System.out.println(i.toString());
+        }
+     
         
         
     }

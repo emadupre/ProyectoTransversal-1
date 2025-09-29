@@ -34,13 +34,15 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if(rs.next()){
-                inscripcion.setId_inscripcion(1);
+                inscripcion.setId_inscripcion(rs.getInt(1));
             } else {
                 System.out.println("No se pudo crear la inscripción");
             }
             
         } catch (SQLException e){
             e.printStackTrace();
+        } finally {
+            conexion_BD.closeConnection();
         }
     }
 
@@ -63,6 +65,8 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
             
         } catch (SQLException e){
             e.printStackTrace();
+        } finally {
+            conexion_BD.closeConnection();
         }
         return inscripcion;
 
@@ -90,6 +94,8 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
             
         } catch(SQLException e){
             e.printStackTrace();
+        } finally {
+            conexion_BD.closeConnection();
         }
         return inscripciones;
     }
@@ -113,6 +119,8 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
             
         } catch (SQLException e){
             e.printStackTrace();
+        } finally {
+            conexion_BD.closeConnection();
         }
         
     }
@@ -133,6 +141,8 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
             }
         } catch (SQLException e){
             e.printStackTrace();
+        } finally {
+            conexion_BD.closeConnection();
         }
     }
     
@@ -153,6 +163,8 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
             
         }catch (SQLException e){
             e.printStackTrace();
+        } finally {
+            conexion_BD.closeConnection();
         }
     }
     
@@ -172,6 +184,8 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
             
         }catch (SQLException e){
             e.printStackTrace();
+        } finally {
+            conexion_BD.closeConnection();
         }
     }
 }
