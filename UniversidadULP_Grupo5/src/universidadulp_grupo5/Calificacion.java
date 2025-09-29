@@ -76,7 +76,12 @@ public class Calificacion {
     public int HashCode(){
         return Objects.hashCode(this.id_calificacion);
     }
-    
 
+    @Override
+    public String toString() {
+        return "Calificacion{" + "id_calificacion=" + id_calificacion + ", id_inscripcion=" + id_inscripcion + ", id_administrativo=" + id_administrativo + ", calificacion=" + calificacion + '}';
+    }
+    
+    
     
 }

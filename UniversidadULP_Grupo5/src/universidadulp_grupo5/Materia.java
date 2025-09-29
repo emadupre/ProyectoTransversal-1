@@ -89,5 +89,12 @@ public class Materia implements Comparable<Materia>{
     public int compareTo(Materia m){
         return this.nombre.compareTo(m.getNombre());
     }
+
+    @Override
+    public String toString() {
+        return "Materia{" + "id_materia=" + id_materia + ", nombre=" + nombre + ", descripcion=" + descripcion + ", codigo_materia=" + codigo_materia + ", estado=" + estado + '}';
+    }
+    
+    
     
 }

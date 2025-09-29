@@ -121,4 +121,11 @@ public class Administrativo implements Comparable<Administrativo>{
         return this.apellido.compareTo(a.apellido);
     }
 
+    @Override
+    public String toString() {
+        return "Administrativo{" + "id_administrativo=" + id_administrativo + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", password=" + password + ", telefono=" + telefono + '}';
+    }
+
+    
+    
 }

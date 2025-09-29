@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import universidadulp_grupo5.Alumno;
+import org.mariadb.jdbc.Statement;
 import universidadulp_grupo5.Inscripcion;
 
 /**
@@ -26,12 +26,18 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
         String sql = "INSERT INTO inscripcion(id_alumno, id_materia, estado) VALUES (?, ?, ?)";
         Connection con = conexion_BD.getConnection();
         
-        try (PreparedStatement ps = con.prepareStatement(sql)){
+        try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
             ps.setInt(1, inscripcion.getId_usuario());
             ps.setInt(2, inscripcion.getId_materia());
             ps.setBoolean(3, inscripcion.isEstado());
             
             ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if(rs.next()){
+                inscripcion.setId_inscripcion(1);
+            } else {
+                System.out.println("No se pudo crear la inscripción");
+            }
             
         } catch (SQLException e){
             e.printStackTrace();
@@ -45,7 +51,6 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
         Inscripcion inscripcion = null;
         try (PreparedStatement ps = con.prepareStatement(sql)){
             ps.setInt(1, id);
-            ps.executeQuery();
             try(ResultSet rs = ps.executeQuery()){
                 if(rs.next()){
                     inscripcion = new Inscripcion();
@@ -64,18 +69,71 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
     }
 
     @Override
-    public List<Inscripcion> listar(int id) {
-        return new ArrayList<>();
+    public List<Inscripcion> listar(int id_alumno) {
+        String sql  = "SELECT * FROM inscripcion WHERE  id_alumno = ?";
+        Connection con = conexion_BD.getConnection();
+        Inscripcion inscripcion = null;
+        ArrayList<Inscripcion> inscripciones = new ArrayList<>();
+        
+        try (PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setInt(1, id_alumno);
+            try(ResultSet rs = ps.executeQuery()){
+                while(rs.next()){
+                    inscripcion = new Inscripcion();
+                    inscripcion.setId_inscripcion(rs.getInt("id_inscripcion"));
+                    inscripcion.setId_materia(rs.getInt("id_materia"));
+                    inscripcion.setId_usuario(rs.getInt("id_alumno"));
+                    inscripcion.setEstado(rs.getBoolean("estado"));
+                    inscripciones.add(inscripcion);
+                }
+            }
+            
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return inscripciones;
     }
 
     @Override
     public void actualizar(Inscripcion inscripcion) {
+        String sql = "UPDATE inscripcion SET id_alumno, = ?, id_materia = ?, estado = ? WHERE id_inscripcion = ?";
+        Connection con = conexion_BD.getConnection();
+        try(PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
+            ps.setInt(1, inscripcion.getId_usuario());
+            ps.setInt(2, inscripcion.getId_materia());
+            ps.setBoolean(3, inscripcion.isEstado());
+            ps.setInt(4, inscripcion.getId_inscripcion());
+            
+            int filas = ps.executeUpdate();
+            if(filas > 0){
+                System.out.println("Inscripcion realizada con ID: " + inscripcion.getId_inscripcion());
+            } else {
+                System.out.println("No se encontro la inscripcion con ID: " + inscripcion.getId_inscripcion());
+            }
+            
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
         
     }
 
     @Override
     public void eliminar(int id) {
+        String sql = "DELETE FROM inscripcion WHERE id_inscripcion = ?";
+        Connection con = conexion_BD.getConnection();
         
+        try(PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setInt(1, id);
+            
+            int filas = ps.executeUpdate();
+            if(filas > 0){
+                System.out.println("Se ha eliminado la inscripcion exitosamente con id " + id);
+            } else {
+                System.out.println("No se ha encontrado la inscripcion con el id " + id);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
     }
     
 }

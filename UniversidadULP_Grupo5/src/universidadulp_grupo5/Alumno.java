@@ -127,6 +127,11 @@ public class Alumno implements Comparable<Alumno>{
     @Override
     public int compareTo(Alumno a){
         return this.apellido.compareTo(a.apellido);    }
+
+    @Override
+    public String toString() {
+        return "Alumno{" + "id_alumno=" + id_alumno + ", dni=" + dni + ", email=" + email + ", password=" + password + ", nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento=" + fechaNacimiento + ", estado=" + estado + '}';
+    }
     
     
     

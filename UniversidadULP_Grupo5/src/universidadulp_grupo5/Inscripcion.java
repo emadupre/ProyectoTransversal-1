@@ -81,5 +81,12 @@ public class Inscripcion {
     public int HashCode(){
         return Objects.hashCode(this.id_inscripcion);
     }
+
+    @Override
+    public String toString() {
+        return "Inscripcion{" + "id_inscripcion=" + id_inscripcion + ", id_usuario=" + id_usuario + ", id_materia=" + id_materia + ", estado=" + estado + '}';
+    }
+    
+    
     
 }
