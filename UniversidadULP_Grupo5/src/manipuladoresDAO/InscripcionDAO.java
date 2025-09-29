@@ -41,8 +41,6 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
             
         } catch (SQLException e){
             e.printStackTrace();
-        } finally {
-            conexion_BD.closeConnection();
         }
     }
 
@@ -65,9 +63,7 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
             
         } catch (SQLException e){
             e.printStackTrace();
-        } finally {
-            conexion_BD.closeConnection();
-        }
+        } 
         return inscripcion;
 
     }
@@ -94,9 +90,7 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
             
         } catch(SQLException e){
             e.printStackTrace();
-        } finally {
-            conexion_BD.closeConnection();
-        }
+        } 
         return inscripciones;
     }
 
@@ -119,9 +113,7 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
             
         } catch (SQLException e){
             e.printStackTrace();
-        } finally {
-            conexion_BD.closeConnection();
-        }
+        } 
         
     }
 
@@ -141,9 +133,7 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
             }
         } catch (SQLException e){
             e.printStackTrace();
-        } finally {
-            conexion_BD.closeConnection();
-        }
+        } 
     }
     
     
@@ -163,9 +153,7 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
             
         }catch (SQLException e){
             e.printStackTrace();
-        } finally {
-            conexion_BD.closeConnection();
-        }
+        } 
     }
     
     public void darseAlta(int id){
@@ -184,8 +172,6 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
             
         }catch (SQLException e){
             e.printStackTrace();
-        } finally {
-            conexion_BD.closeConnection();
-        }
+        } 
     }
 }
