@@ -136,4 +136,42 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
         }
     }
     
+    
+    public void darseBaja(int id){
+        String sql = "UPDATE inscripcion SET estado = false WHERE id_inscripcion = ?";
+        Connection con = conexion_BD.getConnection();
+        
+        try(PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setInt(1, id);
+            
+            int filas = ps.executeUpdate();
+            if(filas > 0){
+                System.out.println("Se ha actualiza el estado a inactivo de la inscripcion con el id " + id);
+            } else {
+                System.out.println("No se ha encontrado la inscripcion con id " + id);
+            }
+            
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void darseAlta(int id){
+        String sql = "UPDATE inscripcion SET estado = true WHERE id_inscripcion = ?";
+        Connection con = conexion_BD.getConnection();
+        
+        try(PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setInt(1, id);
+            
+            int filas = ps.executeUpdate();
+            if(filas > 0){
+                System.out.println("Se ha actualiza el estado a activo de la inscripcion con el id " + id);
+            } else {
+                System.out.println("No se ha encontrado la inscripcion con id " + id);
+            }
+            
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }
