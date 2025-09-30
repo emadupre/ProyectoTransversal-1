@@ -69,7 +69,7 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
     }
 
     @Override
-    public List<Inscripcion> listar(int id_alumno) {
+    public List<Inscripcion> listar() {
         String sql  = "SELECT * FROM inscripcion WHERE  id_alumno = ?";
         Connection con = conexion_BD.getConnection();
         Inscripcion inscripcion = null;

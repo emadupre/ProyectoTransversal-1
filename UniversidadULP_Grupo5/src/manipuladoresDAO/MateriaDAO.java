@@ -50,31 +50,8 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
     }
 
     @Override
-    public List<Materia> listar(int id) {
-        String sql = "SELECT i.id_materia,  m.nombre, m.descripcion, m.codigo_materia, m.estado "
-                + "FROM inscripcion i JOIN materia m ON m.id_materia = i.id_materia WHERE id_alumno = ?";
-        Connection con = conexion_BD.getConnection();
-        Materia materia = null;
-        ArrayList<Materia> materias = new ArrayList<>();
-
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, id);
-            try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-                    materia = new Materia();
-                   materia.setId_materia(rs.getInt("i.id_materia"));
-                   materia.setNombre(rs.getString("m.nombre"));
-                   materia.setDescripcion(rs.getNString("m.descripcion"));
-                   materia.setCodigo_materia(rs.getNString("m.codigo_materia"));
-                   materia.setEstado(rs.getBoolean("m.estado"));
-                   materias.add(materia);
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return materias;
+    public List<Materia> listar() {
+        ;
     }
 
     @Override
@@ -106,5 +83,31 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
     public void eliminar(int id) {
 
     }
+    
+    public List<Materia> listarPorAlumno(int id){
+    String sql = "SELECT i.id_materia,  m.nombre, m.descripcion, m.codigo_materia, m.estado "
+                + "FROM inscripcion i JOIN materia m ON m.id_materia = i.id_materia WHERE id_alumno = ?";
+        Connection con = conexion_BD.getConnection();
+        Materia materia = null;
+        ArrayList<Materia> materias = new ArrayList<>();
 
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    materia = new Materia();
+                   materia.setId_materia(rs.getInt("i.id_materia"));
+                   materia.setNombre(rs.getString("m.nombre"));
+                   materia.setDescripcion(rs.getNString("m.descripcion"));
+                   materia.setCodigo_materia(rs.getNString("m.codigo_materia"));
+                   materia.setEstado(rs.getBoolean("m.estado"));
+                   materias.add(materia);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return materias;
+    }
 }

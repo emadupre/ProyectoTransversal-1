@@ -26,7 +26,7 @@ public class AlumnoDAO implements manipuladorGeneral <Alumno> {
     }
 
     @Override
-    public List<Alumno> listar(int id) {
+    public List<Alumno> listar() {
         return new ArrayList<>();
     }
 
