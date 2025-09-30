@@ -58,7 +58,7 @@ public class AlumnoDAO implements manipuladorGeneral <Alumno> {
     public Alumno buscarPorId(int id) {
         String sql = "SELECT * FROM alumno WHERE id_alumno = ?";
         Connection con = conexion_BD.getConnection();        
-        Alumno alumno;
+        Alumno alumno = null;
         
         try (PreparedStatement ps = con.prepareStatement(sql)){
             ps.setInt(1, id);
@@ -79,7 +79,7 @@ public class AlumnoDAO implements manipuladorGeneral <Alumno> {
         } catch (SQLException e){
             e.printStackTrace();
         }
-        return new Alumno();
+        return alumno;
     }
 
     @Override
@@ -108,22 +108,22 @@ public class AlumnoDAO implements manipuladorGeneral <Alumno> {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return new ArrayList<>();
+        return alumnos;
     }
 
     @Override
     public void actualizar(Alumno alumno) {
-        String sql = "UPDATE alumno SET id_alumno=?, dni=?, email=?, password=?, nombre=?, apellido=?, fecha_nacimiento=?, estado=?";
+        String sql = "UPDATE alumno SET dni=?, email=?, password=?, nombre=?, apellido=?, fecha_nacimiento=?, estado=? WHERE id_alumno = ?";
         Connection con = conexion_BD.getConnection();
        try(PreparedStatement ps = con.prepareStatement(sql)){
-            ps.setInt(1, alumno.getId_alumno());
-            ps.setInt(2, alumno.getDni());
-            ps.setString(3, alumno.getEmail());
-            ps.setString(4, alumno.getPassword());
-            ps.setString(5, alumno.getNombre());
-            ps.setString(6, alumno.getApellido());
-            ps.setDate(7, Date.valueOf(alumno.getFecha_nacimiento()));
-            ps.setBoolean(8, alumno.isEstado());
+            ps.setInt(1, alumno.getDni());
+            ps.setString(2, alumno.getEmail());
+            ps.setString(3, alumno.getPassword());
+            ps.setString(4, alumno.getNombre());
+            ps.setString(5, alumno.getApellido());
+            ps.setDate(6, Date.valueOf(alumno.getFecha_nacimiento()));
+            ps.setBoolean(7, alumno.isEstado());
+            ps.setInt(8, alumno.getId_alumno());
             
             int filas = ps.executeUpdate();
             if(filas > 0){
@@ -140,7 +140,7 @@ public class AlumnoDAO implements manipuladorGeneral <Alumno> {
 
     @Override
     public void eliminar(int id) {
-        String sql = "DELETE FROM inscripcion WHERE id_alumno = ?";
+        String sql = "DELETE FROM alumno WHERE id_alumno = ?";
         Connection con = conexion_BD.getConnection();
         
         try(PreparedStatement ps = con.prepareStatement(sql)){
