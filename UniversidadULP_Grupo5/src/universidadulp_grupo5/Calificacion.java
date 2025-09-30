@@ -13,9 +13,12 @@ public class Calificacion {
     private int id_administrativo;
     private double calificacion;
     
-        public Calificacion() {}
+        public Calificacion() {
+            this.id_calificacion=-1;
+        }
 
     public Calificacion(int id_inscripcion,int id_administrativo, double calificacion) {
+        this.id_calificacion=-1;
         this.id_inscripcion = id_inscripcion;
         this.calificacion = calificacion;
         this.id_administrativo = id_administrativo;

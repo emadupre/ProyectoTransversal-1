@@ -19,7 +19,9 @@ public class Materia implements Comparable<Materia>{
     private String codigo_materia;
     private boolean estado;
     
-    public Materia() {}
+    public Materia() {
+        this.id_materia=-1;
+    }
 
     public Materia(int id_materia, String nombre,String descripcion, String codigo_materia, boolean estado) {
         this.nombre = nombre;
@@ -30,6 +32,7 @@ public class Materia implements Comparable<Materia>{
     }
 
     public Materia(String nombre, String descripcion, String codigo_materia, boolean estado) {
+        this.id_materia=-1;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.codigo_materia = codigo_materia;

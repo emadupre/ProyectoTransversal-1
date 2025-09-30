@@ -18,9 +18,12 @@ public class Inscripcion {
     private int id_materia;
     private boolean estado;
     
-    public Inscripcion() {}
+    public Inscripcion() {
+        this.id_inscripcion=-1;
+    }
 
     public Inscripcion(int id_usuario, int id_materia, boolean estado) {
+        this.id_inscripcion=-1;
         this.id_usuario = id_usuario;
         this.id_materia = id_materia;
         this.estado = estado;

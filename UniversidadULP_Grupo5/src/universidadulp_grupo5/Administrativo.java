@@ -23,6 +23,7 @@ public class Administrativo implements Comparable<Administrativo>{
     private long telefono;
 
     public Administrativo() {
+        this.id_administrativo=-1;
     }
 
     public Administrativo(int id_administrativo, int dni, String nombre, String apellido, String email, String password, long telefono) {
@@ -36,6 +37,7 @@ public class Administrativo implements Comparable<Administrativo>{
     }
 
     public Administrativo(int dni, String nombre, String apellido, String email, String password, long telefono) {
+        this.id_administrativo=-1;
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;

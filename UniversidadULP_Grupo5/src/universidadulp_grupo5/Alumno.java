@@ -17,29 +17,32 @@ public class Alumno implements Comparable<Alumno>{
     private String password;
     private String nombre;
     private String apellido;
-    private Date fechaNacimiento;
+    private Date fecha_nacimiento;
     private boolean estado;
     
-    public Alumno() {}
+    public Alumno() {
+        this.id_alumno=-1;
+    }
 
-    public Alumno(int id_alumno, int dni, String email, String password, String nombre, String apellido, Date fechaNacimiento, boolean estado) {
+    public Alumno(int id_alumno, int dni, String email, String password, String nombre, String apellido, Date fecha_nacimiento, boolean estado) {
         this.id_alumno = id_alumno;
         this.dni = dni;
         this.email = email;
         this.password = password;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.fechaNacimiento = fechaNacimiento;
+        this.fecha_nacimiento = fecha_nacimiento;
         this.estado = estado;
     }
 
-    public Alumno(int dni, String email, String password, String nombre, String apellido, Date fechaNacimiento, boolean estado) {
+    public Alumno(int dni, String email, String password, String nombre, String apellido, Date fecha_nacimiento, boolean estado) {
+        this.id_alumno=-1;
         this.dni = dni;
         this.email = email;
         this.password = password;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.fechaNacimiento = fechaNacimiento;
+        this.fecha_nacimiento = fecha_nacimiento;
         this.estado = estado;
     }
 
@@ -100,12 +103,12 @@ public class Alumno implements Comparable<Alumno>{
         this.apellido = Apellido;
     }
 
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
+    public Date getFecha_nacimiento() {
+        return fecha_nacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setFecha_nacimiento(Date fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
     }
             
     @Override
@@ -130,7 +133,7 @@ public class Alumno implements Comparable<Alumno>{
 
     @Override
     public String toString() {
-        return "Alumno{" + "id_alumno=" + id_alumno + ", dni=" + dni + ", email=" + email + ", password=" + password + ", nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento=" + fechaNacimiento + ", estado=" + estado + '}';
+        return "Alumno{" + "id_alumno=" + id_alumno + ", dni=" + dni + ", email=" + email + ", password=" + password + ", nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento=" + fecha_nacimiento + ", estado=" + estado + '}';
     }
     
     
