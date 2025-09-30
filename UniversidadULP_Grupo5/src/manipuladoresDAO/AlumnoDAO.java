@@ -42,6 +42,7 @@ public class AlumnoDAO implements manipuladorGeneral <Alumno> {
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if(rs.next()){
+                alumno.setId_alumno(rs.getInt(1));
               
             } else {
                 System.out.println("No se pudo agregar al alumno");
