@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package universidadulp_grupo5;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 /**
@@ -17,14 +18,14 @@ public class Alumno implements Comparable<Alumno>{
     private String password;
     private String nombre;
     private String apellido;
-    private Date fecha_nacimiento;
+    private LocalDate fecha_nacimiento;
     private boolean estado;
     
     public Alumno() {
         this.id_alumno=-1;
     }
 
-    public Alumno(int id_alumno, int dni, String email, String password, String nombre, String apellido, Date fecha_nacimiento, boolean estado) {
+    public Alumno(int id_alumno, int dni, String email, String password, String nombre, String apellido, LocalDate fecha_nacimiento, boolean estado) {
         this.id_alumno = id_alumno;
         this.dni = dni;
         this.email = email;
@@ -35,7 +36,7 @@ public class Alumno implements Comparable<Alumno>{
         this.estado = estado;
     }
 
-    public Alumno(int dni, String email, String password, String nombre, String apellido, Date fecha_nacimiento, boolean estado) {
+    public Alumno(int dni, String email, String password, String nombre, String apellido, LocalDate fecha_nacimiento, boolean estado) {
         this.id_alumno=-1;
         this.dni = dni;
         this.email = email;
@@ -103,11 +104,11 @@ public class Alumno implements Comparable<Alumno>{
         this.apellido = Apellido;
     }
 
-    public Date getFecha_nacimiento() {
+    public LocalDate getFecha_nacimiento() {
         return fecha_nacimiento;
     }
 
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
+    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
             
