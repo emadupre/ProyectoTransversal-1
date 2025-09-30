@@ -23,7 +23,7 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
 
     @Override
     public void agregar(Materia materia) {
-        String sql = "INSERT INTO materia(id_materia,nombre,descripcion,codigo_materia,estado)VALUE(?,?,?,?,?)";
+        String sql = "INSERT INTO materia(nombre, descripcion, codigo_materia, estado) VALUES (?, ?, ?, ?)";
         Connection con = conexion_BD.getConnection();
 
         try (PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
@@ -49,7 +49,7 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
 
     @Override
     public Materia buscarPorId(int id) {
-        String sql = "SELECT * FROM incripcion WHERE id_materia =?";
+        String sql = "SELECT * FROM materia WHERE id_materia = ?";
         Connection con = conexion_BD.getConnection();
         Materia materia = null;
         try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -60,7 +60,7 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
                     materia.setId_materia(rs.getInt("id_materia"));
                     materia.setNombre(rs.getNString("nombre"));
                     materia.setDescripcion(rs.getNString("descripcion"));
-                    materia.setCodigo_materia(rs.getNString("codigo_materia "));
+                    materia.setCodigo_materia(rs.getNString("codigo_materia"));
                     materia.setEstado(rs.getBoolean("estado"));
                 }
             }
@@ -72,7 +72,7 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
 
     @Override
     public List<Materia> listar() {
-        String sql = "SELECT * FROM inscripciones";
+        String sql = "SELECT * FROM materia";
         Connection con = conexion_BD.getConnection();
         ArrayList<Materia> listaMaterias = new ArrayList<>();
 
@@ -99,20 +99,20 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
 
     @Override
     public void actualizar(Materia materia) {
-        String sql = "UPDATE materia SET id_materia, = ? , id_materia =? , nombre = ? , descripcion = ? ,codigo_materia = ? , estado = ? where id_materia ";
+        String sql = "UPDATE materia SET nombre = ? , descripcion = ? ,codigo_materia = ? , estado = ? where id_materia = ? ";
         Connection con = conexion_BD.getConnection();
         try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            ps.setInt(1, materia.getId_materia());
-            ps.setString(2, materia.getNombre());
-            ps.setString(3, materia.getDescripcion());
-            ps.setString(4, materia.getCodigo_materia());
-            ps.setBoolean(5, materia.isEstado());
+            ps.setString(1, materia.getNombre());
+            ps.setString(2, materia.getDescripcion());
+            ps.setString(3, materia.getCodigo_materia());
+            ps.setBoolean(4, materia.isEstado());
+            ps.setInt(5, materia.getId_materia());
 
             int filas = ps.executeUpdate();
             if (filas > 0) {
-                System.out.println("inscripcion realizada con el id" + materia.getId_materia());
+                System.out.println("Materia modificada con id" + materia.getId_materia());
             } else {
-                System.out.println("no se encontro la inscripcion con el id " + materia.getId_materia());
+                System.out.println("No se encontro la materia con el id " + materia.getId_materia());
             }
 
         } catch (SQLException e) {
@@ -129,9 +129,9 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
             ps.setInt(1, id);
             int filas = ps.executeUpdate();
             if (filas > 0) {
-                System.out.println("se a eliminado la materia seleccionada con exito " + id);
+                System.out.println("se ha eliminado la materia seleccionada con exito " + id);
             } else {
-                System.out.println("no se a encontrado la materia solicitada" + id);
+                System.out.println("no se ha encontrado la materia solicitada " + id);
             }
         } catch (SQLException e) {
             e.printStackTrace();
