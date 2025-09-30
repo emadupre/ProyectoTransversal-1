@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.mariadb.jdbc.Statement;
 import universidadulp_grupo5.Materia;
 
 /**
@@ -78,7 +79,27 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
 
     @Override
     public void actualizar(Materia materia) {
-
+       String sql = "UPDATE materia SET id_materia, = ? , id_materia =? , nombre = ? , descripcion = ? ,codigo_materia = ? , estado = ? where id_materia ";
+       Connection con = conexion_BD.getConnection();
+       try(PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)){
+       ps.setInt(1,materia.getId_materia());  
+       ps.setString(2, materia.getNombre());
+       ps.setString(3, materia.getDescripcion());
+       ps.setString(4, materia.getCodigo_materia());
+       ps.setBoolean(5, materia.isEstado());
+       
+       int filas = ps.executeUpdate();
+       if(filas > 0 ){
+           System.out.println("inscripcion realizada con el id" + materia.getId_materia());
+       }else{
+           System.out.println("no se encontro la inscripcion con el id " + materia.getId_materia());
+       }
+       
+       }catch (SQLException e){
+           e.printStackTrace();
+       }
+       
+       
     }
 
     @Override
