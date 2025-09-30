@@ -18,56 +18,72 @@ import universidadulp_grupo5.Materia;
  *
  * @author Enzo_2
  */
-public class MateriaDAO implements manipuladorGeneral <Materia> {
+public class MateriaDAO implements manipuladorGeneral<Materia> {
 
     @Override
     public void agregar(Materia materia) {
-     
+
     }
 
     @Override
     public Materia buscarPorId(int id) {
-        return new Materia();
+        String sql = "SELECT * FROM incripcion WHERE id_materia =?";
+        Connection con = conexion_BD.getConnection();
+        Materia materia = null;
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    materia = new Materia();
+                    materia.setId_materia(rs.getInt("id_materia"));
+                    materia.setNombre(rs.getNString("nombre"));
+                    materia.setDescripcion(rs.getNString("descripcion"));
+                    materia.setCodigo_materia(rs.getNString("codigo_materia "));
+                    materia.setEstado(rs.getBoolean("estado"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return materia;
     }
 
     @Override
     public List<Materia> listar(int id) {
-        String sql = "SELECT * FROM inscripcion where id_materia = ?";
+        String sql = "SELECT i.id_materia,  m.nombre, m.descripcion, m.codigo_materia, m.estado "
+                + "FROM inscripcion i JOIN materia m ON m.id_materia = i.id_materia WHERE id_alumno = ?";
         Connection con = conexion_BD.getConnection();
         Materia materia = null;
         ArrayList<Materia> materias = new ArrayList<>();
-        
-        try(PreparedStatement ps = con.prepareStatement(sql)){
-           ps.setInt(1, id);
-           try(ResultSet rs = ps.executeQuery()){
-               while(rs.next()){
-                   materia = new Materia();
-                   materia.setId_materia(rs.getInt("id_materia"));
-                   materia.setNombre(rs.getNString(" nombre"));
-                   materia.setDescripcion(rs.getNString("descripcion"));
-                   materia.setCodigo_materia(rs.getNString("codigo_materia "));
-                   materia.setEstado(rs.getBoolean("estado"));
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    materia = new Materia();
+                   materia.setId_materia(rs.getInt("i.id_materia"));
+                   materia.setNombre(rs.getString("m.nombre"));
+                   materia.setDescripcion(rs.getNString("m.descripcion"));
+                   materia.setCodigo_materia(rs.getNString("m.codigo_materia"));
+                   materia.setEstado(rs.getBoolean("m.estado"));
                    materias.add(materia);
-               }
-           }
-        }catch (SQLException e){
+                }
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        
-        
+
         return materias;
     }
 
     @Override
     public void actualizar(Materia materia) {
-        
+
     }
 
     @Override
     public void eliminar(int id) {
-        
+
     }
 
-    
-    
 }
