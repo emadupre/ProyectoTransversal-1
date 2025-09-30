@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import java.awt.BorderLayout;
+
 /**
  *
  * @author Naiara
@@ -16,6 +18,12 @@ public class Vista_Alumno extends javax.swing.JInternalFrame {
      */
     public Vista_Alumno() {
         initComponents();
+
+        PanelFondo fondo = new PanelFondo("/imagenes/fondo.jpg");
+
+        jPfondo.setLayout(new BorderLayout()); // importante para que ocupe todo el espacio
+        jPfondo.add(fondo, BorderLayout.CENTER);
+        jPfondo.repaint();
     }
 
     /**
@@ -27,15 +35,59 @@ public class Vista_Alumno extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPfondo = new javax.swing.JPanel();
+        jbGestor_Alumnos = new javax.swing.JLabel();
+        jbUsuario = new javax.swing.JLabel();
+        jbConstraseña = new javax.swing.JLabel();
+
+        jbGestor_Alumnos.setBackground(new java.awt.Color(204, 204, 255));
+        jbGestor_Alumnos.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jbGestor_Alumnos.setText("Gestor de Alumnos");
+
+        jbUsuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jbUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jbUsuario.setText("    Usuario:");
+
+        jbConstraseña.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jbConstraseña.setText("Contraseña: ");
+
+        javax.swing.GroupLayout jPfondoLayout = new javax.swing.GroupLayout(jPfondo);
+        jPfondo.setLayout(jPfondoLayout);
+        jPfondoLayout.setHorizontalGroup(
+            jPfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPfondoLayout.createSequentialGroup()
+                .addGroup(jPfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPfondoLayout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(jbGestor_Alumnos))
+                    .addGroup(jPfondoLayout.createSequentialGroup()
+                        .addGap(195, 195, 195)
+                        .addGroup(jPfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbConstraseña)
+                            .addComponent(jbUsuario))))
+                .addContainerGap(266, Short.MAX_VALUE))
+        );
+        jPfondoLayout.setVerticalGroup(
+            jPfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPfondoLayout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(jbGestor_Alumnos)
+                .addGap(72, 72, 72)
+                .addComponent(jbUsuario)
+                .addGap(70, 70, 70)
+                .addComponent(jbConstraseña)
+                .addContainerGap(289, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addComponent(jPfondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addComponent(jPfondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -43,5 +95,9 @@ public class Vista_Alumno extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPfondo;
+    private javax.swing.JLabel jbConstraseña;
+    private javax.swing.JLabel jbGestor_Alumnos;
+    private javax.swing.JLabel jbUsuario;
     // End of variables declaration//GEN-END:variables
 }
