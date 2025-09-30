@@ -70,13 +70,12 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
 
     @Override
     public List<Inscripcion> listar() {
-        String sql  = "SELECT * FROM inscripcion WHERE  id_alumno = ?";
+        String sql  = "SELECT * FROM inscripcion";
         Connection con = conexion_BD.getConnection();
         Inscripcion inscripcion = null;
         ArrayList<Inscripcion> inscripciones = new ArrayList<>();
         
         try (PreparedStatement ps = con.prepareStatement(sql)){
-            ps.setInt(1, id_alumno);
             try(ResultSet rs = ps.executeQuery()){
                 while(rs.next()){
                     inscripcion = new Inscripcion();
@@ -136,6 +135,30 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
         } 
     }
     
+    public List<Inscripcion> listarInscripcionesPorAlumno(int id) {
+        String sql  = "SELECT * FROM inscripcion WHERE id_alumno = ?";
+        Connection con = conexion_BD.getConnection();
+        Inscripcion inscripcion = null;
+        ArrayList<Inscripcion> inscripciones = new ArrayList<>();
+        
+        try (PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setInt(1, id);
+            try(ResultSet rs = ps.executeQuery()){
+                while(rs.next()){
+                    inscripcion = new Inscripcion();
+                    inscripcion.setId_inscripcion(rs.getInt("id_inscripcion"));
+                    inscripcion.setId_materia(rs.getInt("id_materia"));
+                    inscripcion.setId_usuario(rs.getInt("id_alumno"));
+                    inscripcion.setEstado(rs.getBoolean("estado"));
+                    inscripciones.add(inscripcion);
+                }
+            }
+            
+        } catch(SQLException e){
+            e.printStackTrace();
+        } 
+        return inscripciones;
+    }
     
     public void darseBaja(int id){
         String sql = "UPDATE inscripcion SET estado = false WHERE id_inscripcion = ?";
