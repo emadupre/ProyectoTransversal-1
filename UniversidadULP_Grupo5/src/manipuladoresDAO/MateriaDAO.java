@@ -23,7 +23,28 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
 
     @Override
     public void agregar(Materia materia) {
+        String sql = "INSERT INTO materia (id_materia , nombre , descripcion, codigo_materia , estado)";
+        Connection con = conexion_BD.getConnection();
 
+        try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setInt(1, materia.getId_materia());
+            ps.setString(2, materia.getNombre());
+            ps.setString(3, materia.getDescripcion());
+            ps.setString(4, materia.getCodigo_materia());
+            ps.setBoolean(5, materia.isEstado());
+
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+
+            if (rs.next()) {
+                materia.setId_materia(rs.getInt(1));
+            } else {
+                System.out.println("no se pudo agregar la materia ");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -97,7 +118,7 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
- }
+    }
 
     @Override
     public void eliminar(int id) {
