@@ -27,11 +27,9 @@ public class UniversidadULP_Grupo5 {
 
         Inscripcion ins1 = new Inscripcion(1, 2, false);
         manipulador.eliminar(1);
-        List<Inscripcion> inscripciones = manipulador.listar(1);
+       
         
-        for(Inscripcion i : inscripciones){
-            System.out.println(i.toString());
-        }
+       
      
         
         
