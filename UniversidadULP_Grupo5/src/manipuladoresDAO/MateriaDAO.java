@@ -51,7 +51,29 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
 
     @Override
     public List<Materia> listar() {
-        ;
+        String sql = "SELECT * FROM inscripciones";
+        Connection con = conexion_BD.getConnection();
+        ArrayList<Materia> listaMaterias = new ArrayList<>();
+        
+        try(PreparedStatement ps = con.prepareStatement(sql)){
+            try(ResultSet rs = ps.executeQuery()){
+                while(rs.next()){
+                    Materia materia = new Materia();
+                    materia.setId_materia(rs.getInt("id_materia"));
+                    materia.setNombre(rs.getString("nombre"));
+                    materia.setDescripcion(rs.getString("descripcion"));
+                    materia.setCodigo_materia("codigo_materia");
+                    materia.setEstado(rs.getBoolean("estado"));
+                    listaMaterias.add(materia);
+                }
+            }
+        
+        } catch (SQLException e){
+            e.printStackTrace();
+        
+        } 
+        return listaMaterias;
+        
     }
 
     @Override
