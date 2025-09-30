@@ -54,10 +54,10 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
         String sql = "SELECT * FROM inscripciones";
         Connection con = conexion_BD.getConnection();
         ArrayList<Materia> listaMaterias = new ArrayList<>();
-        
-        try(PreparedStatement ps = con.prepareStatement(sql)){
-            try(ResultSet rs = ps.executeQuery()){
-                while(rs.next()){
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
                     Materia materia = new Materia();
                     materia.setId_materia(rs.getInt("id_materia"));
                     materia.setNombre(rs.getString("nombre"));
@@ -67,47 +67,59 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
                     listaMaterias.add(materia);
                 }
             }
-        
-        } catch (SQLException e){
+
+        } catch (SQLException e) {
             e.printStackTrace();
-        
-        } 
+
+        }
         return listaMaterias;
-        
+
     }
 
     @Override
     public void actualizar(Materia materia) {
-       String sql = "UPDATE materia SET id_materia, = ? , id_materia =? , nombre = ? , descripcion = ? ,codigo_materia = ? , estado = ? where id_materia ";
-       Connection con = conexion_BD.getConnection();
-       try(PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)){
-       ps.setInt(1,materia.getId_materia());  
-       ps.setString(2, materia.getNombre());
-       ps.setString(3, materia.getDescripcion());
-       ps.setString(4, materia.getCodigo_materia());
-       ps.setBoolean(5, materia.isEstado());
-       
-       int filas = ps.executeUpdate();
-       if(filas > 0 ){
-           System.out.println("inscripcion realizada con el id" + materia.getId_materia());
-       }else{
-           System.out.println("no se encontro la inscripcion con el id " + materia.getId_materia());
-       }
-       
-       }catch (SQLException e){
-           e.printStackTrace();
-       }
-       
-       
-    }
+        String sql = "UPDATE materia SET id_materia, = ? , id_materia =? , nombre = ? , descripcion = ? ,codigo_materia = ? , estado = ? where id_materia ";
+        Connection con = conexion_BD.getConnection();
+        try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setInt(1, materia.getId_materia());
+            ps.setString(2, materia.getNombre());
+            ps.setString(3, materia.getDescripcion());
+            ps.setString(4, materia.getCodigo_materia());
+            ps.setBoolean(5, materia.isEstado());
+
+            int filas = ps.executeUpdate();
+            if (filas > 0) {
+                System.out.println("inscripcion realizada con el id" + materia.getId_materia());
+            } else {
+                System.out.println("no se encontro la inscripcion con el id " + materia.getId_materia());
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+ }
 
     @Override
     public void eliminar(int id) {
+        String sql = "DELETE FROM materia WHERE id_materia = ?";
+        Connection con = conexion_BD.getConnection();
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            int filas = ps.executeUpdate();
+            if (filas > 0) {
+                System.out.println("se a eliminado la materia seleccionada con exito " + id);
+            } else {
+                System.out.println("no se a encontrado la materia solicitada" + id);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
-    
-    public List<Materia> listarPorAlumno(int id){
-    String sql = "SELECT i.id_materia,  m.nombre, m.descripcion, m.codigo_materia, m.estado "
+
+    public List<Materia> listarPorAlumno(int id) {
+        String sql = "SELECT i.id_materia,  m.nombre, m.descripcion, m.codigo_materia, m.estado "
                 + "FROM inscripcion i JOIN materia m ON m.id_materia = i.id_materia WHERE id_alumno = ?";
         Connection con = conexion_BD.getConnection();
         Materia materia = null;
@@ -118,12 +130,12 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     materia = new Materia();
-                   materia.setId_materia(rs.getInt("i.id_materia"));
-                   materia.setNombre(rs.getString("m.nombre"));
-                   materia.setDescripcion(rs.getNString("m.descripcion"));
-                   materia.setCodigo_materia(rs.getNString("m.codigo_materia"));
-                   materia.setEstado(rs.getBoolean("m.estado"));
-                   materias.add(materia);
+                    materia.setId_materia(rs.getInt("i.id_materia"));
+                    materia.setNombre(rs.getString("m.nombre"));
+                    materia.setDescripcion(rs.getNString("m.descripcion"));
+                    materia.setCodigo_materia(rs.getNString("m.codigo_materia"));
+                    materia.setEstado(rs.getBoolean("m.estado"));
+                    materias.add(materia);
                 }
             }
         } catch (SQLException e) {
