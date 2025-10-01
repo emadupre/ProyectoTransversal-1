@@ -85,7 +85,7 @@ public abstract class CalificacionDAO implements manipuladorGeneral <Calificacio
                     calificacion.setId_administrativo(rs.getInt("id_administrativo"));
                     calificacion.setId_calificacion(rs.getInt("id_calificacion"));
                     calificacion.setCalificacion(rs.getDouble("calificacion"));
-                    calificacion.add(calificacion);
+                    calificaciones.add(calificacion);
                 }
             }
             
