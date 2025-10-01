@@ -5,7 +5,7 @@
  */
 package manipuladoresDAO;
 
-import conexiones.conexion_BD;
+import conexiones.Conexion_BD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,12 +19,12 @@ import universidadulp_grupo5.Calificacion;
  *
  * @author Enzo_2
  */
-public abstract class CalificacionDAO implements manipuladorGeneral <Calificacion> {
+public class CalificacionDAO implements manipuladorGeneral <Calificacion> {
 
     @Override
     public void agregar(Calificacion calificacion) {
        String sql = "INSERT INTO calificacion (id_inscripcion, id_administrativo, calificacion) VALUE (?,?,?)";
-       Connection con = conexion_BD.getConnection();
+       Connection con = Conexion_BD.getConnection();
        
        try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
            ps.setInt(1, calificacion.getId_inscripcion());
@@ -47,7 +47,7 @@ public abstract class CalificacionDAO implements manipuladorGeneral <Calificacio
     @Override
     public Calificacion buscarPorId(int id) {
         String sql = "SELECT * FROM inscripcion WHERE id_calificacion = ?";
-        Connection con = conexion_BD.getConnection();
+        Connection con = Conexion_BD.getConnection();
         Calificacion calificacion = null;
         try (PreparedStatement ps = con.prepareStatement(sql)){
             ps.setInt(1, id);
@@ -69,9 +69,9 @@ public abstract class CalificacionDAO implements manipuladorGeneral <Calificacio
         
     }
     
-    public List<Calificacion> listar(int id_inscripcion) {
+    public List<Calificacion> listarPorIdInscripcion(int id_inscripcion) {
         String sql  = "SELECT * FROM calificacion WHERE id_inscripcion = ?";
-        Connection con = conexion_BD.getConnection();
+        Connection con = Conexion_BD.getConnection();
         Calificacion calificacion = null;
         ArrayList<Calificacion> calificaciones = new ArrayList<>();
         
@@ -98,7 +98,7 @@ public abstract class CalificacionDAO implements manipuladorGeneral <Calificacio
     @Override
     public void actualizar(Calificacion calificacion) {
         String sql = "UPDATE calificacion SET id_inscripcion, = ?, id_administrativo = ?, calificacion = ? WHERE id_calificacion = ?";
-        Connection con = conexion_BD.getConnection();
+        Connection con = Conexion_BD.getConnection();
         try(PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
             ps.setInt(1, calificacion.getId_administrativo());
             ps.setInt(2, calificacion.getId_calificacion());
@@ -121,7 +121,7 @@ public abstract class CalificacionDAO implements manipuladorGeneral <Calificacio
     @Override
     public void eliminar(int id) {
         String sql = "DELETE FROM calificacion WHERE id_calificacion = ?";
-        Connection con = conexion_BD.getConnection();
+        Connection con = Conexion_BD.getConnection();
         
         try(PreparedStatement ps = con.prepareStatement(sql)){
             ps.setInt(1, id);
@@ -136,6 +136,29 @@ public abstract class CalificacionDAO implements manipuladorGeneral <Calificacio
             e.printStackTrace();
         } 
 
+    }
+
+    @Override
+    public List<Calificacion> listar() {
+        String sql = "SELECT * FROM calificacion";
+        Connection con = Conexion_BD.getConnection();
+        Calificacion cal = null;
+        ArrayList<Calificacion> lista = new ArrayList<>();
+        
+        try(PreparedStatement ps = con.prepareStatement(sql)){
+             try(ResultSet rs = ps.executeQuery()){
+                 cal = new Calificacion();
+                 cal.setId_calificacion(rs.getInt("id_calificacion"));
+                 cal.setId_administrativo(rs.getInt("id_administrativo"));
+                 cal.setCalificacion(rs.getDouble("calificacion"));
+                 cal.setId_inscripcion(rs.getInt("id_inscripcion"));
+                 lista.add(cal);
+             }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        return lista;
     }
 
     
