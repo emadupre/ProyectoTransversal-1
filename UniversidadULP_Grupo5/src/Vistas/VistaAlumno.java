@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import universidadulp_grupo5.Alumno;
+
 /**
  *
  * @author Enzo_2
@@ -14,7 +16,10 @@ public class VistaAlumno extends javax.swing.JFrame {
     /**
      * Creates new form VistaAlumno
      */
-    public VistaAlumno() {
+    private Alumno usuario;
+    
+    public VistaAlumno(Alumno usuario) {
+        this.usuario = usuario;
         initComponents();
     }
 
@@ -27,29 +32,65 @@ public class VistaAlumno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        btnMateria = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        btnAlumno = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 664, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 444, Short.MAX_VALUE)
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 486, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("File");
+        jMenuBar1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+
+        jMenu1.setText("Alumnos");
+
+        btnMateria.setText("Gestión de alumnos");
+        btnMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMateriaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnMateria);
+
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Materias");
+
+        btnAlumno.setText("Gestión de materias");
+        btnAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlumnoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnAlumno);
+
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Salir");
+
+        jMenuItem3.setText("Salir");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -57,15 +98,37 @@ public class VistaAlumno extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMateriaActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        MateriaInternal ventanaMateria = new MateriaInternal();
+        escritorio.add(ventanaMateria);
+        ventanaMateria.setVisible(true);
+        ventanaMateria.moveToFront();
+    }//GEN-LAST:event_btnMateriaActionPerformed
+
+    private void btnAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlumnoActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        AlumnoInternal ventanaMateria = new AlumnoInternal();
+        escritorio.add(ventanaMateria);
+        ventanaMateria.setVisible(true);
+        ventanaMateria.moveToFront();
+    }//GEN-LAST:event_btnAlumnoActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,15 +160,20 @@ public class VistaAlumno extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaAlumno().setVisible(true);
+                Alumno al = null;
+                new VistaAlumno(al).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenuItem btnAlumno;
+    private javax.swing.JMenuItem btnMateria;
+    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 }
