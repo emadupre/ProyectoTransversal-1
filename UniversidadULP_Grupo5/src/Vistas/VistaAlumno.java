@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import universidadulp_grupo5.Administrativo;
 import universidadulp_grupo5.Alumno;
 
 /**
@@ -16,9 +17,9 @@ public class VistaAlumno extends javax.swing.JFrame {
     /**
      * Creates new form VistaAlumno
      */
-    private Alumno usuario;
+    private Administrativo usuario;
     
-    public VistaAlumno(Alumno usuario) {
+    public VistaAlumno(Administrativo usuario) {
         this.usuario = usuario;
         initComponents();
     }
@@ -160,7 +161,7 @@ public class VistaAlumno extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Alumno al = null;
+                Administrativo al = null;
                 new VistaAlumno(al).setVisible(true);
             }
         });
