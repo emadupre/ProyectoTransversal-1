@@ -17,7 +17,7 @@ public class Conexion_BD {
     
     private static Connection con = null;
     private static final String DRIVER = "org.mariadb.jdbc.Driver";
-    private static final String URL = "jdbc:mariadb://localhost/universidadpropio";
+    private static final String URL = "jdbc:mariadb://localhost/gp5_universidadulp";
     private static final String USUARIO = "root";
     private static final String PASSWORD = "";
     

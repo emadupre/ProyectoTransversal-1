@@ -195,6 +195,6 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
             
         }catch (SQLException e){
             e.printStackTrace();
-        } 
+        }
     }
 }
