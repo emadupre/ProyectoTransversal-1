@@ -4,6 +4,12 @@
  */
 package Vistas;
 
+import javax.swing.JOptionPane;
+import manipuladoresDAO.AdministrativoDAO;
+import manipuladoresDAO.AlumnoDAO;
+import universidadulp_grupo5.Administrativo;
+import universidadulp_grupo5.Alumno;
+
 /**
  *
  * @author emadupre
@@ -15,8 +21,12 @@ public class VistaLogin extends javax.swing.JFrame {
     /**
      * Creates new form LoginFrame
      */
+    private AdministrativoDAO maniAdmin = new AdministrativoDAO();
+    private AlumnoDAO maniAlum = new AlumnoDAO();
+    
     public VistaLogin() {
         initComponents();
+        this.setTitle("Iniciar sesión");
     }
 
     /**
@@ -57,6 +67,22 @@ public class VistaLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public Object intentarLogin(String email, String password, String rol){
+        switch(rol){
+            case "Administrativo":
+                Administrativo admin = maniAdmin.buscarporCredenciales(email, password);
+                return admin;
+            case "Alumno":
+                Alumno alumno = maniAlum.buscarPorCredenciales(email, password);
+                return alumno;
+            default:
+                JOptionPane.showMessageDialog(this, "No has seleccionado el rol");
+                return new Object();
+        }
+        
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
