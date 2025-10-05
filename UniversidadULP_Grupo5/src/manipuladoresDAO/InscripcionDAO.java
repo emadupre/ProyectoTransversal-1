@@ -5,7 +5,7 @@
  */
 package manipuladoresDAO;
 
-import conexiones.Conexion_BD;
+import conexiones.conexion_BD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +24,7 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
     @Override
     public void agregar(Inscripcion inscripcion) {
         String sql = "INSERT INTO inscripcion(id_alumno, id_materia, estado) VALUES (?, ?, ?)";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         
         try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
             ps.setInt(1, inscripcion.getId_usuario());
@@ -47,7 +47,7 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
     @Override
     public Inscripcion buscarPorId(int id) {
         String sql = "SELECT * FROM inscripcion WHERE id_inscripcion = ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         Inscripcion inscripcion = null;
         try (PreparedStatement ps = con.prepareStatement(sql)){
             ps.setInt(1, id);
@@ -71,7 +71,7 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
     @Override
     public List<Inscripcion> listar() {
         String sql  = "SELECT * FROM inscripcion";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         Inscripcion inscripcion = null;
         ArrayList<Inscripcion> inscripciones = new ArrayList<>();
         
@@ -96,7 +96,7 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
     @Override
     public void actualizar(Inscripcion inscripcion) {
         String sql = "UPDATE inscripcion SET id_alumno, = ?, id_materia = ?, estado = ? WHERE id_inscripcion = ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         try(PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
             ps.setInt(1, inscripcion.getId_usuario());
             ps.setInt(2, inscripcion.getId_materia());
@@ -119,7 +119,7 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
     @Override
     public void eliminar(int id) {
         String sql = "DELETE FROM inscripcion WHERE id_inscripcion = ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         
         try(PreparedStatement ps = con.prepareStatement(sql)){
             ps.setInt(1, id);
@@ -137,7 +137,7 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
     
     public List<Inscripcion> listarInscripcionesPorAlumno(int id) {
         String sql  = "SELECT * FROM inscripcion WHERE id_alumno = ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         Inscripcion inscripcion = null;
         ArrayList<Inscripcion> inscripciones = new ArrayList<>();
         
@@ -162,7 +162,7 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
     
     public void darseBaja(int id){
         String sql = "UPDATE inscripcion SET estado = false WHERE id_inscripcion = ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         
         try(PreparedStatement ps = con.prepareStatement(sql)){
             ps.setInt(1, id);
@@ -181,7 +181,7 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
     
     public void darseAlta(int id){
         String sql = "UPDATE inscripcion SET estado = true WHERE id_inscripcion = ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         
         try(PreparedStatement ps = con.prepareStatement(sql)){
             ps.setInt(1, id);

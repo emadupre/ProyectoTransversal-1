@@ -5,7 +5,7 @@
  */
 package manipuladoresDAO;
 
-import conexiones.Conexion_BD;
+import conexiones.conexion_BD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +24,7 @@ public class AdministrativoDAO implements manipuladorGeneral<Administrativo> {
     @Override
     public void agregar(Administrativo administrativo) {
         String sql = "INSERT INTO administrativo(dni, nombre, apellido, email, password, telefono) VALUES (?, ?, ?, ?, ?, ?)";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
 
         try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setInt(1, administrativo.getDni());
@@ -50,7 +50,7 @@ public class AdministrativoDAO implements manipuladorGeneral<Administrativo> {
     public Administrativo buscarPorId(int id) {
 
         String sql = "SELECT * FROM administrativo WHERE id_administrativo = ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         Administrativo administrativo = null;
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, id);
@@ -77,7 +77,7 @@ public class AdministrativoDAO implements manipuladorGeneral<Administrativo> {
     @Override
     public List<Administrativo> listar() {
         String sql = " Select * FROM administrativo";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         Administrativo administrativo = null;
         ArrayList<Administrativo> administrativos = new ArrayList<>();
         try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -103,7 +103,7 @@ public class AdministrativoDAO implements manipuladorGeneral<Administrativo> {
     @Override
     public void actualizar(Administrativo administrativo) {
         String sql = "UPDATE administrativo SET  dni = ?, nombre = ?, apellido = ?, email = ?, password = ?, telefono = ? WHERE id_administrativo= ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setInt(1, administrativo.getDni());
             ps.setString(2, administrativo.getNombre());
@@ -129,7 +129,7 @@ public class AdministrativoDAO implements manipuladorGeneral<Administrativo> {
     public void eliminar(int id) {
 
         String sql = "DELETE FROM administrativo WHERE id_administrativo = ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, id);
@@ -147,7 +147,7 @@ public class AdministrativoDAO implements manipuladorGeneral<Administrativo> {
     
     public Administrativo buscarporCredenciales(String email, String password){
         String sql = "SELECT * FROM administrativo WHERE email = ? AND password = ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         Administrativo admin = null;
         
         try(PreparedStatement ps = con.prepareStatement(sql)){

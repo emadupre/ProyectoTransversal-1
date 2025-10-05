@@ -5,7 +5,7 @@
  */
 package manipuladoresDAO;
 
-import conexiones.Conexion_BD;
+import conexiones.conexion_BD;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -27,7 +27,7 @@ public class AlumnoDAO implements manipuladorGeneral <Alumno> {
     @Override
     public void agregar(Alumno alumno) {
         String sql = "INSERT INTO alumno(dni, email, password, nombre, apellido, fecha_nacimiento, estado) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         
         try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
             ps.setInt(1, alumno.getDni());
@@ -57,7 +57,7 @@ public class AlumnoDAO implements manipuladorGeneral <Alumno> {
     @Override
     public Alumno buscarPorId(int id) {
         String sql = "SELECT * FROM alumno WHERE id_alumno = ?";
-        Connection con = Conexion_BD.getConnection();        
+        Connection con = conexion_BD.getConnection();        
         Alumno alumno = null;
         
         try (PreparedStatement ps = con.prepareStatement(sql)){
@@ -85,7 +85,7 @@ public class AlumnoDAO implements manipuladorGeneral <Alumno> {
     @Override
     public List<Alumno> listar() {        
         String sql = "SELECT * FROM alumno";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         Alumno alumno;
         ArrayList <Alumno> alumnos = new ArrayList<>();        
         
@@ -114,7 +114,7 @@ public class AlumnoDAO implements manipuladorGeneral <Alumno> {
     @Override
     public void actualizar(Alumno alumno) {
         String sql = "UPDATE alumno SET dni=?, email=?, password=?, nombre=?, apellido=?, fecha_nacimiento=?, estado=? WHERE id_alumno = ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
        try(PreparedStatement ps = con.prepareStatement(sql)){
             ps.setInt(1, alumno.getDni());
             ps.setString(2, alumno.getEmail());
@@ -141,7 +141,7 @@ public class AlumnoDAO implements manipuladorGeneral <Alumno> {
     @Override
     public void eliminar(int id) {
         String sql = "DELETE FROM alumno WHERE id_alumno = ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         
         try(PreparedStatement ps = con.prepareStatement(sql)){
             ps.setInt(1, id);
@@ -160,7 +160,7 @@ public class AlumnoDAO implements manipuladorGeneral <Alumno> {
     
     public Alumno buscarPorCredenciales(String email, String password){
         String sql = "SELECT * FROM alumno WHERE email = ? AND password = ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         Alumno alum = null;
         
         try(PreparedStatement ps = con.prepareStatement(sql)){

@@ -5,7 +5,7 @@
  */
 package manipuladoresDAO;
 
-import conexiones.Conexion_BD;
+import conexiones.conexion_BD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +24,7 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
     @Override
     public void agregar(Materia materia) {
         String sql = "INSERT INTO materia(nombre, descripcion, codigo_materia, estado) VALUES (?, ?, ?, ?)";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
 
         try (PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
             
@@ -50,7 +50,7 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
     @Override
     public Materia buscarPorId(int id) {
         String sql = "SELECT * FROM materia WHERE id_materia = ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         Materia materia = null;
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, id);
@@ -73,7 +73,7 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
     @Override
     public List<Materia> listar() {
         String sql = "SELECT * FROM materia";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         ArrayList<Materia> listaMaterias = new ArrayList<>();
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -100,7 +100,7 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
     @Override
     public void actualizar(Materia materia) {
         String sql = "UPDATE materia SET nombre = ? , descripcion = ? ,codigo_materia = ? , estado = ? where id_materia = ? ";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, materia.getNombre());
             ps.setString(2, materia.getDescripcion());
@@ -124,7 +124,7 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
     @Override
     public void eliminar(int id) {
         String sql = "DELETE FROM materia WHERE id_materia = ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, id);
@@ -143,7 +143,7 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
     public List<Materia> listarPorAlumno(int id) {
         String sql = "SELECT i.id_materia,  m.nombre, m.descripcion, m.codigo_materia, m.estado "
                 + "FROM inscripcion i JOIN materia m ON m.id_materia = i.id_materia WHERE id_alumno = ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         Materia materia = null;
         ArrayList<Materia> materias = new ArrayList<>();
 
@@ -169,7 +169,7 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
     
     public void actualizarPorID(int id, Materia materia) {
         String sql = "UPDATE materia SET nombre = ? , descripcion = ? ,codigo_materia = ? , estado = ? where id_materia = ? ";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, materia.getNombre());
             ps.setString(2, materia.getDescripcion());
@@ -192,7 +192,7 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
     
     public void darBaja(int id){
         String sql = "UPDATE materia SET estado = false WHERE id_materia = ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         
         try(PreparedStatement ps = con.prepareStatement(sql)){
             ps.setInt(1, id);
@@ -211,7 +211,7 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
         
         public void darAlta(int id){
         String sql = "UPDATE materia SET estado = true WHERE id_materia = ?";
-        Connection con = Conexion_BD.getConnection();
+        Connection con = conexion_BD.getConnection();
         
         try(PreparedStatement ps = con.prepareStatement(sql)){
             ps.setInt(1, id);
