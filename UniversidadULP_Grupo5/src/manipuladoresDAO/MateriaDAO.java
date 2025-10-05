@@ -83,7 +83,7 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
                     materia.setId_materia(rs.getInt("id_materia"));
                     materia.setNombre(rs.getString("nombre"));
                     materia.setDescripcion(rs.getString("descripcion"));
-                    materia.setCodigo_materia("codigo_materia");
+                    materia.setCodigo_materia(rs.getString("codigo_materia"));
                     materia.setEstado(rs.getBoolean("estado"));
                     listaMaterias.add(materia);
                 }
@@ -101,7 +101,7 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
     public void actualizar(Materia materia) {
         String sql = "UPDATE materia SET nombre = ? , descripcion = ? ,codigo_materia = ? , estado = ? where id_materia = ? ";
         Connection con = Conexion_BD.getConnection();
-        try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, materia.getNombre());
             ps.setString(2, materia.getDescripcion());
             ps.setString(3, materia.getCodigo_materia());
@@ -117,6 +117,7 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            
         }
     }
 
@@ -153,8 +154,8 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
                     materia = new Materia();
                     materia.setId_materia(rs.getInt("i.id_materia"));
                     materia.setNombre(rs.getString("m.nombre"));
-                    materia.setDescripcion(rs.getNString("m.descripcion"));
-                    materia.setCodigo_materia(rs.getNString("m.codigo_materia"));
+                    materia.setDescripcion(rs.getString("m.descripcion"));
+                    materia.setCodigo_materia(rs.getString("m.codigo_materia"));
                     materia.setEstado(rs.getBoolean("m.estado"));
                     materias.add(materia);
                 }
@@ -164,5 +165,66 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
         }
 
         return materias;
+    }
+    
+    public void actualizarPorID(int id, Materia materia) {
+        String sql = "UPDATE materia SET nombre = ? , descripcion = ? ,codigo_materia = ? , estado = ? where id_materia = ? ";
+        Connection con = Conexion_BD.getConnection();
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, materia.getNombre());
+            ps.setString(2, materia.getDescripcion());
+            ps.setString(3, materia.getCodigo_materia());
+            ps.setBoolean(4, materia.isEstado());
+            ps.setInt(5, id);
+
+            int filas = ps.executeUpdate();
+            if (filas > 0) {
+                System.out.println("Materia modificada con id" + materia.getId_materia());
+            } else {
+                System.out.println("No se encontro la materia con el id " + materia.getId_materia());
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            
+        }
+    }
+    
+    public void darBaja(int id){
+        String sql = "UPDATE materia SET estado = false WHERE id_materia = ?";
+        Connection con = Conexion_BD.getConnection();
+        
+        try(PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setInt(1, id);
+            
+            int filas = ps.executeUpdate();
+            if(filas > 0){
+                System.out.println("Se ha actualiza el estado a inactivo de la materia con el id " + id);
+            } else {
+                System.out.println("No se ha encontrado la materia con id " + id);
+            }
+            
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+        
+        public void darAlta(int id){
+        String sql = "UPDATE materia SET estado = true WHERE id_materia = ?";
+        Connection con = Conexion_BD.getConnection();
+        
+        try(PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setInt(1, id);
+            
+            int filas = ps.executeUpdate();
+            if(filas > 0){
+                System.out.println("Se ha actualiza el estado a activo de la materia con el id " + id);
+            } else {
+                System.out.println("No se ha encontrado la materia con id " + id);
+            }
+            
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 }
