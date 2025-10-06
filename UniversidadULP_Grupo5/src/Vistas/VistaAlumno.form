@@ -14,12 +14,12 @@
             <Property name="text" type="java.lang.String" value="Alumnos"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="btnAlumno">
+            <MenuItem class="javax.swing.JMenuItem" name="btnMateria">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de alumnos"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlumnoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMateriaActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -29,12 +29,12 @@
             <Property name="text" type="java.lang.String" value="Materias"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="btnMateria">
+            <MenuItem class="javax.swing.JMenuItem" name="btnAlumno">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de materias"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMateriaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlumnoActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
