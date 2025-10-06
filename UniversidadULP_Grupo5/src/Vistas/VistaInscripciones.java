@@ -158,7 +158,8 @@ public class VistaInscripciones extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaInscripciones().setVisible(true);
+                Alumno alumno1 = null;
+                new VistaInscripciones(alumno1).setVisible(true);
             }
         });
     }
