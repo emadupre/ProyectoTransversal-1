@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import universidadulp_grupo5.Alumno;
+
 /**
  *
  * @author Enzo_2
@@ -14,7 +16,9 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
     /**
      * Creates new form InscripcionInternal
      */
-    public InscripcionInternal() {
+    private Alumno alumno = new Alumno();
+    
+    public InscripcionInternal(Alumno alumno) {
         initComponents();
     }
 
@@ -31,11 +35,11 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGap(0, 609, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGap(0, 431, Short.MAX_VALUE)
         );
 
         pack();
