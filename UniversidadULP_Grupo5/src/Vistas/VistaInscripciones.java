@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import java.time.LocalDate;
 import universidadulp_grupo5.Alumno;
 
 /**
@@ -16,7 +17,8 @@ public class VistaInscripciones extends javax.swing.JFrame {
     /**
      * Creates new form VistaInscripciones
      */
-    private Alumno alumno= new Alumno();
+    LocalDate fecha = LocalDate.of(2025, 8, 23);
+    private Alumno alumno= new Alumno(4, 41596734, "enzofet1998@gmail.com","alohaloquitas", "Enzo", "Fet", fecha, true);
     
     public VistaInscripciones(Alumno alumno) {
         initComponents();
@@ -47,11 +49,11 @@ public class VistaInscripciones extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 670, Short.MAX_VALUE)
+            .addGap(0, 746, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 493, Short.MAX_VALUE)
+            .addGap(0, 590, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Inscripciones");
