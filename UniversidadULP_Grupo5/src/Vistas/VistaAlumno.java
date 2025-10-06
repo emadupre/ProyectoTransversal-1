@@ -37,9 +37,9 @@ public class VistaAlumno extends javax.swing.JFrame {
         escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        btnMateria = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
         btnAlumno = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        btnMateria = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
 
@@ -60,25 +60,25 @@ public class VistaAlumno extends javax.swing.JFrame {
 
         jMenu1.setText("Alumnos");
 
-        btnMateria.setText("Gestión de alumnos");
-        btnMateria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMateriaActionPerformed(evt);
-            }
-        });
-        jMenu1.add(btnMateria);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Materias");
-
-        btnAlumno.setText("Gestión de materias");
+        btnAlumno.setText("Gestión de alumnos");
         btnAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlumnoActionPerformed(evt);
             }
         });
-        jMenu2.add(btnAlumno);
+        jMenu1.add(btnAlumno);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Materias");
+
+        btnMateria.setText("Gestión de materias");
+        btnMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMateriaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnMateria);
 
         jMenuBar1.add(jMenu2);
 
@@ -110,6 +110,15 @@ public class VistaAlumno extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlumnoActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        AlumnoInternal ventanaAlumno = new AlumnoInternal();
+        escritorio.add(ventanaAlumno);
+        ventanaAlumno.setVisible(true);
+        ventanaAlumno.moveToFront();
+    }//GEN-LAST:event_btnAlumnoActionPerformed
+
     private void btnMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMateriaActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
@@ -118,15 +127,6 @@ public class VistaAlumno extends javax.swing.JFrame {
         ventanaMateria.setVisible(true);
         ventanaMateria.moveToFront();
     }//GEN-LAST:event_btnMateriaActionPerformed
-
-    private void btnAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlumnoActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        AlumnoInternal ventanaMateria = new AlumnoInternal();
-        escritorio.add(ventanaMateria);
-        ventanaMateria.setVisible(true);
-        ventanaMateria.moveToFront();
-    }//GEN-LAST:event_btnAlumnoActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         System.exit(0);
