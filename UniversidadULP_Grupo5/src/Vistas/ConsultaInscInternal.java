@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import universidadulp_grupo5.Alumno;
+
 /**
  *
  * @author Enzo_2
@@ -14,7 +16,9 @@ public class ConsultaInscInternal extends javax.swing.JInternalFrame {
     /**
      * Creates new form ConsultaInscInternal
      */
-    public ConsultaInscInternal() {
+    private Alumno alumno = new Alumno();
+    
+    public ConsultaInscInternal(Alumno alumno) {
         initComponents();
     }
 
@@ -31,11 +35,11 @@ public class ConsultaInscInternal extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 509, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 432, Short.MAX_VALUE)
+            .addGap(0, 446, Short.MAX_VALUE)
         );
 
         pack();
