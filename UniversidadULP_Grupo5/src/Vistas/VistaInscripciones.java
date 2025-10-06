@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import universidadulp_grupo5.Alumno;
+
 /**
  *
  * @author Enzo_2
@@ -14,8 +16,11 @@ public class VistaInscripciones extends javax.swing.JFrame {
     /**
      * Creates new form VistaInscripciones
      */
-    public VistaInscripciones() {
+    private Alumno alumno= new Alumno();
+    
+    public VistaInscripciones(Alumno alumno) {
         initComponents();
+        this.alumno = alumno;
     }
 
     /**
@@ -27,21 +32,101 @@ public class VistaInscripciones extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        escritorio = new javax.swing.JDesktopPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        btnInscripciones = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        btnCalificaciones = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        btnSalir = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 670, Short.MAX_VALUE)
+        );
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 493, Short.MAX_VALUE)
+        );
+
+        jMenu1.setText("Inscripciones");
+
+        btnInscripciones.setText("Gestion de inscripciones");
+        btnInscripciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInscripcionesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnInscripciones);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Calificaciones");
+
+        btnCalificaciones.setText("Ver calificaciones");
+        btnCalificaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalificacionesActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnCalificaciones);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Salir");
+
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jMenu3.add(btnSalir);
+
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
+            .addComponent(escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 353, Short.MAX_VALUE)
+            .addComponent(escritorio)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscripcionesActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        InscripcionInternal ventanaIns = new InscripcionInternal(alumno);
+        escritorio.add(ventanaIns);
+        ventanaIns.setVisible(true);
+        ventanaIns.moveToFront();
+    }//GEN-LAST:event_btnInscripcionesActionPerformed
+
+    private void btnCalificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalificacionesActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ConsultaInscInternal ventanaNotas = new ConsultaInscInternal(alumno);
+        escritorio.add(ventanaNotas);
+        ventanaNotas.setVisible(true);
+        ventanaNotas.moveToFront();
+    }//GEN-LAST:event_btnCalificacionesActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +164,13 @@ public class VistaInscripciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnCalificaciones;
+    private javax.swing.JMenuItem btnInscripciones;
+    private javax.swing.JMenuItem btnSalir;
+    private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
