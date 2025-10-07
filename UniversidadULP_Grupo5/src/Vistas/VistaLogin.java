@@ -199,11 +199,15 @@ public class VistaLogin extends javax.swing.JFrame {
             Object usuario = intentarLogin(email, password, rol);
             if(usuario instanceof Alumno){
                 VistaInscripciones ventanaAlumno = new VistaInscripciones((Alumno) usuario);
+                ventanaAlumno.repaint();
                 ventanaAlumno.setVisible(true);
+                
                 this.dispose();
             } else if(usuario instanceof Administrativo){
                 VistaAlumno ventanaAdministrativo = new VistaAlumno((Administrativo) usuario);
+                ventanaAdministrativo.repaint();
                 ventanaAdministrativo.setVisible(true);
+                
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Credenciales incorrectas.");
@@ -233,14 +237,11 @@ public class VistaLogin extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        
-        //</editor-fold>
-
+        try {
+            javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
+        } catch(Exception e){
+            System.out.println("No se puedo");
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new VistaLogin().setVisible(true));
     }
