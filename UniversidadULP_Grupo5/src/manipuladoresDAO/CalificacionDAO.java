@@ -70,9 +70,9 @@ public class CalificacionDAO implements manipuladorGeneral<Calificacion> {
     }
 
     public HashMap<Integer, ArrayList<Calificacion>> IDinscripcionXCalificacionesPorIdAlumno(int id_alumno) {
-        String sql = "SELECT i.id_inscripcion, c.id_administrativo, "
-                + "c.calificacion FROM inscripcion i JOIN calificaciones c ON i.inscripcion = c.id_inscripcion "
-                + "WHERE id_alumno = ?";
+        String sql = "SELECT i.id_inscripcion AS idInscripcionCali, c.id_administrativo, c.calificacion "
+                + "FROM inscripcion i JOIN calificaciones c ON i.id_inscripcion = c.id_inscripcion "
+                + "WHERE i.id_alumno = ?";
         Connection con = conexion_BD.getConnection();
         HashMap<Integer, ArrayList<Calificacion>> listaCalificaciones = new HashMap<>();
         
@@ -80,7 +80,7 @@ public class CalificacionDAO implements manipuladorGeneral<Calificacion> {
             ps.setInt(1, id_alumno);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                        int idIns = rs.getInt("i.id_inscripcion");
+                        int idIns = rs.getInt("idInscripcionCali");
                         Calificacion cal = new Calificacion();
                         cal.setId_inscripcion(idIns);
                         cal.setId_administrativo(rs.getInt("c.id_administrativo"));

@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.mariadb.jdbc.Statement;
 import universidadulp_grupo5.Materia;
@@ -140,24 +141,25 @@ public class MateriaDAO implements manipuladorGeneral<Materia> {
 
     }
 
-    public List<Materia> listarPorAlumno(int id) {
-        String sql = "SELECT i.id_materia,  m.nombre, m.descripcion, m.codigo_materia, m.estado "
+    public HashMap<Integer, Materia> listarMateriaXidInscripcionPorAlumno(int id) {
+        String sql = "SELECT i.id_inscripcion, i.id_materia,  m.nombre, m.descripcion, m.codigo_materia, m.estado "
                 + "FROM inscripcion i JOIN materia m ON m.id_materia = i.id_materia WHERE id_alumno = ?";
         Connection con = conexion_BD.getConnection();
         Materia materia = null;
-        ArrayList<Materia> materias = new ArrayList<>();
+        HashMap<Integer, Materia> materias = new HashMap<>();
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     materia = new Materia();
+                    int idIns = rs.getInt("i.id_inscripcion");
                     materia.setId_materia(rs.getInt("i.id_materia"));
                     materia.setNombre(rs.getString("m.nombre"));
                     materia.setDescripcion(rs.getString("m.descripcion"));
                     materia.setCodigo_materia(rs.getString("m.codigo_materia"));
                     materia.setEstado(rs.getBoolean("m.estado"));
-                    materias.add(materia);
+                    materias.put(idIns, materia);
                 }
             }
         } catch (SQLException e) {
