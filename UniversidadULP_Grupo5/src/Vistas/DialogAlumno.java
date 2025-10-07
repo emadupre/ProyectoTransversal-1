@@ -186,6 +186,11 @@ public class DialogAlumno extends javax.swing.JDialog {
         jbtSalir.setText("Salir");
         jbtSalir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jbtSalir.setBorderPainted(false);
+        jbtSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -233,7 +238,7 @@ public class DialogAlumno extends javax.swing.JDialog {
             if (txtDNI.getText().isEmpty() || txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || jDFechaN.getDate() == null
                     || txtEmail.getText().isEmpty() || txtPassword.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Todos los campos deben llenarse.");
-                clear();
+                
             } else {
 
                 int dni = Integer.parseInt(txtDNI.getText());
@@ -252,6 +257,7 @@ public class DialogAlumno extends javax.swing.JDialog {
                 maniAlum.agregar(alum);
 
                 clear();
+                JOptionPane.showMessageDialog(null, "Alumno agregado exitosamente");
 
                 Object[] opciones = {"Si", "No"};
                 int eleccion = JOptionPane.showOptionDialog(
@@ -264,12 +270,8 @@ public class DialogAlumno extends javax.swing.JDialog {
                         opciones, //espera un arreglo de tipo objeto con mensajes de los botones (null si definiste las opciones mas arriba)
                         null // null para ningun botón preseleccionado (sino opciones[indice del boton preseleccionado]
                 );
-
-                if (eleccion == 0) {
-                    JOptionPane.showMessageDialog(null, "Alumno agregado exitosamente");
-                }
+               
                 if (eleccion == 1) {
-                    JOptionPane.showMessageDialog(null, "Alumno agregado exitosamente");
                     this.dispose();
                 }
 
@@ -277,7 +279,7 @@ public class DialogAlumno extends javax.swing.JDialog {
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Dato Incorrecto, se espera un DNI");
-            clear();
+            
         }
 
 
@@ -286,6 +288,11 @@ public class DialogAlumno extends javax.swing.JDialog {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void jbtSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jbtSalirActionPerformed
 
     /**
      * @param args the command line arguments
