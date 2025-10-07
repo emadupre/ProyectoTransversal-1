@@ -19,10 +19,10 @@ public class VistaInscripciones extends javax.swing.JFrame {
      */
     LocalDate fecha = LocalDate.of(2025, 8, 23);
     private Alumno alumno= new Alumno(4, 41596734, "enzofet1998@gmail.com","alohaloquitas", "Enzo", "Fet", fecha, true);
-    
+    private Alumno alumno1 = new Alumno(2,41721827, "jose.bossa.3@gmail.com","lagalletaquepela","Jose" , "bossa",fecha,true);
     public VistaInscripciones(Alumno alumno) {
         initComponents();
-        this.alumno = alumno;
+        
     }
 
     /**
