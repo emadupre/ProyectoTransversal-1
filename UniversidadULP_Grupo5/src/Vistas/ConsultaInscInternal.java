@@ -8,12 +8,15 @@ package Vistas;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.ListModel;
 import javax.swing.table.DefaultTableModel;
+import manipuladoresDAO.AdministrativoDAO;
 import manipuladoresDAO.CalificacionDAO;
 import manipuladoresDAO.MateriaDAO;
+import universidadulp_grupo5.Administrativo;
 import universidadulp_grupo5.Alumno;
 import universidadulp_grupo5.Calificacion;
 import universidadulp_grupo5.Materia;
@@ -27,21 +30,22 @@ public class ConsultaInscInternal extends javax.swing.JInternalFrame {
     /**
      * Creates new form ConsultaInscInternal
      */
-    
     private MateriaDAO maniMateria = new MateriaDAO();
     private CalificacionDAO maniCal = new CalificacionDAO();
+    private AdministrativoDAO maniAdmin = new AdministrativoDAO();
     private HashMap<Integer, Materia> listaMaterias;
     private HashMap<Integer, ArrayList<Calificacion>> listaCalificacionesXmateria;
     private Alumno alumno;
+
     public ConsultaInscInternal(Alumno alumno) {
         this.alumno = alumno;
         initComponents();
+        cambiarLabels();
         rellenarHashMapListas();
         rellenarCabeceras(tblCalificaciones);
+        listaInscripciones(listMateriasInscriptas);
     }
 
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,13 +62,13 @@ public class ConsultaInscInternal extends javax.swing.JInternalFrame {
         listMateriasInscriptas = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblDNI = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblApellido = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblFechaNacimiento = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
@@ -86,6 +90,11 @@ public class ConsultaInscInternal extends javax.swing.JInternalFrame {
 
         listMateriasInscriptas.setBackground(new java.awt.Color(222, 222, 222));
         listMateriasInscriptas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        listMateriasInscriptas.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listMateriasInscriptasValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(listMateriasInscriptas);
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -95,29 +104,29 @@ public class ConsultaInscInternal extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("DNI:");
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("DNIEJEMPLO");
+        lblDNI.setForeground(new java.awt.Color(255, 255, 255));
+        lblDNI.setText("DNIEJEMPLO");
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre:");
 
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("NOMBREEJEMPLO");
+        lblNombre.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombre.setText("NOMBREEJEMPLO");
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Apellido:");
 
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("APELLIDOEJEMPLO");
+        lblApellido.setForeground(new java.awt.Color(255, 255, 255));
+        lblApellido.setText("APELLIDOEJEMPLO");
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Fecha de nacimiento:");
 
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("FECHANACIMIENTOEJEMPLO");
+        lblFechaNacimiento.setForeground(new java.awt.Color(255, 255, 255));
+        lblFechaNacimiento.setText("FECHANACIMIENTOEJEMPLO");
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -133,25 +142,20 @@ public class ConsultaInscInternal extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel7)
+                            .addComponent(lblApellido)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblFechaNacimiento)
+                            .addComponent(lblDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(jLabel2))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(jLabel5))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel2)
+                                    .addComponent(lblNombre)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGap(19, 19, 19)
@@ -174,19 +178,19 @@ public class ConsultaInscInternal extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
+                        .addComponent(lblDNI)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
+                        .addComponent(lblNombre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
+                        .addComponent(lblApellido)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9)
+                        .addComponent(lblFechaNacimiento)
                         .addGap(18, 18, 18)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -215,48 +219,88 @@ public class ConsultaInscInternal extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rellenarCabeceras(JTable tabla){
-        String[] cabeceras = {"Nombre administrativo","Tipo de evaluación", "Calificación", "Fecha de subida"};
-        DefaultTableModel model = new DefaultTableModel(null, cabeceras){
+    private void listMateriasInscriptasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listMateriasInscriptasValueChanged
+        String completo = listMateriasInscriptas.getSelectedValue();
+        String[] cortado = completo.split(" - ");
+        String idInsString = cortado[1];
+        Integer idIns = Integer.parseInt(idInsString);
+        try {
+            if (!listMateriasInscriptas.getValueIsAdjusting()) {
+                rellenarTabla(idIns);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar las calificaciones");
+        }
+    }//GEN-LAST:event_listMateriasInscriptasValueChanged
+
+    private void rellenarCabeceras(JTable tabla) {
+        String[] cabeceras = {"Nombre administrativo", "Tipo de evaluación", "Calificación", "Fecha de subida"};
+        DefaultTableModel model = new DefaultTableModel(null, cabeceras) {
             @Override
-            public boolean isCellEditable(int row, int column){
+            public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
-    tabla.setModel(model);
+        tabla.setModel(model);
     }
-    private void rellenarHashMapListas(){
+
+    private void rellenarHashMapListas() {
         //La clave es el id de inscripción
         listaMaterias = maniMateria.listarMateriaXidInscripcionPorAlumno(alumno.getId_alumno());
         listaCalificacionesXmateria = maniCal.IDinscripcionXCalificacionesPorIdAlumno(alumno.getId_alumno());
-        
+
     }
-    
-    private void listaInscripciones(JList lista){
-        ListModel<String> model = lista.getModel();
-        for(Map.Entry<Integer, Materia> entry : listaMaterias.entrySet()){
+
+    private void cambiarLabels() {
+        lblDNI.setText(Integer.toString(alumno.getDni()));
+        lblNombre.setText(alumno.getNombre());
+        lblApellido.setText(alumno.getApellido());
+        lblFechaNacimiento.setText(alumno.getFecha_nacimiento().toString());
+    }
+
+    private void listaInscripciones(JList lista) {
+        DefaultListModel<String> model = new DefaultListModel<>();
+        for (Map.Entry<Integer, Materia> entry : listaMaterias.entrySet()) {
             String nombre = entry.getValue().getNombre();
             String idInscripcion = Integer.toString(entry.getKey());
-            
+            String item = nombre + " - " + idInscripcion;
+            model.addElement(item);
+        }
+        lista.setModel(model);
+    }
+
+    private void rellenarTabla(Integer idInscripcion) {
+        DefaultTableModel modelo = (DefaultTableModel) tblCalificaciones.getModel();
+        modelo.setRowCount(0);
+        for (Map.Entry<Integer, ArrayList<Calificacion>> m : listaCalificacionesXmateria.entrySet()) {
+            if (m.getKey().equals(idInscripcion)) {
+                ArrayList<Calificacion> lista = m.getValue();
+                for (Calificacion cal : lista) {
+                    Administrativo admin = maniAdmin.buscarPorId(cal.getId_administrativo());
+                    modelo.addRow(new Object[]{admin.getNombre() + " " + admin.getApellido(),
+                        Double.toString(cal.getCalificacion()),
+                        cal.getFechaModificacion().toString()});
+                }
+            }
+
         }
     }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblDNI;
+    private javax.swing.JLabel lblFechaNacimiento;
+    private javax.swing.JLabel lblNombre;
     private javax.swing.JList<String> listMateriasInscriptas;
     private javax.swing.JTable tblCalificaciones;
     // End of variables declaration//GEN-END:variables
