@@ -369,9 +369,6 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="83" green="60" red="2f" type="rgb"/>
                 </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
@@ -456,6 +453,9 @@
                     <Property name="enabled" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnModificar">
                   <Properties>
@@ -466,6 +466,9 @@
                     <Property name="enabled" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnDarAlta">
                   <Properties>
@@ -476,6 +479,9 @@
                     <Property name="enabled" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDarAltaActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnDarBaja">
                   <Properties>
@@ -486,6 +492,9 @@
                     <Property name="enabled" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDarBajaActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
