@@ -1,10 +1,10 @@
 # Proyecto Transversal 🖥️
 
-## Librerías Utilizadas
+## Librerías Utilizadas 📚
 - [MariaDB Java Client 3.5.6](./lib/mariadb-java-client-3.5.6.jar)
 - [JCalendar 1.4](./lib/jcalendar-1.4.jar)
 
-## Script SQL
+## Script SQL 🧱
 - [Script de Base de Datos](./script/gp5_universidadulp.sql)
 
 ## Descripción 🗒️
