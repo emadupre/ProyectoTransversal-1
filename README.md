@@ -1,5 +1,12 @@
 # Proyecto Transversal 🖥️
 
+## Librerías Utilizadas
+- [MariaDB Java Client 3.5.6](./lib/mariadb-java-client-3.5.6.jar)
+- [JCalendar 1.4](./lib/jcalendar-1.4.jar)
+
+## Script SQL
+- [Script de Base de Datos](./script/gp5_universidadulp.sql)
+
 ## Descripción 🗒️
 Este es el Proyecto Transversal para el Sistema de Gestión de la Universidad de La Punta. El objetivo de este proyecto es desarrollar una solución integral que facilite la administración y gestión de diversas funciones dentro de la universidad.
 
@@ -22,3 +29,5 @@ Este es el Proyecto Transversal para el Sistema de Gestión de la Universidad de
 Clona el repositorio:
    ```bash
    git clone https://github.com/emadupre/ProyectoTransversal-1.git
+
+![Vista Diseñador](./img/vista-diseñador.jpg)
