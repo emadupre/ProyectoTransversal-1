@@ -23,7 +23,7 @@ public class DialogAlumno extends javax.swing.JDialog {
      * Creates new form DialogAlumno1
      */
     public DialogAlumno(java.awt.Frame parent) {
-        super(parent);
+        super(parent, true);
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -238,7 +238,7 @@ public class DialogAlumno extends javax.swing.JDialog {
             if (txtDNI.getText().isEmpty() || txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || jDFechaN.getDate() == null
                     || txtEmail.getText().isEmpty() || txtPassword.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Todos los campos deben llenarse.");
-                
+
             } else {
 
                 int dni = Integer.parseInt(txtDNI.getText());
@@ -247,7 +247,6 @@ public class DialogAlumno extends javax.swing.JDialog {
                 LocalDate fn = jDFechaN.getDate().toInstant()
                         .atZone(ZoneId.systemDefault())
                         .toLocalDate();
-                //            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");  //formato de fecha local
                 String email = txtEmail.getText();
                 String pass = txtPassword.getText();
                 boolean estado = true;
@@ -257,12 +256,12 @@ public class DialogAlumno extends javax.swing.JDialog {
                 maniAlum.agregar(alum);
 
                 clear();
-                JOptionPane.showMessageDialog(null, "Alumno agregado exitosamente");
+                
 
                 Object[] opciones = {"Si", "No"};
                 int eleccion = JOptionPane.showOptionDialog(
                         null, //null para centrar
-                        "¿Desea agregar otro alumno?", //texto a mostrar
+                        "Alumno agregado exitosamente\n¿Desea agregar otro alumno?", //texto a mostrar
                         "", //título de la ventana
                         JOptionPane.DEFAULT_OPTION, //botones de opciones (default si definimos un objeto de opciones)
                         JOptionPane.QUESTION_MESSAGE, //ícono que muestra
@@ -270,7 +269,7 @@ public class DialogAlumno extends javax.swing.JDialog {
                         opciones, //espera un arreglo de tipo objeto con mensajes de los botones (null si definiste las opciones mas arriba)
                         null // null para ningun botón preseleccionado (sino opciones[indice del boton preseleccionado]
                 );
-               
+
                 if (eleccion == 1) {
                     this.dispose();
                 }
@@ -279,7 +278,7 @@ public class DialogAlumno extends javax.swing.JDialog {
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Dato Incorrecto, se espera un DNI");
-            
+
         }
 
 
