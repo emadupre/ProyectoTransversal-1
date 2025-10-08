@@ -6,11 +6,16 @@
 package Vistas;
 
 import java.awt.Color;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
@@ -26,6 +31,9 @@ import universidadulp_grupo5.Alumno;
 public class AlumnoInternal extends javax.swing.JInternalFrame {
 
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    int selecId = 0;
+//    Alumno alumno1;
+//    boolean estado1;
     private AlumnoDAO maniAlum = new AlumnoDAO();
     static String[] columnas = {"id_alumno", "DNI", "Nombre", "Apellido", "Fecha Nacimiento", "Email", "Password", "Estado"};
     static DefaultTableModel modelo = new DefaultTableModel(null, columnas) {
@@ -44,6 +52,17 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         this.setSize(1048, 660);
         armarCabecerayLlenar(tablaAlumno);
         placeholderTxtFBuscarDNI();
+        habilitarModificacion(cbHabilitarM);
+    }
+
+    //Método Clear
+    private void clear() {
+        txtDNI.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        jDFechaN.setDate(null);
+        txtEmail.setText("");
+        txtPassword.setText("");
     }
 
     //método refresh, vuelve a llamar a la base de datos y la carga en la tabla nuevamente.
@@ -52,7 +71,6 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
 
         ArrayList<Alumno> lista = maniAlum.listar();
         String fecha = "";
-        boolean estado = true;
 
         if (!lista.isEmpty()) {
             for (Alumno alum : lista) {
@@ -65,7 +83,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                     fecha,
                     alum.getEmail(),
                     alum.getPassword(),
-                    estado
+                    alum.isEstado()
                 };
                 modelo.addRow(fila);
             }
@@ -95,7 +113,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             public void focusGained(java.awt.event.FocusEvent e) {
                 if (txtFBuscarDNI.getText().equals("Ingrese DNI sin puntos")) {
                     txtFBuscarDNI.setText("");
-                    txtFBuscarDNI.setForeground(Color.GRAY);
+                    txtFBuscarDNI.setForeground(Color.BLACK);
                 }
             }
 
@@ -103,10 +121,45 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             public void focusLost(java.awt.event.FocusEvent e) {
                 if (txtFBuscarDNI.getText().equals("")) {
                     txtFBuscarDNI.setText("Ingrese DNI sin puntos");
-                    txtFBuscarDNI.setForeground(Color.BLACK);
+                    txtFBuscarDNI.setForeground(Color.GRAY);
                 }
             }
         });
+    }
+
+    //Habilitar Modificación
+    private void habilitarModificacion(JCheckBox jcb) {
+
+        jcb.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent ie) {
+                boolean selec = jcb.isSelected();
+                if (selec != false) {
+                    txtDNI.setEditable(true);
+                    txtNombre.setEnabled(true);
+                    txtApellido.setEnabled(true);
+                    jDFechaN.setEnabled(true);
+                    txtEmail.setEnabled(true);
+                    txtPassword.setEnabled(true);
+                    btnDarAlta.setEnabled(true);
+                    btnDarBaja.setEnabled(true);
+                    btnEliminar.setEnabled(true);
+                    btnModificar.setEnabled(true);
+                } else {
+                    txtDNI.setEnabled(false);
+                    txtNombre.setEnabled(false);
+                    txtApellido.setEnabled(false);
+                    jDFechaN.setEnabled(false);
+                    txtEmail.setEnabled(false);
+                    txtPassword.setEnabled(false);
+                    btnDarAlta.setEnabled(false);
+                    btnDarBaja.setEnabled(false);
+                    btnEliminar.setEnabled(false);
+                    btnModificar.setEnabled(false);
+                }
+            }
+        });
+
     }
 
     /**
@@ -140,7 +193,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         txtPassword = new javax.swing.JTextField();
         jDFechaN = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
-        cbHabilitarModificacion = new javax.swing.JCheckBox();
+        cbHabilitarM = new javax.swing.JCheckBox();
         btnAgregar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
@@ -246,8 +299,8 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(47, 96, 131));
         jPanel2.setPreferredSize(new java.awt.Dimension(266, 208));
 
-        cbHabilitarModificacion.setForeground(new java.awt.Color(255, 255, 255));
-        cbHabilitarModificacion.setText("Habilitar modificación");
+        cbHabilitarM.setForeground(new java.awt.Color(255, 255, 255));
+        cbHabilitarM.setText("Habilitar modificación");
 
         btnAgregar.setFont(new java.awt.Font("URW Gothic", 0, 12)); // NOI18N
         btnAgregar.setText("Agregar Alumno");
@@ -262,21 +315,41 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         btnEliminar.setText("Eliminar Alumno");
         btnEliminar.setEnabled(false);
         btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setFont(new java.awt.Font("URW Gothic", 0, 12)); // NOI18N
         btnModificar.setText("Modificar Alumno");
         btnModificar.setEnabled(false);
         btnModificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnDarAlta.setFont(new java.awt.Font("URW Gothic", 0, 12)); // NOI18N
         btnDarAlta.setText("Dar de Alta");
         btnDarAlta.setEnabled(false);
         btnDarAlta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDarAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDarAltaActionPerformed(evt);
+            }
+        });
 
         btnDarBaja.setFont(new java.awt.Font("URW Gothic", 0, 12)); // NOI18N
         btnDarBaja.setText("Dar de Baja");
         btnDarBaja.setEnabled(false);
         btnDarBaja.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDarBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDarBajaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -284,7 +357,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cbHabilitarModificacion)
+                .addComponent(cbHabilitarM)
                 .addGap(58, 58, 58))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 45, Short.MAX_VALUE)
@@ -300,7 +373,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbHabilitarModificacion)
+                .addComponent(cbHabilitarM)
                 .addGap(17, 17, 17)
                 .addComponent(btnAgregar)
                 .addGap(11, 11, 11)
@@ -335,7 +408,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                             .addComponent(txtApellido)
                             .addComponent(txtEmail)
                             .addComponent(txtPassword)
-                            .addComponent(jDFechaN, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jDFechaN, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -458,6 +531,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
     private void tablaAlumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaAlumnoMouseClicked
         int filaSelec = tablaAlumno.getSelectedRow();
         if (filaSelec != -1) {
+            selecId = (int) tablaAlumno.getValueAt(filaSelec, 0);
             int dni = (int) tablaAlumno.getValueAt(filaSelec, 1);
             String nombre = (String) tablaAlumno.getValueAt(filaSelec, 2);
             String apellido = (String) tablaAlumno.getValueAt(filaSelec, 3);
@@ -475,8 +549,6 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             txtEmail.setText(email);
             txtPassword.setText(pass);
         }
-
-
     }//GEN-LAST:event_tablaAlumnoMouseClicked
 
     private void txtFBuscarDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFBuscarDNIActionPerformed
@@ -501,9 +573,84 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             estado
         };
         modelo.addRow(fila);
-        
+
         txtFBuscarDNI.setText("");
     }//GEN-LAST:event_txtFBuscarDNIActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+
+        maniAlum.eliminar(selecId);
+        clear();
+        refreshTabla();
+        JOptionPane.showMessageDialog(this, "Alumno eliminado con éxito.");
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        
+        try {            
+            txtDNI.setEditable(false);
+            if (txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || jDFechaN.getDate() == null
+                    || txtEmail.getText().isEmpty() || txtPassword.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Todos los campos deben llenarse.");
+
+            } else {
+                
+                String nombre = txtNombre.getText();
+                String apellido = txtApellido.getText();
+                LocalDate fn = jDFechaN.getDate().toInstant()
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDate();
+                String email = txtEmail.getText();
+                String pass = txtPassword.getText();
+                
+                Alumno alum = maniAlum.buscarPorId(selecId);
+                
+                alum.setNombre(nombre);
+                alum.setApellido(apellido);
+                alum.setFecha_nacimiento(fn);
+                alum.setEmail(email);
+                alum.setPassword(pass);
+
+                maniAlum.actualizar(alum);
+                clear();
+                refreshTabla();
+                JOptionPane.showMessageDialog(this, "Alumno modificado con éxito.");
+
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Dato Incorrecto, se espera un DNI");
+        }
+        
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnDarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarAltaActionPerformed
+
+        Alumno alum = maniAlum.buscarPorId(selecId);
+
+        alum.setEstado(true);
+
+        maniAlum.actualizar(alum);
+
+        refreshTabla();
+
+        JOptionPane.showMessageDialog(this, "Se ha dado de alta al alumno: \n" + alum.getApellido() + " " + alum.getNombre());
+    }//GEN-LAST:event_btnDarAltaActionPerformed
+
+    private void btnDarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarBajaActionPerformed
+
+        Alumno alum = maniAlum.buscarPorId(selecId);
+
+        boolean estado = false;
+
+        alum.setEstado(estado);
+
+        maniAlum.actualizar(alum);
+
+        refreshTabla();
+
+        JOptionPane.showMessageDialog(this, "Se ha dado de baja al alumno: \n" + alum.getApellido() +" "+ alum.getNombre());
+    }//GEN-LAST:event_btnDarBajaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -514,7 +661,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnDarBaja;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
-    private javax.swing.JCheckBox cbHabilitarModificacion;
+    private javax.swing.JCheckBox cbHabilitarM;
     private javax.swing.JLabel imgULP;
     private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDFechaN;
