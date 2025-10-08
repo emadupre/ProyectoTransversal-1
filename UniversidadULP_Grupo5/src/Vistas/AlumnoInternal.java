@@ -579,23 +579,38 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
 
-        maniAlum.eliminar(selecId);
-        clear();
-        refreshTabla();
-        JOptionPane.showMessageDialog(this, "Alumno eliminado con éxito.");
+        Object[] opciones = {"Si", "No"};
+        int eleccion = JOptionPane.showOptionDialog(
+                null, //null para centrar
+                "¿Está seguro de eliminar? \n" + txtApellido.getText() + " " + txtNombre.getText(), //texto a mostrar
+                "", //título de la ventana
+                JOptionPane.DEFAULT_OPTION, //botones de opciones (default si definimos un objeto de opciones)
+                JOptionPane.QUESTION_MESSAGE, //ícono que muestra
+                null, //icono personalizado (si no queres ninguno se pone null, si no una ruta/
+                opciones, //espera un arreglo de tipo objeto con mensajes de los botones (null si definiste las opciones mas arriba)
+                null // null para ningun botón preseleccionado (sino opciones[indice del boton preseleccionado]
+        );
+
+        if (eleccion == 0) {
+            maniAlum.eliminar(selecId);
+            clear();
+            refreshTabla();
+            JOptionPane.showMessageDialog(this, "Alumno eliminado con éxito.");
+        }
+
         
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        
-        try {            
+
+        try {
             txtDNI.setEditable(false);
             if (txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || jDFechaN.getDate() == null
                     || txtEmail.getText().isEmpty() || txtPassword.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Todos los campos deben llenarse.");
 
             } else {
-                
+
                 String nombre = txtNombre.getText();
                 String apellido = txtApellido.getText();
                 LocalDate fn = jDFechaN.getDate().toInstant()
@@ -603,9 +618,9 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                         .toLocalDate();
                 String email = txtEmail.getText();
                 String pass = txtPassword.getText();
-                
+
                 Alumno alum = maniAlum.buscarPorId(selecId);
-                
+
                 alum.setNombre(nombre);
                 alum.setApellido(apellido);
                 alum.setFecha_nacimiento(fn);
@@ -621,7 +636,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Dato Incorrecto, se espera un DNI");
         }
-        
+
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnDarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarAltaActionPerformed
@@ -649,7 +664,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
 
         refreshTabla();
 
-        JOptionPane.showMessageDialog(this, "Se ha dado de baja al alumno: \n" + alum.getApellido() +" "+ alum.getNombre());
+        JOptionPane.showMessageDialog(this, "Se ha dado de baja al alumno: \n" + alum.getApellido() + " " + alum.getNombre());
     }//GEN-LAST:event_btnDarBajaActionPerformed
 
 
