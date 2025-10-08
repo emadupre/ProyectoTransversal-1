@@ -25,9 +25,9 @@ Este es el Proyecto Transversal para el Sistema de Gestión de la Universidad de
 - [Permitir registrar la calificación final de una materia que está cursando un alumno.]
 - [Permitir el alta, baja y modificación de los alumnos y las materias.]
 
+![Vista Diseñador](./img/vista-diseñador.jpg)
+
 ## Para clonar: 📦
 Clona el repositorio:
    ```bash
    git clone https://github.com/emadupre/ProyectoTransversal-1.git
-
-![Vista Diseñador](./img/vista-diseñador.jpg)
