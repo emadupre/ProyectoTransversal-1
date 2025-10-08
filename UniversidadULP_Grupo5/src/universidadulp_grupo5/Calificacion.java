@@ -1,6 +1,7 @@
 
 package universidadulp_grupo5;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -12,7 +13,7 @@ public class Calificacion {
     private int id_inscripcion;
     private int id_administrativo;
     private double calificacion;
-    
+    private LocalDate fechaModificacion;
         public Calificacion() {
             this.id_calificacion=-1;
         }
@@ -30,6 +31,23 @@ public class Calificacion {
         this.calificacion = calificacion;
         this.id_administrativo = id_administrativo;
     }
+
+    public Calificacion(int id_inscripcion, int id_administrativo, double calificacion, LocalDate fechaModificacion) {
+        this.id_inscripcion = id_inscripcion;
+        this.id_administrativo = id_administrativo;
+        this.calificacion = calificacion;
+        this.fechaModificacion = fechaModificacion;
+    }
+
+    public LocalDate getFechaModificacion() {
+        return fechaModificacion;
+    }
+
+    public void setFechaModificacion(LocalDate fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
+    }
+    
+    
 
     public int getId_administrativo() {
         return id_administrativo;
