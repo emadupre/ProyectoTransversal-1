@@ -116,11 +116,11 @@ public class Alumno implements Comparable<Alumno>{
         if(a == this){
             return true;
         }
-        if(a.getClass() != this.getClass() || this.id_alumno == 0){
+        if(a.getClass() != this.getClass() || this.dni == 0){
             return false;
         }
         Alumno alum = (Alumno) a;
-        return alum.id_alumno == this.id_alumno;
+        return alum.dni == this.dni;
     }
     
     public int HashCode(){
@@ -134,8 +134,5 @@ public class Alumno implements Comparable<Alumno>{
     @Override
     public String toString() {
         return "Alumno{" + "id_alumno=" + id_alumno + ", dni=" + dni + ", email=" + email + ", password=" + password + ", nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento=" + fecha_nacimiento + ", estado=" + estado + '}';
-    }
-    
-    
-    
+    } 
 }
