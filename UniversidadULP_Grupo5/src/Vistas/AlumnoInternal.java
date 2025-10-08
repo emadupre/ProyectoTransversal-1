@@ -6,10 +6,13 @@
 package Vistas;
 
 import java.awt.Color;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
@@ -44,6 +47,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         this.setSize(1048, 660);
         armarCabecerayLlenar(tablaAlumno);
         placeholderTxtFBuscarDNI();
+        habilitarModificacion(cbHabilitarM);
     }
 
     //método refresh, vuelve a llamar a la base de datos y la carga en la tabla nuevamente.
@@ -95,7 +99,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             public void focusGained(java.awt.event.FocusEvent e) {
                 if (txtFBuscarDNI.getText().equals("Ingrese DNI sin puntos")) {
                     txtFBuscarDNI.setText("");
-                    txtFBuscarDNI.setForeground(Color.GRAY);
+                    txtFBuscarDNI.setForeground(Color.BLACK);
                 }
             }
 
@@ -103,10 +107,47 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             public void focusLost(java.awt.event.FocusEvent e) {
                 if (txtFBuscarDNI.getText().equals("")) {
                     txtFBuscarDNI.setText("Ingrese DNI sin puntos");
-                    txtFBuscarDNI.setForeground(Color.BLACK);
+                    txtFBuscarDNI.setForeground(Color.GRAY);
                 }
             }
         });
+    }
+    
+    //Habilitar Modificación
+    private void habilitarModificacion(JCheckBox jcb){
+        
+        jcb.addItemListener(new ItemListener(){
+            @Override
+            public void itemStateChanged(ItemEvent ie) {
+                boolean selec = jcb.isSelected();
+                if(selec != false){
+                    txtDNI.setEnabled(true);
+                    txtNombre.setEnabled(true);
+                    txtApellido.setEnabled(true);
+                    jDFechaN.setEnabled(true);
+                    txtEmail.setEnabled(true);
+                    txtPassword.setEnabled(true);
+                    btnDarAlta.setEnabled(true);
+                    btnDarBaja.setEnabled(true);
+                    btnEliminar.setEnabled(true);
+                    btnModificar.setEnabled(true);
+                }else{                                       
+                    txtDNI.setEnabled(false);
+                    txtNombre.setEnabled(false);
+                    txtApellido.setEnabled(false);
+                    jDFechaN.setEnabled(false);
+                    txtEmail.setEnabled(false);
+                    txtPassword.setEnabled(false);
+                    btnDarAlta.setEnabled(false);
+                    btnDarBaja.setEnabled(false);
+                    btnEliminar.setEnabled(false);
+                    btnModificar.setEnabled(false);
+                }
+            }
+            
+        });
+        
+        
     }
 
     /**
@@ -140,7 +181,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         txtPassword = new javax.swing.JTextField();
         jDFechaN = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
-        cbHabilitarModificacion = new javax.swing.JCheckBox();
+        cbHabilitarM = new javax.swing.JCheckBox();
         btnAgregar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
@@ -241,13 +282,14 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         txtPassword.setEnabled(false);
 
         jDFechaN.setBackground(new java.awt.Color(47, 96, 131));
+        jDFechaN.setForeground(new java.awt.Color(255, 255, 255));
         jDFechaN.setEnabled(false);
 
         jPanel2.setBackground(new java.awt.Color(47, 96, 131));
         jPanel2.setPreferredSize(new java.awt.Dimension(266, 208));
 
-        cbHabilitarModificacion.setForeground(new java.awt.Color(255, 255, 255));
-        cbHabilitarModificacion.setText("Habilitar modificación");
+        cbHabilitarM.setForeground(new java.awt.Color(255, 255, 255));
+        cbHabilitarM.setText("Habilitar modificación");
 
         btnAgregar.setFont(new java.awt.Font("URW Gothic", 0, 12)); // NOI18N
         btnAgregar.setText("Agregar Alumno");
@@ -284,7 +326,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cbHabilitarModificacion)
+                .addComponent(cbHabilitarM)
                 .addGap(58, 58, 58))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 45, Short.MAX_VALUE)
@@ -300,7 +342,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbHabilitarModificacion)
+                .addComponent(cbHabilitarM)
                 .addGap(17, 17, 17)
                 .addComponent(btnAgregar)
                 .addGap(11, 11, 11)
@@ -335,7 +377,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                             .addComponent(txtApellido)
                             .addComponent(txtEmail)
                             .addComponent(txtPassword)
-                            .addComponent(jDFechaN, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jDFechaN, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -514,7 +556,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnDarBaja;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
-    private javax.swing.JCheckBox cbHabilitarModificacion;
+    private javax.swing.JCheckBox cbHabilitarM;
     private javax.swing.JLabel imgULP;
     private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDFechaN;
