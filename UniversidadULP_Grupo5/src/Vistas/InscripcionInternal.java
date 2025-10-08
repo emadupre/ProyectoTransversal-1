@@ -5,12 +5,20 @@
  */
 package Vistas;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import manipuladoresDAO.MateriaDAO;
 import universidadulp_grupo5.Alumno;
+import universidadulp_grupo5.Inscripcion;
 import universidadulp_grupo5.Materia;
 
 /**
@@ -23,10 +31,11 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
     private Alumno alumno = new Alumno();
     
     public InscripcionInternal(Alumno alumno) {
-  
+        
         initComponents();
     rellenarCabecera(tblMateria);
     RellenarTabla(tblMateria);
+    
     }
 
     /**
@@ -51,6 +60,11 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
         jLabel2.setText("Elija la materia");
 
         BtnInscribirse.setText("Inscribirse");
+        BtnInscribirse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnInscribirseActionPerformed(evt);
+            }
+        });
 
         tblMateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -82,7 +96,7 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(18, 18, 18)
                 .addComponent(BtnInscribirse)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -94,14 +108,66 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(BtnInscribirse)
-                .addGap(159, 159, 159))
+                .addGap(126, 126, 126))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnInscribirseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInscribirseActionPerformed
+      
+       int filaMateria = tblMateria.getSelectedRow();
+    int filaUsuario = tblMateria.getSelectedRow();
+
+    if (filaMateria == -1 || filaUsuario == -1) {
+        JOptionPane.showMessageDialog(null, "Selecciona una materia y un usuario.");
+        return;
+    }
+
+    int id_materia = Integer.parseInt(tblMateria.getValueAt(filaMateria, 0).toString());
+    int id_usuario = Integer.parseInt(tblMateria.getValueAt(filaUsuario, 0).toString());
+
+    try {
+        Connection con = DriverManager.getConnection("jdbc:mariadb://localhost/gp5_universidadulp", "root", "");
+
+        PreparedStatement check = con.prepareStatement(
+        "SELECT * FROM inscripcion WHERE id_alumno = ? AND id_materia = ?"
+        );
+        check.setInt(1, id_usuario);
+        check.setInt(2, id_materia);
+        ResultSet rs = check.executeQuery();
+
+        if (rs.next()) {
+            JOptionPane.showMessageDialog(null, "El usuario ya está inscripto en esta materia.");
+            return;
+        }
+
+        // Insertar inscripción
+        PreparedStatement ps = con.prepareStatement(
+            "INSERT INTO inscripcion (id_usuario, id_materia, estado) VALUES (?, ?, ?)"
+        );
+        ps.setInt(1, id_usuario);
+        ps.setInt(2, id_materia);
+        ps.setBoolean(3, true);
+
+        int filas = ps.executeUpdate();
+        if (filas > 0) {
+            JOptionPane.showMessageDialog(null, "Inscripción realizada con éxito 🎉");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo realizar la inscripción.");
+        }
+
+        ps.close();
+        con.close();
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error de base de datos: " + ex.getMessage());
+    }
+ 
+    }//GEN-LAST:event_BtnInscribirseActionPerformed
  public void rellenarCabecera(JTable tabla){
             
             DefaultTableModel model = new DefaultTableModel(){
@@ -119,7 +185,7 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
         }
     public void RellenarTabla (JTable tabla){
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-        modelo.setColumnCount(0);
+        modelo.setRowCount(0);
         try{
             List<Materia> listarMaterias = listMateri.listar();
             for(Materia m : listarMaterias){
