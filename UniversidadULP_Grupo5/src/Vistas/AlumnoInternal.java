@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JTable;
@@ -21,9 +22,10 @@ import universidadulp_grupo5.Alumno;
  */
 public class AlumnoInternal extends javax.swing.JInternalFrame {
 
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     private AlumnoDAO maniAlum = new AlumnoDAO();
-    String[] columnas = {"id_alumno", "DNI", "Nombre", "Apellido", "Fecha Nacimiento", "Email", "Password", "Estado"};
-    DefaultTableModel modelo = new DefaultTableModel(null, columnas) {
+    static String[] columnas = {"id_alumno", "DNI", "Nombre", "Apellido", "Fecha Nacimiento", "Email", "Password", "Estado"};
+    static DefaultTableModel modelo = new DefaultTableModel(null, columnas) {
         @Override
         public boolean isCellEditable(int a, int b) {
             return false;
@@ -40,8 +42,33 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         armarCabecerayLlenar(tablaAlumno);
     }
 
-    private void armarCabecerayLlenar(JTable tabla) {
+    public void refreshTabla() {
+        modelo.setRowCount(0);
 
+        ArrayList<Alumno> lista = maniAlum.listar();
+        String fecha = "";
+        boolean estado = true;
+
+        if (!lista.isEmpty()) {
+            for (Alumno alum : lista) {
+                fecha = alum.getFecha_nacimiento().format(dtf);
+                Object[] fila = {
+                    alum.getId_alumno(),
+                    alum.getDni(),
+                    alum.getNombre(),
+                    alum.getApellido(),
+                    fecha,
+                    alum.getEmail(),
+                    alum.getPassword(),
+                    estado
+                };
+                modelo.addRow(fila);
+            }
+        }
+    }
+
+    private void armarCabecerayLlenar(JTable tabla) {
+        //Cabecera
         tabla.setModel(modelo);
         tabla.setModel(modelo);
         TableColumnModel modeloColumnas = tabla.getColumnModel();
@@ -50,14 +77,29 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         columnID.setPreferredWidth(0);
         columnID.setMaxWidth(0);
         columnID.setResizable(false);
-        ArrayList<Alumno> lista = new ArrayList<>();
-        if (maniAlum.listar().isEmpty()) {
-            lista = maniAlum.listar();
+
+        //Relleno        
+        modelo.setRowCount(0);
+
+        ArrayList<Alumno> lista = maniAlum.listar();
+        String fecha = "";
+        boolean estado = true;
+
+        if (!lista.isEmpty()) {
             for (Alumno alum : lista) {
-                
+                fecha = alum.getFecha_nacimiento().format(dtf);
+                modelo.addRow(new Object[]{
+                    alum.getId_alumno(),
+                    alum.getDni(),
+                    alum.getNombre(),
+                    alum.getApellido(),
+                    fecha,
+                    alum.getEmail(),
+                    alum.getPassword(),
+                    estado
+                });
             }
         }
-
     }
 
     /**
@@ -387,6 +429,8 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         JFrame padre = (JFrame) SwingUtilities.getWindowAncestor(this);
         DialogAlumno ventana = new DialogAlumno(padre);
         ventana.setVisible(true);
+
+        refreshTabla();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
 
