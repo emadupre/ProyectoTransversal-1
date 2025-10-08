@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import java.awt.Color;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -42,9 +43,11 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         this.setResizable(false);//para q no lo puedan expandir! :)
         this.setSize(1048, 660);
         armarCabecerayLlenar(tablaAlumno);
+        placeholderTxtFBuscarDNI();
     }
 
-    public void refreshTabla() {
+    //método refresh, vuelve a llamar a la base de datos y la carga en la tabla nuevamente.
+    private void refreshTabla() {
         modelo.setRowCount(0);
 
         ArrayList<Alumno> lista = maniAlum.listar();
@@ -69,6 +72,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         }
     }
 
+    //Arma la cabecera y carga con el método refresh 
     private void armarCabecerayLlenar(JTable tabla) {
         //Cabecera
         tabla.setModel(modelo);
@@ -82,6 +86,27 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
 
         //Relleno        
         refreshTabla();
+    }
+
+    //Placeholder en txt buscar por DNI
+    private void placeholderTxtFBuscarDNI() {
+        txtFBuscarDNI.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent e) {
+                if (txtFBuscarDNI.getText().equals("Ingrese DNI sin puntos")) {
+                    txtFBuscarDNI.setText("");
+                    txtFBuscarDNI.setForeground(Color.GRAY);
+                }
+            }
+
+            @Override
+            public void focusLost(java.awt.event.FocusEvent e) {
+                if (txtFBuscarDNI.getText().equals("")) {
+                    txtFBuscarDNI.setText("Ingrese DNI sin puntos");
+                    txtFBuscarDNI.setForeground(Color.BLACK);
+                }
+            }
+        });
     }
 
     /**
@@ -133,8 +158,14 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         lblTitulo.setText("GESTION DE ALUMNOS");
         lblTitulo.setToolTipText("");
 
+        txtFBuscarDNI.setForeground(new java.awt.Color(161, 154, 147));
         txtFBuscarDNI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtFBuscarDNI.setText("Ingrese DNI sin puntos");
+        txtFBuscarDNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFBuscarDNIActionPerformed(evt);
+            }
+        });
 
         lblBuscarDNI.setFont(new java.awt.Font("URW Gothic", 1, 14)); // NOI18N
         lblBuscarDNI.setForeground(new java.awt.Color(255, 255, 255));
@@ -417,7 +448,6 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         JFrame padre = (JFrame) SwingUtilities.getWindowAncestor(this);
         DialogAlumno ventana = new DialogAlumno(padre);
         ventana.setVisible(true);
-
         refreshTabla();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -427,17 +457,17 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
 
     private void tablaAlumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaAlumnoMouseClicked
         int filaSelec = tablaAlumno.getSelectedRow();
-        if(filaSelec != -1){
+        if (filaSelec != -1) {
             int dni = (int) tablaAlumno.getValueAt(filaSelec, 1);
-            String nombre =(String) tablaAlumno.getValueAt(filaSelec, 2);
+            String nombre = (String) tablaAlumno.getValueAt(filaSelec, 2);
             String apellido = (String) tablaAlumno.getValueAt(filaSelec, 3);
             String fecha = (String) tablaAlumno.getValueAt(filaSelec, 4);
             String email = (String) tablaAlumno.getValueAt(filaSelec, 5);
             String pass = (String) tablaAlumno.getValueAt(filaSelec, 6);
-            
+
             LocalDate fecha1 = LocalDate.parse(fecha, dtf);
             Date fechaD = java.sql.Date.valueOf(fecha1);
-            
+
             txtDNI.setText(dni + "");
             txtNombre.setText(nombre);
             txtApellido.setText(apellido);
@@ -445,9 +475,35 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             txtEmail.setText(email);
             txtPassword.setText(pass);
         }
-        
-        
+
+
     }//GEN-LAST:event_tablaAlumnoMouseClicked
+
+    private void txtFBuscarDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFBuscarDNIActionPerformed
+        // TODO add your handling code here:
+        int dni = Integer.parseInt(txtFBuscarDNI.getText());
+        modelo.setRowCount(0);
+
+        Alumno alum = maniAlum.buscarPorDNI(dni);
+
+        String fecha = "";
+        boolean estado = true;
+        fecha = alum.getFecha_nacimiento().format(dtf);
+
+        Object[] fila = {
+            alum.getId_alumno(),
+            alum.getDni(),
+            alum.getNombre(),
+            alum.getApellido(),
+            fecha,
+            alum.getEmail(),
+            alum.getPassword(),
+            estado
+        };
+        modelo.addRow(fila);
+        
+        txtFBuscarDNI.setText("");
+    }//GEN-LAST:event_txtFBuscarDNIActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
