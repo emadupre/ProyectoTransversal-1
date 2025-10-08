@@ -42,6 +42,8 @@ public class VistaAlumno extends javax.swing.JFrame {
         btnMaterias = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        btnCerrarSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +96,18 @@ public class VistaAlumno extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setText("Cerrar sesión");
+
+        btnCerrarSesion.setText("Cerrar sesión");
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
+        jMenu4.add(btnCerrarSesion);
+
+        jMenuBar1.add(jMenu4);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -133,6 +147,12 @@ public class VistaAlumno extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        this.dispose();
+        VistaLogin ventanaLogin = new VistaLogin();
+        ventanaLogin.setVisible(true);
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -171,11 +191,13 @@ public class VistaAlumno extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnAlumnos;
+    private javax.swing.JMenuItem btnCerrarSesion;
     private javax.swing.JMenuItem btnMaterias;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
