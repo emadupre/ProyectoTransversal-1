@@ -59,7 +59,7 @@ public class AdministrativoDAO implements manipuladorGeneral<Administrativo> {
                     administrativo = new Administrativo();
                     administrativo.setId_administrativo(rs.getInt("id_administrativo"));
                     administrativo.setDni(rs.getInt("dni"));
-                    administrativo.setApellido(rs.getString("nombre"));
+                    administrativo.setNombre(rs.getString("nombre"));
                     administrativo.setApellido(rs.getString("apellido"));
                     administrativo.setEmail(rs.getString("email"));
                     administrativo.setPassword(rs.getString("password"));
