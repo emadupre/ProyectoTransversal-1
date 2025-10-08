@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -79,27 +81,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         columnID.setResizable(false);
 
         //Relleno        
-        modelo.setRowCount(0);
-
-        ArrayList<Alumno> lista = maniAlum.listar();
-        String fecha = "";
-        boolean estado = true;
-
-        if (!lista.isEmpty()) {
-            for (Alumno alum : lista) {
-                fecha = alum.getFecha_nacimiento().format(dtf);
-                modelo.addRow(new Object[]{
-                    alum.getId_alumno(),
-                    alum.getDni(),
-                    alum.getNombre(),
-                    alum.getApellido(),
-                    fecha,
-                    alum.getEmail(),
-                    alum.getPassword(),
-                    estado
-                });
-            }
-        }
+        refreshTabla();
     }
 
     /**
@@ -169,12 +151,22 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
 
             }
         ));
+        tablaAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaAlumnoMouseClicked(evt);
+            }
+        });
         PanelTabla.setViewportView(tablaAlumno);
 
         imgULP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imgULP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoULP.png"))); // NOI18N
 
         jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(47, 96, 131));
 
@@ -203,26 +195,22 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         lblDNI.setText("DNI:");
 
         txtDNI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDNI.setText("12345678");
         txtDNI.setEnabled(false);
 
         txtNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNombre.setText("Ejemplo Nombre");
         txtNombre.setEnabled(false);
 
         txtApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtApellido.setText("Ejemplo Apellido");
         txtApellido.setEnabled(false);
 
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtEmail.setText("Ejemplo Apellido");
         txtEmail.setEnabled(false);
 
         txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPassword.setText("Ejemplo Apellido");
         txtPassword.setEnabled(false);
 
         jDFechaN.setBackground(new java.awt.Color(47, 96, 131));
+        jDFechaN.setEnabled(false);
 
         jPanel2.setBackground(new java.awt.Color(47, 96, 131));
         jPanel2.setPreferredSize(new java.awt.Dimension(266, 208));
@@ -316,7 +304,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                             .addComponent(txtApellido)
                             .addComponent(txtEmail)
                             .addComponent(txtPassword)
-                            .addComponent(jDFechaN, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
+                            .addComponent(jDFechaN, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -432,6 +420,34 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
 
         refreshTabla();
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tablaAlumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaAlumnoMouseClicked
+        int filaSelec = tablaAlumno.getSelectedRow();
+        if(filaSelec != -1){
+            int dni = (int) tablaAlumno.getValueAt(filaSelec, 1);
+            String nombre =(String) tablaAlumno.getValueAt(filaSelec, 2);
+            String apellido = (String) tablaAlumno.getValueAt(filaSelec, 3);
+            String fecha = (String) tablaAlumno.getValueAt(filaSelec, 4);
+            String email = (String) tablaAlumno.getValueAt(filaSelec, 5);
+            String pass = (String) tablaAlumno.getValueAt(filaSelec, 6);
+            
+            LocalDate fecha1 = LocalDate.parse(fecha, dtf);
+            Date fechaD = java.sql.Date.valueOf(fecha1);
+            
+            txtDNI.setText(dni + "");
+            txtNombre.setText(nombre);
+            txtApellido.setText(apellido);
+            jDFechaN.setDate(fechaD);
+            txtEmail.setText(email);
+            txtPassword.setText(pass);
+        }
+        
+        
+    }//GEN-LAST:event_tablaAlumnoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
