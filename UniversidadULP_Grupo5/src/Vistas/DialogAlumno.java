@@ -116,6 +116,8 @@ public class DialogAlumno extends javax.swing.JDialog {
         txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPassword.setEnabled(true);
 
+        jDFechaN.setBackground(new java.awt.Color(47, 162, 186));
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -129,14 +131,13 @@ public class DialogAlumno extends javax.swing.JDialog {
                     .addComponent(lblEmail)
                     .addComponent(lblPassword))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtDNI, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                        .addComponent(txtNombre)
-                        .addComponent(txtApellido)
-                        .addComponent(txtEmail)
-                        .addComponent(txtPassword))
-                    .addComponent(jDFechaN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtDNI, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                    .addComponent(txtNombre)
+                    .addComponent(txtApellido)
+                    .addComponent(txtEmail)
+                    .addComponent(txtPassword)
+                    .addComponent(jDFechaN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(

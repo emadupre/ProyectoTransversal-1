@@ -93,15 +93,13 @@
                           <Component id="lblPassword" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtDNI" alignment="0" pref="159" max="32767" attributes="0"/>
-                              <Component id="txtNombre" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtApellido" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtPassword" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="jDFechaN" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtDNI" alignment="0" pref="159" max="32767" attributes="0"/>
+                          <Component id="txtNombre" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtApellido" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtPassword" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jDFechaN" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="14" max="32767" attributes="0"/>
                   </Group>
@@ -262,6 +260,11 @@
               </Properties>
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="jDFechaN">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ba" green="a2" red="2f" type="rgb"/>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
