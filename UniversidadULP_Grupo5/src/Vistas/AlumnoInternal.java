@@ -634,7 +634,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
 
         refreshTabla();
 
-        JOptionPane.showMessageDialog(this, "Se ha dado de alta al alumno: \n" + alum.getApellido() + alum.getNombre());
+        JOptionPane.showMessageDialog(this, "Se ha dado de alta al alumno: \n" + alum.getApellido() + " " + alum.getNombre());
     }//GEN-LAST:event_btnDarAltaActionPerformed
 
     private void btnDarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarBajaActionPerformed
@@ -649,7 +649,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
 
         refreshTabla();
 
-        JOptionPane.showMessageDialog(this, "Se ha dado de baja al alumno: \n" + alum.getApellido() + alum.getNombre());
+        JOptionPane.showMessageDialog(this, "Se ha dado de baja al alumno: \n" + alum.getApellido() +" "+ alum.getNombre());
     }//GEN-LAST:event_btnDarBajaActionPerformed
 
 
