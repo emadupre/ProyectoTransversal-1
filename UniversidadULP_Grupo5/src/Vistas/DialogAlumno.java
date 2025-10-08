@@ -283,10 +283,7 @@ public class DialogAlumno extends javax.swing.JDialog {
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Dato Incorrecto, se espera un DNI");
-
         }
-
-
     }//GEN-LAST:event_jbtAgregarActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
