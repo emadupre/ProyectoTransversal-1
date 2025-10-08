@@ -183,5 +183,34 @@ public class AlumnoDAO implements manipuladorGeneral <Alumno> {
         
         return alum;
     }
+    
+     public Alumno buscarPorDNI(int dni) {
+        String sql = "SELECT * FROM alumno WHERE DNI = ?";
+        Connection con = conexion_BD.getConnection();        
+        Alumno alumno = null;
+        
+        try (PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setInt(1, dni);
+            try(ResultSet rs = ps.executeQuery()){
+                if(rs.next()){
+                    alumno = new Alumno();
+                    alumno.setId_alumno(rs.getInt("id_alumno"));
+                    alumno.setDni(rs.getInt("dni"));
+                    alumno.setEmail(rs.getString("email"));
+                    alumno.setPassword(rs.getString("password"));
+                    alumno.setNombre(rs.getString("nombre"));
+                    alumno.setApellido(rs.getString("apellido"));
+                    alumno.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
+                    alumno.setEstado(rs.getBoolean("estado"));
+                }
+            }
+            
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return alumno;
+    }  
+     
+     
 
 }
