@@ -7,6 +7,7 @@ package Vistas;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import manipuladoresDAO.AlumnoDAO;
 import universidadulp_grupo5.Alumno;
@@ -234,6 +235,7 @@ public class DialogAlumno extends javax.swing.JDialog {
 
     private void jbtAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAgregarActionPerformed
         // TODO add your handling code here:
+        ArrayList<Alumno> lista = maniAlum.listar();
         try {
             if (txtDNI.getText().isEmpty() || txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || jDFechaN.getDate() == null
                     || txtEmail.getText().isEmpty() || txtPassword.getText().isEmpty()) {
@@ -253,27 +255,30 @@ public class DialogAlumno extends javax.swing.JDialog {
 
                 Alumno alum = new Alumno(dni, email, pass, nombre, apellido, fn, estado);
 
-                maniAlum.agregar(alum);
+                if (lista.contains(alum)) {
+                    JOptionPane.showMessageDialog(this, "Ya existe un alumno con DNI: " + dni);
+                    clear();
+                } else {
+                    maniAlum.agregar(alum);
 
-                clear();
-                
+                    clear();
 
-                Object[] opciones = {"Si", "No"};
-                int eleccion = JOptionPane.showOptionDialog(
-                        null, //null para centrar
-                        "Alumno agregado exitosamente\n¿Desea agregar otro alumno?", //texto a mostrar
-                        "", //título de la ventana
-                        JOptionPane.DEFAULT_OPTION, //botones de opciones (default si definimos un objeto de opciones)
-                        JOptionPane.QUESTION_MESSAGE, //ícono que muestra
-                        null, //icono personalizado (si no queres ninguno se pone null, si no una ruta/
-                        opciones, //espera un arreglo de tipo objeto con mensajes de los botones (null si definiste las opciones mas arriba)
-                        null // null para ningun botón preseleccionado (sino opciones[indice del boton preseleccionado]
-                );
+                    Object[] opciones = {"Si", "No"};
+                    int eleccion = JOptionPane.showOptionDialog(
+                            null, //null para centrar
+                            "Alumno agregado exitosamente\n¿Desea agregar otro alumno?", //texto a mostrar
+                            "", //título de la ventana
+                            JOptionPane.DEFAULT_OPTION, //botones de opciones (default si definimos un objeto de opciones)
+                            JOptionPane.QUESTION_MESSAGE, //ícono que muestra
+                            null, //icono personalizado (si no queres ninguno se pone null, si no una ruta/
+                            opciones, //espera un arreglo de tipo objeto con mensajes de los botones (null si definiste las opciones mas arriba)
+                            null // null para ningun botón preseleccionado (sino opciones[indice del boton preseleccionado]
+                    );
 
-                if (eleccion == 1) {
-                    this.dispose();
+                    if (eleccion == 1) {
+                        this.dispose();
+                    }
                 }
-
             }
 
         } catch (NumberFormatException e) {
