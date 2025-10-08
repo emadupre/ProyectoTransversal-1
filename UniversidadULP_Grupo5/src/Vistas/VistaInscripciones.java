@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+
 import java.time.LocalDate;
 import universidadulp_grupo5.Alumno;
 
@@ -46,6 +47,8 @@ public class VistaInscripciones extends javax.swing.JFrame {
         btnSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        escritorio.setBackground(new java.awt.Color(47, 96, 131));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -148,6 +151,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         this.dispose();
         VistaLogin ventanaLog = new VistaLogin();
         ventanaLog.setVisible(true);
+        
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     /**
@@ -198,4 +202,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
+
+
 }
+    
