@@ -17,6 +17,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -53,6 +54,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         armarCabecerayLlenar(tablaAlumno);
         placeholderTxtFBuscarDNI();
         habilitarModificacion(cbHabilitarM);
+        formatojDFechaN();
     }
 
     //Método Clear
@@ -63,6 +65,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         jDFechaN.setDate(null);
         txtEmail.setText("");
         txtPassword.setText("");
+        
     }
 
     //método refresh, vuelve a llamar a la base de datos y la carga en la tabla nuevamente.
@@ -125,6 +128,12 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                 }
             }
         });
+    }
+    
+    //formato jDFechaN
+    private void formatojDFechaN(){
+        JTextField edit = (JTextField) jDFechaN.getDateEditor().getUiComponent();
+        edit.setHorizontalAlignment(JTextField.CENTER);
     }
 
     //Habilitar Modificación
@@ -294,7 +303,9 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         txtPassword.setEnabled(false);
 
         jDFechaN.setBackground(new java.awt.Color(47, 96, 131));
+        jDFechaN.setDateFormatString("dd-MM-yyyy");
         jDFechaN.setEnabled(false);
+        jDFechaN.setMinSelectableDate(new java.util.Date(1199156474000L));
 
         jPanel2.setBackground(new java.awt.Color(47, 96, 131));
         jPanel2.setPreferredSize(new java.awt.Dimension(266, 208));
