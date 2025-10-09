@@ -5,9 +5,13 @@
  */
 package Vistas;
 
-import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import manipuladoresDAO.MateriaDAO;
 import universidadulp_grupo5.Materia;
 
@@ -20,67 +24,18 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
     /**
      * Creates new form MateriaInternal
      */
-    private MateriaDAO materiaDAO;
+    private MateriaDAO materiaDAO = new MateriaDAO();
     private DefaultTableModel modelo= new DefaultTableModel();
-
+    int seleccionado = -1;
     
     public MateriaInternal() {
         initComponents();
-        materiaDAO = new MateriaDAO();
         armarTabla();
-        
         limpiarCampos();
-    }
-    
-    private void armarTabla(){
-       modelo.addColumn("Nombre");
-       modelo.addColumn("Descripción");
-       modelo.addColumn("Cod Materia");
-       modelo.addColumn("Estado");
-       tblMateria.setModel(modelo);
-    }
-    
-    public void rellenarTabla(){
-    }
-    
-    private void limpiarCampos(){
-        txtNombre.setText("");
-        txtDescripcion.setText("");
-        txtCodMateria.setText("");
-        cbHabilitar.setSelected(false);
-        habilitarCampos(false);
-        btnAgregar.setEnabled(true);
         btnModificar.setEnabled(false);
-        btnEliminar.setEnabled(false);
-        btnDarAlta.setEnabled(false);
-        btnDarBaja.setEnabled(false);
-        tblMateria.clearSelection();
+        agregarListeneraTabla(tblMateria);
     }
     
-    private void habilitarCampos(boolean habilitar){
-        txtNombre.setEnabled(habilitar);
-        txtDescripcion.setEnabled(habilitar);
-        txtCodMateria.setEnabled(habilitar);
-    }
-    
-    private boolean validarCampos(){
-        if(txtNombre.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(this, "El nombre es obligatorio");
-            txtNombre.requestFocus();
-            return false;
-        }
-        
-        if(txtCodMateria.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(this, "El codigo de materia es obligatorio");
-            txtCodMateria.requestFocus();
-            return false;
-        }
-        
-        return true;
-    }
-    
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -113,12 +68,6 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
         lblMateria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMateria.setText("Gestión materia");
         lblMateria.setPreferredSize(new java.awt.Dimension(150, 30));
-
-        txtMateria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMateriaActionPerformed(evt);
-            }
-        });
 
         cbHabilitar.setText("Habilitar Modificación");
         cbHabilitar.addActionListener(new java.awt.event.ActionListener() {
@@ -173,13 +122,10 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
 
         tblMateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Nombre", "Descripción", "Cod Materia", "Estado"
+
             }
         ));
         jScrollPane1.setViewportView(tblMateria);
@@ -396,10 +342,6 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnDarBajaActionPerformed
 
-    private void txtMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMateriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMateriaActionPerformed
-
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String criterio = JOptionPane.showInputDialog(this, "Ingrese ID de materia:", "Buscar Materia", JOptionPane.QUESTION_MESSAGE);
         
@@ -437,7 +379,77 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
-                       
+    
+    private void armarTabla(){
+        modelo.addColumn("id_materia");
+       modelo.addColumn("Nombre");
+       modelo.addColumn("Descripción");
+       modelo.addColumn("Cod. Materia");
+       modelo.addColumn("Estado");
+       tblMateria.setModel(modelo);
+       TableColumnModel columnModel = tblMateria.getColumnModel();
+       TableColumn columnaID = columnModel.getColumn(0);
+       columnaID.setMinWidth(0);
+       columnaID.setMaxWidth(0);
+       columnaID.setPreferredWidth(0);
+       columnaID.setResizable(false);
+    }
+    
+    public void rellenarTabla(){
+        
+    }
+    
+    private void limpiarCampos(){
+        txtNombre.setText("");
+        txtDescripcion.setText("");
+        txtCodMateria.setText("");
+        cbHabilitar.setSelected(false);
+        habilitarCampos(false);
+        btnAgregar.setEnabled(true);
+        btnModificar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+        btnDarAlta.setEnabled(false);
+        btnDarBaja.setEnabled(false);
+        tblMateria.clearSelection();
+    }
+    
+    private void habilitarCampos(boolean habilitar){
+        txtNombre.setEnabled(habilitar);
+        txtDescripcion.setEnabled(habilitar);
+        txtCodMateria.setEnabled(habilitar);
+    }
+    
+    private void agregarListeneraTabla(JTable tabla){
+        tabla.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+            @Override
+            public void valueChanged(ListSelectionEvent evento){
+                if(evento.getValueIsAdjusting()){
+                    return;
+                }
+                int filaS = tabla.getSelectedRow();
+                if(filaS > -1){
+                    seleccionado = (int) tabla.getValueAt(filaS, 0);
+                    btnModificar.setEnabled(true);
+                }
+            }
+        });
+    }
+    
+    private boolean validarCampos(){
+        if(txtNombre.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "El nombre es obligatorio");
+            txtNombre.requestFocus();
+            return false;
+        }
+        
+        if(txtCodMateria.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "El codigo de materia es obligatorio");
+            txtCodMateria.requestFocus();
+            return false;
+        }
+        
+        return true;
+    }                   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
