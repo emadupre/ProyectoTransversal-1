@@ -134,6 +134,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
     private void formatojDFechaN(){
         JTextField edit = (JTextField) jDFechaN.getDateEditor().getUiComponent();
         edit.setHorizontalAlignment(JTextField.CENTER);
+        edit.setEditable(false);
     }
 
     //Habilitar Modificación
@@ -305,7 +306,8 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         jDFechaN.setBackground(new java.awt.Color(47, 96, 131));
         jDFechaN.setDateFormatString("dd-MM-yyyy");
         jDFechaN.setEnabled(false);
-        jDFechaN.setMinSelectableDate(new java.util.Date(1199156474000L));
+        jDFechaN.setMaxSelectableDate(new java.util.Date(1199156474000L));
+        jDFechaN.setMinSelectableDate(new java.util.Date(-2240510326000L));
 
         jPanel2.setBackground(new java.awt.Color(47, 96, 131));
         jPanel2.setPreferredSize(new java.awt.Dimension(266, 208));
