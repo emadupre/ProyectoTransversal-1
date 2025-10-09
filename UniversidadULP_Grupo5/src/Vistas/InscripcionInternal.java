@@ -15,7 +15,10 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import manipuladoresDAO.InscripcionDAO;
 import manipuladoresDAO.MateriaDAO;
 import universidadulp_grupo5.Alumno;
 import universidadulp_grupo5.Inscripcion;
@@ -29,12 +32,16 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
 
     private MateriaDAO listMateri = new MateriaDAO();
     private Alumno alumno = new Alumno();
+    private InscripcionDAO inscripciones;
+    private int seleccionado = -1;
     
     public InscripcionInternal(Alumno alumno) {
         
         initComponents();
     rellenarCabecera(tblMateria);
     RellenarTabla(tblMateria);
+    agregarActionListener(tblMateria);
+    BtnInscribirse.setEnabled(false);
     
     }
 
@@ -118,55 +125,15 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnInscribirseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInscribirseActionPerformed
-      
-       int filaMateria = tblMateria.getSelectedRow();
-    int filaUsuario = tblMateria.getSelectedRow();
-
-    if (filaMateria == -1 || filaUsuario == -1) {
-        JOptionPane.showMessageDialog(null, "Selecciona una materia y un usuario.");
-        return;
-    }
-
-    int id_materia = Integer.parseInt(tblMateria.getValueAt(filaMateria, 0).toString());
-    int id_usuario = Integer.parseInt(tblMateria.getValueAt(filaUsuario, 0).toString());
-
-    try {
-        Connection con = DriverManager.getConnection("jdbc:mariadb://localhost/gp5_universidadulp", "root", "");
-
-        PreparedStatement check = con.prepareStatement(
-        "SELECT * FROM inscripcion WHERE id_alumno = ? AND id_materia = ?"
-        );
-        check.setInt(1, id_usuario);
-        check.setInt(2, id_materia);
-        ResultSet rs = check.executeQuery();
-
-        if (rs.next()) {
-            JOptionPane.showMessageDialog(null, "El usuario ya está inscripto en esta materia.");
-            return;
-        }
-
-        // Insertar inscripción
-        PreparedStatement ps = con.prepareStatement(
-            "INSERT INTO inscripcion (id_usuario, id_materia, estado) VALUES (?, ?, ?)"
-        );
-        ps.setInt(1, id_usuario);
-        ps.setInt(2, id_materia);
-        ps.setBoolean(3, true);
-
-        int filas = ps.executeUpdate();
-        if (filas > 0) {
-            JOptionPane.showMessageDialog(null, "Inscripción realizada con éxito 🎉");
-        } else {
-            JOptionPane.showMessageDialog(null, "No se pudo realizar la inscripción.");
-        }
-
-        ps.close();
-        con.close();
-    } catch (SQLException ex) {
-        ex.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error de base de datos: " + ex.getMessage());
-    }
- 
+      Inscripcion inscrip = null;
+      try{
+          inscrip = new Inscripcion(alumno.getId_alumno(), seleccionado , true);
+          inscripciones.agregar(inscrip);
+          JOptionPane.showMessageDialog(this, "inscripcion realizada con exito ");
+      }catch(Exception e){
+          JOptionPane.showMessageDialog(this, "error al eliminar una materia ");
+          e.printStackTrace();
+      }
     }//GEN-LAST:event_BtnInscribirseActionPerformed
  public void rellenarCabecera(JTable tabla){
             
@@ -200,6 +167,25 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
         }
     }
 
+    public void agregarActionListener(JTable tabla){
+        tabla.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+            @Override
+            public void valueChanged(ListSelectionEvent eventos){
+                if(eventos.getValueIsAdjusting()){
+                    return;
+                }
+                int filaMateria = tblMateria.getSelectedRow();
+                if(filaMateria > - 1 ){
+                    seleccionado = (int) tabla.getValueAt(filaMateria, 0);
+                    BtnInscribirse.setEnabled(true);
+                }else{
+                    BtnInscribirse.setEnabled(false);
+                }
+            }
+            
+        });
+         
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnInscribirse;
     private javax.swing.JLabel jLabel1;
