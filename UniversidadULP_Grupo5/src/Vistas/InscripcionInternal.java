@@ -59,6 +59,7 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
         BtnInscribirse = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMateria = new javax.swing.JTable();
+        btnSalir = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Inscripcion de Materias ");
@@ -85,6 +86,13 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblMateria);
 
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,9 +111,11 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(BtnInscribirse)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(126, 126, 126)
+                .addComponent(BtnInscribirse, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(112, 112, 112))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +127,9 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(BtnInscribirse)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnInscribirse)
+                    .addComponent(btnSalir))
                 .addGap(126, 126, 126))
         );
 
@@ -135,6 +147,17 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
           e.printStackTrace();
       }
     }//GEN-LAST:event_BtnInscribirseActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        btnSalir.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+        int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro que querés salir?", "Confirmar salida", JOptionPane.YES_NO_OPTION);
+        if (respuesta == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }
+});
+    }//GEN-LAST:event_btnSalirActionPerformed
  public void rellenarCabecera(JTable tabla){
             
             DefaultTableModel model = new DefaultTableModel(){
@@ -188,6 +211,7 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnInscribirse;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
