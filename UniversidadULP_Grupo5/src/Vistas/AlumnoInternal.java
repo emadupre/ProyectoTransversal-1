@@ -553,28 +553,38 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
 
     private void txtFBuscarDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFBuscarDNIActionPerformed
         // TODO add your handling code here:
-        int dni = Integer.parseInt(txtFBuscarDNI.getText());
-        modelo.setRowCount(0);
+        try {
+            int dni = Integer.parseInt(txtFBuscarDNI.getText());
+            modelo.setRowCount(0);
 
-        Alumno alum = maniAlum.buscarPorDNI(dni);
+            Alumno alum = maniAlum.buscarPorDNI(dni);
 
-        String fecha = "";
-        boolean estado = true;
-        fecha = alum.getFecha_nacimiento().format(dtf);
+            String fecha = "";
 
-        Object[] fila = {
-            alum.getId_alumno(),
-            alum.getDni(),
-            alum.getNombre(),
-            alum.getApellido(),
-            fecha,
-            alum.getEmail(),
-            alum.getPassword(),
-            estado
-        };
-        modelo.addRow(fila);
+            fecha = alum.getFecha_nacimiento().format(dtf);
 
-        txtFBuscarDNI.setText("");
+            Object[] fila = {
+                alum.getId_alumno(),
+                alum.getDni(),
+                alum.getNombre(),
+                alum.getApellido(),
+                fecha,
+                alum.getEmail(),
+                alum.getPassword(),
+                alum.isEstado()
+            };
+            modelo.addRow(fila);
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un DNI válido y sin puntos");
+        } finally {
+            
+            txtFBuscarDNI.setText("");
+            
+            txtFBuscarDNI.transferFocus();
+            
+        }
+
     }//GEN-LAST:event_txtFBuscarDNIActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -598,7 +608,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Alumno eliminado con éxito.");
         }
 
-        
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
