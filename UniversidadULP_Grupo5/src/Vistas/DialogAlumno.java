@@ -5,10 +5,12 @@
  */
 package Vistas;
 
+import java.awt.Color;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import manipuladoresDAO.AlumnoDAO;
 import universidadulp_grupo5.Alumno;
 
@@ -27,6 +29,7 @@ public class DialogAlumno extends javax.swing.JDialog {
         super(parent, true);
         initComponents();
         setLocationRelativeTo(null);
+        placeholderJDFechaN();
     }
 
     public void clear() {
@@ -36,6 +39,15 @@ public class DialogAlumno extends javax.swing.JDialog {
         jDFechaN.setDate(null);
         txtEmail.setText("");
         txtPassword.setText("");
+    }
+
+    private void placeholderJDFechaN() {
+        JTextField edit = (JTextField) jDFechaN.getDateEditor().getUiComponent();
+
+        edit.setText("dd-MM-yyyy");
+        edit.setForeground(Color.GRAY);
+        edit.setHorizontalAlignment(JTextField.CENTER);
+        edit.setEditable(false);
     }
 
     /**
@@ -117,6 +129,9 @@ public class DialogAlumno extends javax.swing.JDialog {
         txtPassword.setEnabled(true);
 
         jDFechaN.setBackground(new java.awt.Color(47, 162, 186));
+        jDFechaN.setDateFormatString("dd-MM-yyyy");
+        jDFechaN.setMaxSelectableDate(new java.util.Date(1199156480000L));
+        jDFechaN.setMinSelectableDate(new java.util.Date(-2240510320000L));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
