@@ -32,7 +32,7 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
 
     private MateriaDAO listMateri = new MateriaDAO();
     private Alumno alumno = new Alumno();
-    private InscripcionDAO inscripciones;
+    private InscripcionDAO inscripciones = new InscripcionDAO();
     private int seleccionado = -1;
     
     public InscripcionInternal(Alumno alumno) {
