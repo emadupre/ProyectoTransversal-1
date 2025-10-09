@@ -91,7 +91,7 @@ public class Materia implements Comparable<Materia>{
             return false;
         }
         Materia materia = (Materia) m;
-        return materia.id_materia == this.id_materia;
+        return materia.codigo_materia.equalsIgnoreCase(this.codigo_materia);
     }
     
     public int HashCode(){
