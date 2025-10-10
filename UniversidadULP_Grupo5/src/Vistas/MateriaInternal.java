@@ -139,6 +139,11 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
 
             }
         ));
+        tblMateria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMateriaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblMateria);
 
         btnBuscar.setText("Buscar");
@@ -269,15 +274,45 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
             txtNombre.setEnabled(true);
             txtDescripcion.setEnabled(true);
             txtCodMateria.setEnabled(true);
+            btnModificar.setEnabled(true);
+            btnEliminar.setEnabled(true);
+            btnDarAlta.setEnabled(true);
+            btnDarBaja.setEnabled(true);
         }else{
-            
-        }
-            
-        
+            txtNombre.setEnabled(false);
+            txtDescripcion.setEnabled(false);
+            txtCodMateria.setEnabled(false);
+        }  
     }//GEN-LAST:event_cbHabilitarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        
+          if (validarCampos()) {
+            int fila = tblMateria.getSelectedRow();
+            if (fila == -1) {
+                JOptionPane.showMessageDialog(this,
+                    "Debe seleccionar una materia",
+                    "Aviso",
+                    JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            int id = Integer.parseInt(tblMateria.getValueAt(fila, 0).toString());
+
+            Materia materia = new Materia();
+            materia.setId_materia(id);
+            materia.setNombre(txtNombre.getText().trim());
+            materia.setDescripcion(txtDescripcion.getText().trim());
+            materia.setCodigo_materia(txtCodMateria.getText().trim());
+            materia.setEstado(true);
+
+            maniMateria.actualizar(materia);
+
+            JOptionPane.showMessageDialog(this,
+                "Materia modificada correctamente",
+                "Éxito",
+                JOptionPane.INFORMATION_MESSAGE);
+            limpiarCampos();
+        }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -299,39 +334,34 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnDarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarAltaActionPerformed
-        int fila = tblMateria.getSelectedRow();
-        if(fila == -1){
-            JOptionPane.showMessageDialog(this, "Debe seleccionar una materia");
-            return;
+        try{
+        
+            int confirmar = JOptionPane.showConfirmDialog(this, "¿Esta seguro de dar de alta esta materia?", "Confirmar alta", JOptionPane.YES_NO_OPTION);
+            if(confirmar == JOptionPane.YES_OPTION){
+                maniMateria.darAlta(seleccionado);
+            }
+            rellenarTabla(tblMateria);
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una materia para dar de alta.");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Error al dar de alta a la materia.");
+            e.printStackTrace();
         }
-        
-        int id = Integer.parseInt(tblMateria.getValueAt(fila, 0).toString());
-        
-        maniMateria.darAlta(id);
-        
-        JOptionPane.showMessageDialog(this, "Materia dada de alta correctamente");
-        
-        limpiarCampos();
     }//GEN-LAST:event_btnDarAltaActionPerformed
 
     private void btnDarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarBajaActionPerformed
-        int fila = tblMateria.getSelectedRow();
-        if(fila == -1){
-            JOptionPane.showMessageDialog(this, "Debe seleccionar una materia");
-            return;
-        }
+        try{
         
-        int confirmar = JOptionPane.showConfirmDialog(this, "¿Esta seguro de dar de baja esta materia?", "Confirmar baja", JOptionPane.YES_NO_OPTION);
-        
-        if(confirmar == JOptionPane.YES_OPTION){
-            int id = Integer.parseInt(tblMateria.getValueAt(fila, 0).toString());
-            
-            maniMateria.darBaja(id);
-            
-            JOptionPane.showMessageDialog(this, "Materia dada de baja correctamente");
-            
-            
-            limpiarCampos();
+            int confirmar = JOptionPane.showConfirmDialog(this, "¿Esta seguro de dar de baja esta materia?", "Confirmar baja", JOptionPane.YES_NO_OPTION);
+            if(confirmar == JOptionPane.YES_OPTION){
+                maniMateria.darBaja(seleccionado);
+            }
+            rellenarTabla(tblMateria);
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una materia para dar de baja.");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Error al dar de baja a la materia.");
+            e.printStackTrace();
         }
     }//GEN-LAST:event_btnDarBajaActionPerformed
 
@@ -374,11 +404,47 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void txtMateriaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMateriaKeyReleased
-       
+       borrarFilas();
+       for(Materia m: maniMateria.listar()){
+           if( m.getNombre().startsWith(txtMateria.getText()));
+           modelo.addRow(new Object[]{
+           m.getNombre(),
+           m.getDescripcion(),
+           m.getCodigo_materia(),
+           m.isEstado(),
+           }); 
+        } 
     }//GEN-LAST:event_txtMateriaKeyReleased
+
+    private void borrarFilas(){
+        int f = tblMateria.getRowCount()-1;
+        for(; f>0; f--){ 
+            modelo.removeRow(f);
+        }
+    }
+    
+    private void tblMateriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMateriaMouseClicked
+       int fila = tblMateria.getSelectedRow();
+       if( fila !=-1){
+           String nombre = (String) tblMateria.getValueAt(fila, 1);
+           String descripcion = (String) tblMateria.getValueAt(fila, 2);
+           String codMateria = (String) tblMateria.getValueAt(fila, 3);
+           //Boolean estado = (Boolean) tblMateria.getValueAt(fila, 4);
+           txtNombre.setText(nombre);
+           txtDescripcion.setText(descripcion);
+           txtCodMateria.setText(codMateria);
+           btnAgregar.setEnabled(false);
+           btnModificar.setEnabled(false);
+          }
+    }//GEN-LAST:event_tblMateriaMouseClicked
     
     private void armarCabecera(){
-        
+        DefaultTableModel modelo = new DefaultTableModel(){
+            @Override 
+            public boolean isCellEditable(int row, int column){
+            return false;
+            }
+        };
         
         modelo.addColumn("id_materia");
        modelo.addColumn("Nombre");
@@ -457,6 +523,22 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
         
         return true;
     }                   
+    
+    private void refrescarTabla(){
+         modelo.setRowCount(0);
+         List<Materia> materia = maniMateria.listar();
+         if (!materia.isEmpty()){
+             for( Materia m: materia){
+                 Object[] fila ={
+                     m.getNombre(),
+                     m.getDescripcion(),
+                     m.getCodigo_materia(),
+                     m.isEstado(),
+                 };
+                 modelo.addRow(fila);
+             }
+         }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelDescripcion;
