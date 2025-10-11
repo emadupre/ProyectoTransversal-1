@@ -55,6 +55,10 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         placeholderTxtFBuscarDNI();
         habilitarModificacion(cbHabilitarM);
         formatojDFechaN();
+        grupoFiltrar.add(rbTodo);
+        grupoFiltrar.add(rbActivo);
+        grupoFiltrar.add(rbInactivo);
+        rbTodo.setSelected(true);
     }
 
     //Método Clear
@@ -65,7 +69,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         jDFechaN.setDate(null);
         txtEmail.setText("");
         txtPassword.setText("");
-        
+
     }
 
     //método refresh, vuelve a llamar a la base de datos y la carga en la tabla nuevamente.
@@ -74,11 +78,21 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
 
         ArrayList<Alumno> lista = maniAlum.listar();
         String fecha = "";
-
+        ArrayList<Alumno> listaAct = new ArrayList<>();
         if (!lista.isEmpty()) {
             for (Alumno alum : lista) {
+                if (rbTodo.isSelected()) {
+                    listaAct.add(alum);
+                }else if (rbActivo.isSelected() && alum.isEstado()) {
+                    listaAct.add(alum);
+                } else if (rbInactivo.isSelected() && !alum.isEstado()) {
+                    listaAct.add(alum);
+                }
+
+            }
+            for (Alumno alum : listaAct) {
                 fecha = alum.getFecha_nacimiento().format(dtf);
-                Object[] fila = {
+                modelo.addRow(new Object[]{
                     alum.getId_alumno(),
                     alum.getDni(),
                     alum.getNombre(),
@@ -86,14 +100,13 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                     fecha,
                     alum.getEmail(),
                     alum.getPassword(),
-                    alum.isEstado()
-                };
-                modelo.addRow(fila);
+                    VistaLogin.parsearBooleanaString(alum.isEstado())
+                });
             }
         }
     }
-
     //Arma la cabecera y carga con el método refresh 
+
     private void armarCabecerayLlenar(JTable tabla) {
         //Cabecera
         tabla.setModel(modelo);
@@ -129,9 +142,9 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             }
         });
     }
-    
+
     //formato jDFechaN
-    private void formatojDFechaN(){
+    private void formatojDFechaN() {
         JTextField edit = (JTextField) jDFechaN.getDateEditor().getUiComponent();
         edit.setHorizontalAlignment(JTextField.CENTER);
         edit.setEditable(false);
@@ -181,6 +194,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoFiltrar = new javax.swing.ButtonGroup();
         Panel = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         txtFBuscarDNI = new javax.swing.JTextField();
@@ -209,11 +223,16 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         btnDarAlta = new javax.swing.JButton();
         btnDarBaja = new javax.swing.JButton();
+        rbActivo = new javax.swing.JRadioButton();
+        rbInactivo = new javax.swing.JRadioButton();
+        txtFiltrar = new javax.swing.JLabel();
+        rbTodo = new javax.swing.JRadioButton();
 
         setResizable(true);
 
         Panel.setBackground(new java.awt.Color(47, 96, 131));
         Panel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Panel.setForeground(new java.awt.Color(255, 255, 255));
 
         lblTitulo.setFont(new java.awt.Font("URW Gothic", 1, 36)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -462,6 +481,42 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblApellido, lblDNI, lblEmail, lblFechaNacimiento, lblNombre, lblPassword, txtApellido, txtDNI, txtEmail, txtNombre, txtPassword});
 
+        rbActivo.setBackground(new java.awt.Color(47, 96, 131));
+        rbActivo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbActivo.setForeground(new java.awt.Color(255, 255, 255));
+        rbActivo.setText("Activo");
+        rbActivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbActivoActionPerformed(evt);
+            }
+        });
+
+        rbInactivo.setBackground(new java.awt.Color(47, 96, 131));
+        rbInactivo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbInactivo.setForeground(new java.awt.Color(255, 255, 255));
+        rbInactivo.setText("Inactivo");
+        rbInactivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbInactivoActionPerformed(evt);
+            }
+        });
+
+        txtFiltrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtFiltrar.setForeground(new java.awt.Color(255, 255, 255));
+        txtFiltrar.setText("Filtrar por:");
+
+        rbTodo.setBackground(new java.awt.Color(47, 96, 131));
+        rbTodo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbTodo.setForeground(new java.awt.Color(255, 255, 255));
+        rbTodo.setSelected(true);
+        rbTodo.setText("Todo");
+        rbTodo.setToolTipText("rbTodo");
+        rbTodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbTodoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
         Panel.setLayout(PanelLayout);
         PanelLayout.setHorizontalGroup(
@@ -477,19 +532,28 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                         .addComponent(jButton1)
                         .addGap(81, 81, 81))
                     .addGroup(PanelLayout.createSequentialGroup()
-                        .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(PanelLayout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(PanelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(PanelLayout.createSequentialGroup()
+                                    .addGap(103, 103, 103)
+                                    .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(PanelLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(lblBuscarDNI)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFBuscarDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(PanelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PanelLayout.createSequentialGroup()
-                                .addGap(103, 103, 103)
-                                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(25, Short.MAX_VALUE))))
+                                .addComponent(txtFBuscarDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtFiltrar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rbTodo)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbActivo)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbInactivo)))
+                        .addContainerGap(30, Short.MAX_VALUE))))
         );
         PanelLayout.setVerticalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -501,12 +565,16 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                     .addGroup(PanelLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 21, Short.MAX_VALUE)
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelLayout.createSequentialGroup()
                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblBuscarDNI)
-                            .addComponent(txtFBuscarDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFBuscarDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rbActivo)
+                            .addComponent(rbInactivo)
+                            .addComponent(txtFiltrar)
+                            .addComponent(rbTodo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PanelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -587,15 +655,15 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                 alum.isEstado()
             };
             modelo.addRow(fila);
-            
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un DNI válido y sin puntos");
         } finally {
-            
+
             txtFBuscarDNI.setText("");
-            
+
             txtFBuscarDNI.transferFocus();
-            
+
         }
 
     }//GEN-LAST:event_txtFBuscarDNIActionPerformed
@@ -690,6 +758,21 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this, "Se ha dado de baja al alumno: \n" + alum.getApellido() + " " + alum.getNombre());
     }//GEN-LAST:event_btnDarBajaActionPerformed
 
+    private void rbActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbActivoActionPerformed
+        // TODO add your handling code here:
+        refreshTabla();
+    }//GEN-LAST:event_rbActivoActionPerformed
+
+    private void rbTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTodoActionPerformed
+        // TODO add your handling code here:
+        refreshTabla();
+    }//GEN-LAST:event_rbTodoActionPerformed
+
+    private void rbInactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbInactivoActionPerformed
+        // TODO add your handling code here:
+        refreshTabla();
+    }//GEN-LAST:event_rbInactivoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panel;
@@ -700,6 +783,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JCheckBox cbHabilitarM;
+    private javax.swing.ButtonGroup grupoFiltrar;
     private javax.swing.JLabel imgULP;
     private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDFechaN;
@@ -713,11 +797,15 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JRadioButton rbActivo;
+    private javax.swing.JRadioButton rbInactivo;
+    private javax.swing.JRadioButton rbTodo;
     private javax.swing.JTable tablaAlumno;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtDNI;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFBuscarDNI;
+    private javax.swing.JLabel txtFiltrar;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPassword;
     // End of variables declaration//GEN-END:variables
