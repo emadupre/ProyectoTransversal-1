@@ -92,9 +92,9 @@ public class DialogMateria extends javax.swing.JDialog {
 
         jLabel2.setText("Nombre de la materia:");
 
-        jLabel3.setText("Descripcion de la materia:");
+        jLabel3.setText("Descripción de la materia:");
 
-        jLabel4.setText("Codigo de la materia:");
+        jLabel4.setText("Código de la materia:");
 
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -186,7 +186,7 @@ public class DialogMateria extends javax.swing.JDialog {
         String descripcion = txtDescripcionMateria.getText();
         String codigo = txtCodigoMateria.getText();
         if(nombre.isEmpty() || descripcion.isEmpty() || codigo.isEmpty()){
-            JOptionPane.showMessageDialog(this, "rellene todos los campos necesario.");
+            JOptionPane.showMessageDialog(this, "Rellene todos los campos necesario.");
             return;
         }
         
@@ -195,14 +195,15 @@ public class DialogMateria extends javax.swing.JDialog {
         Materia materia = new Materia(nombre, descripcion, codigo, estado); 
             if(!listaMaterias.contains(materia)){
             maniMateria.agregar(materia);
-            JOptionPane.showMessageDialog(this, "materia agregada con correctamente.");
+            JOptionPane.showMessageDialog(this, "Materia agregada correctamente.");
             limpiarCampos();
             }else{
-            JOptionPane.showMessageDialog(this, "ya hay una materia con ese codigo.");
+            JOptionPane.showMessageDialog(this, "Ya existe una materia con ese código.");
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, "error al agregar materia.");
+            JOptionPane.showMessageDialog(this, "Error al agregar materia.");
         }
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnLimpiarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarCamposActionPerformed

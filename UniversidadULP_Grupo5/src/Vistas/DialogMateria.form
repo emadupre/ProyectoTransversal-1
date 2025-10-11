@@ -187,14 +187,14 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Descripcion de la materia:"/>
+        <Property name="text" type="java.lang.String" value="Descripci&#xf3;n de la materia:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDescripcionMateria">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Codigo de la materia:"/>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo de la materia:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtCodigoMateria">
