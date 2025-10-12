@@ -27,6 +27,13 @@ public class Calificacion {
         this.tipoEvaluacion = tipoEvaluacion;
     }
 
+    public Calificacion(double calificacion, String tipoEvaluacion) {
+        this.calificacion = calificacion;
+        this.tipoEvaluacion = tipoEvaluacion;
+    }
+    
+    
+
     public Calificacion(int id_calificacion, int id_inscripcion, int id_administrativo,String tipoEvaluacion, double calificacion) {
         this.id_calificacion = id_calificacion;
         this.id_inscripcion = id_inscripcion;
