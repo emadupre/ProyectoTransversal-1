@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import org.mariadb.jdbc.Statement;
 import universidadulp_grupo5.Calificacion;
+import universidadulp_grupo5.Materia;
 
 /**
  *
@@ -119,6 +120,7 @@ public class CalificacionDAO implements manipuladorGeneral<Calificacion> {
                     calificacion.setId_administrativo(rs.getInt("id_administrativo"));
                     calificacion.setId_calificacion(rs.getInt("id_calificacion"));
                     calificacion.setCalificacion(rs.getDouble("calificacion"));
+                    calificacion.setTipoEvaluacion(rs.getString("tipo_evaluacion"));
                     calificacion.setFechaModificacion(rs.getDate("fecha_actualizacion").toLocalDate());
                     calificaciones.add(calificacion);
                 }
@@ -194,6 +196,27 @@ public class CalificacionDAO implements manipuladorGeneral<Calificacion> {
         }
 
         return lista;
+    }
+    
+    public void actualizarPorID(int id, Calificacion cal) {
+        String sql = "UPDATE calificaciones SET tipo_evaluacion = ? , calificacion = ? where id_calificacion = ? ";
+        Connection con = conexion_BD.getConnection();
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, cal.getTipoEvaluacion());
+            ps.setDouble(2, cal.getCalificacion());
+            ps.setInt(3, id);
+
+            int filas = ps.executeUpdate();
+            if (filas > 0) {
+                System.out.println("Calificacion modificada con id" + cal.getId_calificacion());
+            } else {
+                System.out.println("No se encontro la calificacion con el id " + cal.getId_calificacion());
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            
+        }
     }
 
 }

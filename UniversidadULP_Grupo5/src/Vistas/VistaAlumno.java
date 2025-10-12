@@ -5,8 +5,8 @@
  */
 package Vistas;
 
-import Modelo.Administrativo;
-import Modelo.Alumno;
+import universidadulp_grupo5.Administrativo;
+import universidadulp_grupo5.Alumno;
 
 /**
  *

@@ -13,32 +13,52 @@ public class Calificacion {
     private int id_inscripcion;
     private int id_administrativo;
     private double calificacion;
+    private String tipoEvaluacion;
     private LocalDate fechaModificacion;
         public Calificacion() {
             this.id_calificacion=-1;
         }
 
-    public Calificacion(int id_inscripcion,int id_administrativo, double calificacion) {
+    public Calificacion(int id_inscripcion,int id_administrativo,String tipoEvaluacion, double calificacion) {
         this.id_calificacion=-1;
         this.id_inscripcion = id_inscripcion;
         this.calificacion = calificacion;
         this.id_administrativo = id_administrativo;
+        this.tipoEvaluacion = tipoEvaluacion;
     }
 
-    public Calificacion(int id_calificacion, int id_inscripcion, int id_administrativo, double calificacion) {
+    public Calificacion(double calificacion, String tipoEvaluacion) {
+        this.calificacion = calificacion;
+        this.tipoEvaluacion = tipoEvaluacion;
+    }
+    
+    
+
+    public Calificacion(int id_calificacion, int id_inscripcion, int id_administrativo,String tipoEvaluacion, double calificacion) {
         this.id_calificacion = id_calificacion;
         this.id_inscripcion = id_inscripcion;
         this.calificacion = calificacion;
         this.id_administrativo = id_administrativo;
+        this.tipoEvaluacion = tipoEvaluacion;
     }
 
-    public Calificacion(int id_inscripcion, int id_administrativo, double calificacion, LocalDate fechaModificacion) {
+    public Calificacion(int id_inscripcion, int id_administrativo, double calificacion,String tipoEvaluacion, LocalDate fechaModificacion) {
         this.id_inscripcion = id_inscripcion;
         this.id_administrativo = id_administrativo;
         this.calificacion = calificacion;
         this.fechaModificacion = fechaModificacion;
+        this.tipoEvaluacion = tipoEvaluacion;
     }
 
+    public String getTipoEvaluacion() {
+        return tipoEvaluacion;
+    }
+
+    public void setTipoEvaluacion(String tipoEvaluacion) {
+        this.tipoEvaluacion = tipoEvaluacion;
+    }
+
+    
     public LocalDate getFechaModificacion() {
         return fechaModificacion;
     }
