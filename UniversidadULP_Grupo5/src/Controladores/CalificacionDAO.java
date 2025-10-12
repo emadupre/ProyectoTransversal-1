@@ -119,6 +119,7 @@ public class CalificacionDAO implements manipuladorGeneral<Calificacion> {
                     calificacion.setId_administrativo(rs.getInt("id_administrativo"));
                     calificacion.setId_calificacion(rs.getInt("id_calificacion"));
                     calificacion.setCalificacion(rs.getDouble("calificacion"));
+                    calificacion.setTipoEvaluacion(rs.getString("tipo_evaluacion"));
                     calificacion.setFechaModificacion(rs.getDate("fecha_actualizacion").toLocalDate());
                     calificaciones.add(calificacion);
                 }
