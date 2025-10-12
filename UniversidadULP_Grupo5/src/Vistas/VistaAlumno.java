@@ -5,8 +5,8 @@
  */
 package Vistas;
 
-import universidadulp_grupo5.Administrativo;
-import universidadulp_grupo5.Alumno;
+import Modelo.Administrativo;
+import Modelo.Alumno;
 
 /**
  *
@@ -40,6 +40,8 @@ public class VistaAlumno extends javax.swing.JFrame {
         btnAlumnos = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnMaterias = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        btnCalificaciones = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -83,6 +85,18 @@ public class VistaAlumno extends javax.swing.JFrame {
         jMenu2.add(btnMaterias);
 
         jMenuBar1.add(jMenu2);
+
+        jMenu5.setText("Calificaciones");
+
+        btnCalificaciones.setText("Calificaciones");
+        btnCalificaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalificacionesActionPerformed(evt);
+            }
+        });
+        jMenu5.add(btnCalificaciones);
+
+        jMenuBar1.add(jMenu5);
 
         jMenu3.setText("Salir");
 
@@ -153,6 +167,15 @@ public class VistaAlumno extends javax.swing.JFrame {
         ventanaLogin.setVisible(true);
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
+    private void btnCalificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalificacionesActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        CalificacionesInternal ventanaCalificacion = new CalificacionesInternal(usuario);
+        escritorio.add(ventanaCalificacion);
+        ventanaCalificacion.setVisible(true);
+        ventanaCalificacion.moveToFront();
+    }//GEN-LAST:event_btnCalificacionesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -191,6 +214,7 @@ public class VistaAlumno extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnAlumnos;
+    private javax.swing.JMenuItem btnCalificaciones;
     private javax.swing.JMenuItem btnCerrarSesion;
     private javax.swing.JMenuItem btnMaterias;
     private javax.swing.JDesktopPane escritorio;
@@ -198,6 +222,7 @@ public class VistaAlumno extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
