@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import manipuladoresDAO.AdministrativoDAO;
 import manipuladoresDAO.AlumnoDAO;
-import universidadulp_grupo5.Administrativo;
+import Modelo.Administrativo;
 import universidadulp_grupo5.Alumno;
 
 /**

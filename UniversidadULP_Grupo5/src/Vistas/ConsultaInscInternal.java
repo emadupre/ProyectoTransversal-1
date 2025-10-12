@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import manipuladoresDAO.AdministrativoDAO;
 import manipuladoresDAO.CalificacionDAO;
 import manipuladoresDAO.MateriaDAO;
-import universidadulp_grupo5.Administrativo;
+import Modelo.Administrativo;
 import universidadulp_grupo5.Alumno;
 import universidadulp_grupo5.Calificacion;
 import universidadulp_grupo5.Materia;

@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import manipuladoresDAO.InscripcionDAO;
 import manipuladoresDAO.MateriaDAO;
 import universidadulp_grupo5.Alumno;
-import universidadulp_grupo5.Inscripcion;
+import Modelo.Inscripcion;
 import universidadulp_grupo5.Materia;
 
 /**

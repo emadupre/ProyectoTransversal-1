@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.mariadb.jdbc.Statement;
-import universidadulp_grupo5.Inscripcion;
+import Modelo.Inscripcion;
 
 /**
  *
