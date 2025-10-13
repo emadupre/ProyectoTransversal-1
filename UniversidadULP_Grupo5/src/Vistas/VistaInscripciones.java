@@ -23,7 +23,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private Alumno alumno1 = new Alumno(2,41721827, "jose.bossa.3@gmail.com","lagalletaquepela","Jose" , "bossa",fecha,true);
     public VistaInscripciones(Alumno alumno) {
         initComponents();
-        
+        this.setSize(1100, 730);
     }
 
     /**

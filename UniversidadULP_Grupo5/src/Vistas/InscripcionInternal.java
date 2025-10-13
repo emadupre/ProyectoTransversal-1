@@ -5,8 +5,6 @@
  */
 package Vistas;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -18,6 +16,9 @@ import manipuladoresDAO.MateriaDAO;
 import Modelo.Alumno;
 import Modelo.Inscripcion;
 import Modelo.Materia;
+import java.util.ArrayList;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -26,17 +27,19 @@ import Modelo.Materia;
 public class InscripcionInternal extends javax.swing.JInternalFrame {
 
     private MateriaDAO listMateri = new MateriaDAO();
-    private Alumno alumno = new Alumno();
-    private InscripcionDAO inscripciones = new InscripcionDAO();
-    private int seleccionado = -1;
-
+    private InscripcionDAO maniIns = new InscripcionDAO();
+    private int seleccionMat = -1;
+    private int seleccionIns = -1;
+    List<Inscripcion> listaInscripciones; 
+    private Alumno alumno;
     public InscripcionInternal(Alumno alumno) {
-
+        this.alumno = alumno;
         initComponents();
-        rellenarCabecera(tblMateria);
-        RellenarTabla(tblMateria);
-        agregarActionListener(tblMateria);
-        BtnInscribirse.setEnabled(false);
+        rellenarCabeceraMateriasDisponibles(tblMaterias);
+        rellenarCabeceraInscripciones(tblInscripciones);
+        rellenarTabla(tblMaterias);
+        agregarActionListener(tblMaterias);
+        btnInscribirse.setEnabled(false);
 
     }
 
@@ -51,26 +54,51 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        BtnInscribirse = new javax.swing.JButton();
+        btnInscribirse = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblMateria = new javax.swing.JTable();
+        tblInscripciones = new javax.swing.JTable();
         btnSalir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblMaterias = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtMateriaS = new javax.swing.JTextField();
+        txtCodigoMateriaS = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtDescripcionS = new javax.swing.JTextArea();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        btnBaja = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        checkEdicion = new javax.swing.JCheckBox();
+        btnEliminar = new javax.swing.JButton();
+        btnAlta = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        txtFechaS = new javax.swing.JTextField();
+        txtInscripcionS = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Inscripcion de Materias ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Seleccione la materia a la cual desea inscribirse");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, -1));
 
-        BtnInscribirse.setText("Inscribirse");
-        BtnInscribirse.addActionListener(new java.awt.event.ActionListener() {
+        btnInscribirse.setText("Agregar inscripción");
+        btnInscribirse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnInscribirseActionPerformed(evt);
+                btnInscribirseActionPerformed(evt);
             }
         });
+        getContentPane().add(btnInscribirse, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 150, -1));
 
-        tblMateria.setModel(new javax.swing.table.DefaultTableModel(
+        tblInscripciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -80,7 +108,9 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(tblMateria);
+        jScrollPane1.setViewportView(tblInscripciones);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 310, 290));
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -88,80 +118,121 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
                 btnSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 530, 100, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Oferta de materias");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(BtnInscribirse, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(232, 232, 232))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(1, 1, 1)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnInscribirse)
-                    .addComponent(btnSalir))
-                .addGap(56, 56, 56))
-        );
+        tblMaterias.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tblMaterias);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 86, 380, 290));
+
+        jLabel4.setText("Mis inscripciones");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, -1));
+
+        jLabel5.setText("Seleccione una inscripción que quiera modificar");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, -1, -1));
+
+        jLabel6.setText("Materia seleccionada:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
+
+        txtMateriaS.setEditable(false);
+        getContentPane().add(txtMateriaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 90, -1));
+
+        txtCodigoMateriaS.setEditable(false);
+        getContentPane().add(txtCodigoMateriaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 450, 80, -1));
+
+        txtDescripcionS.setEditable(false);
+        txtDescripcionS.setColumns(20);
+        txtDescripcionS.setRows(5);
+        jScrollPane3.setViewportView(txtDescripcionS);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 280, 80));
+
+        jLabel7.setText("Nombre");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, -1));
+
+        jLabel8.setText("Cod. materia");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, -1, -1));
+
+        btnBaja.setText("Dar de baja inscripción");
+        getContentPane().add(btnBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 440, 160, -1));
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 10, 580));
+
+        checkEdicion.setText("Hablitar modificación de inscripciones");
+        getContentPane().add(checkEdicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, -1, -1));
+
+        btnEliminar.setText("Eliminar inscripción");
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, -1, -1));
+
+        btnAlta.setText("Dar de alta inscripción");
+        getContentPane().add(btnAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 400, -1, -1));
+
+        jLabel9.setText("Inscripción seleccionada:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 440, -1, -1));
+
+        txtFechaS.setEditable(false);
+        getContentPane().add(txtFechaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 100, 30));
+
+        txtInscripcionS.setEditable(false);
+        getContentPane().add(txtInscripcionS, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 470, 160, -1));
+
+        jLabel10.setText("Materia:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, -1, -1));
+
+        jLabel11.setText("Fecha inscripción");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 510, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnInscribirseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInscribirseActionPerformed
+    private void btnInscribirseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscribirseActionPerformed
         Inscripcion inscrip = null;
         try {
-            inscrip = new Inscripcion(alumno.getId_alumno(), seleccionado, true);
-            inscripciones.agregar(inscrip);
+            inscrip = new Inscripcion(alumno.getId_alumno(), seleccionMat, true);
+            maniIns.agregar(inscrip);
             JOptionPane.showMessageDialog(this, "inscripcion realizada con exito ");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "error al eliminar una materia ");
             e.printStackTrace();
         }
-    }//GEN-LAST:event_BtnInscribirseActionPerformed
+    }//GEN-LAST:event_btnInscribirseActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        btnSalir.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro que querés salir?", "Confirmar salida", JOptionPane.YES_NO_OPTION);
-                if (respuesta == JOptionPane.YES_OPTION) {
-                    System.exit(0);
-                }
-            }
-        });
+        this.dispose();                           
     }//GEN-LAST:event_btnSalirActionPerformed
-    public void rellenarCabecera(JTable tabla) {
+    private void rellenarCabeceraInscripciones(JTable tabla){
+        DefaultTableModel model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int a, int b) {
+                return false;
+            }
+
+        };
+        model.addColumn("id_inscripcion");
+        model.addColumn("Nombre materia");
+        model.addColumn("Fecha inscripción");
+        model.addColumn("Estado inscripción");
+        tabla.setModel(model);
+        TableColumnModel modeloColm = tabla.getColumnModel();
+        TableColumn column0 = modeloColm.getColumn(0);
+        column0.setMinWidth(0);
+        column0.setMaxWidth(0);
+        column0.setPreferredWidth(0);
+        column0.setResizable(false);
+    }
+    public void rellenarCabeceraMateriasDisponibles(JTable tabla) {
 
         DefaultTableModel model = new DefaultTableModel() {
             @Override
@@ -171,23 +242,37 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
 
         };
         model.addColumn("id_materia");
-        model.addColumn("nombre");
-        model.addColumn("descripcion");
-        model.addColumn("estado");
+        model.addColumn("Nombre");
+        model.addColumn("Descripcion");
+        model.addColumn("Codigo materia");
         tabla.setModel(model);
+        TableColumnModel modeloColm = tabla.getColumnModel();
+        TableColumn column0 = modeloColm.getColumn(0);
+        column0.setMinWidth(0);
+        column0.setMaxWidth(0);
+        column0.setPreferredWidth(0);
+        column0.setResizable(false);
     }
 
-    public void RellenarTabla(JTable tabla) {
+    public void rellenarTabla(JTable tabla) {
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        listaInscripciones = maniIns.listarInscripcionesPorAlumno(alumno.getId_alumno());
         modelo.setRowCount(0);
+        ArrayList<Materia> listaMateriasFiltrada = new ArrayList<>();
         try {
             List<Materia> listarMaterias = listMateri.listar();
-            for (Materia m : listarMaterias) {
-               
-                    modelo.addRow(new Object[]{m.getId_materia(), m.getNombre(), 
+            for (Inscripcion i : listaInscripciones) {
+                for(Materia m : listarMaterias){
+                    if(i.getId_materia() != m.getId_materia() && m.isEstado() && !listaMateriasFiltrada.contains(m)){
+                        listaMateriasFiltrada.add(m);
+                    }
+                } 
+            }
+            for(Materia m : listaMateriasFiltrada){
+                modelo.addRow(new Object[]{m.getId_materia(), m.getNombre(), 
                         m.getDescripcion(),
-                        VistaLogin.parsearBooleanaString(m.isEstado())});
-                
+                        m.getCodigo_materia()
+                        });
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(tabla, "error al cargar las materias");
@@ -201,26 +286,46 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
                 if (eventos.getValueIsAdjusting()) {
                     return;
                 }
-                int filaMateria = tblMateria.getSelectedRow();
+                int filaMateria = tabla.getSelectedRow();
                 if (filaMateria > - 1) {
-                    seleccionado = (int) tabla.getValueAt(filaMateria, 0);
-                    BtnInscribirse.setEnabled(true);
+                    seleccionMat = (int) tabla.getValueAt(filaMateria, 0);
+                    btnInscribirse.setEnabled(true);
                 } else {
-                    BtnInscribirse.setEnabled(false);
+                    btnInscribirse.setEnabled(false);
                 }
             }
 
         });
-
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnInscribirse;
+    private javax.swing.JButton btnAlta;
+    private javax.swing.JButton btnBaja;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnInscribirse;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JCheckBox checkEdicion;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblMateria;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable tblInscripciones;
+    private javax.swing.JTable tblMaterias;
+    private javax.swing.JTextField txtCodigoMateriaS;
+    private javax.swing.JTextArea txtDescripcionS;
+    private javax.swing.JTextField txtFechaS;
+    private javax.swing.JTextField txtInscripcionS;
+    private javax.swing.JTextField txtMateriaS;
     // End of variables declaration//GEN-END:variables
 
 }

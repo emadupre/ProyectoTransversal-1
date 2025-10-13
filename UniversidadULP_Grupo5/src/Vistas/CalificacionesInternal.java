@@ -98,7 +98,10 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        pnlCalificacion.setBackground(new java.awt.Color(47, 91, 131));
         pnlCalificacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlAlumnos.setBackground(new java.awt.Color(47, 91, 131));
 
         txtBuscarAlumno.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -159,6 +162,7 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
 
         pnlCalificacion.add(pnlAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 560));
 
+        pnlInscripciones.setBackground(new java.awt.Color(47, 91, 131));
         pnlInscripciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -182,6 +186,7 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
 
         pnlCalificacion.add(pnlInscripciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 290, 560));
 
+        pnlCalificaciones.setBackground(new java.awt.Color(47, 91, 131));
         pnlCalificaciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
