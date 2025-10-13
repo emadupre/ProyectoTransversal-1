@@ -48,22 +48,22 @@ public class DialogCalificacion extends javax.swing.JDialog {
         pnlAgregar = new javax.swing.JPanel();
         txtCalificacion = new javax.swing.JTextField();
         txtTipoEvaluacion = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblCalificacion = new javax.swing.JLabel();
+        lblTipoEvaluacion = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        lblAgregarC = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel1.setText("Calificación:");
+        lblCalificacion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblCalificacion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCalificacion.setText("Calificación:");
 
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("Tipo de evaluación:");
+        lblTipoEvaluacion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblTipoEvaluacion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTipoEvaluacion.setText("Tipo de evaluación:");
 
         btnAgregar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         btnAgregar.setText("Agregar calificación");
@@ -89,9 +89,9 @@ public class DialogCalificacion extends javax.swing.JDialog {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Agregar Calificacion");
+        lblAgregarC.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblAgregarC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAgregarC.setText("Agregar Calificacion");
 
         javax.swing.GroupLayout pnlAgregarLayout = new javax.swing.GroupLayout(pnlAgregar);
         pnlAgregar.setLayout(pnlAgregarLayout);
@@ -102,8 +102,8 @@ public class DialogCalificacion extends javax.swing.JDialog {
                 .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlAgregarLayout.createSequentialGroup()
                         .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE))
+                            .addComponent(lblCalificacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblTipoEvaluacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE))
                         .addGap(37, 37, 37))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnCancelar)
@@ -115,19 +115,19 @@ public class DialogCalificacion extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnLimpiar)))))
                 .addContainerGap(15, Short.MAX_VALUE))
-            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblAgregarC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlAgregarLayout.setVerticalGroup(
             pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAgregarLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel3)
+                .addComponent(lblAgregarC)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(lblTipoEvaluacion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTipoEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(lblCalificacion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -240,9 +240,9 @@ public class DialogCalificacion extends javax.swing.JDialog {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblAgregarC;
+    private javax.swing.JLabel lblCalificacion;
+    private javax.swing.JLabel lblTipoEvaluacion;
     private javax.swing.JPanel pnlAgregar;
     private javax.swing.JTextField txtCalificacion;
     private javax.swing.JTextField txtTipoEvaluacion;

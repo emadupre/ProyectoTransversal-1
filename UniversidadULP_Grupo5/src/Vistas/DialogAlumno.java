@@ -75,6 +75,7 @@ public class DialogAlumno extends javax.swing.JDialog {
         jDFechaN = new com.toedter.calendar.JDateChooser();
         jbtAgregar = new javax.swing.JButton();
         jbtSalir = new javax.swing.JButton();
+        lblAgregarA = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -82,27 +83,27 @@ public class DialogAlumno extends javax.swing.JDialog {
 
         jPanel7.setBackground(new java.awt.Color(47, 162, 186));
 
-        lblNombre.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
+        lblNombre.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre.setText("Nombre:");
 
-        lblApellido.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
+        lblApellido.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblApellido.setForeground(new java.awt.Color(255, 255, 255));
         lblApellido.setText("Apellido:");
 
-        lblFechaNacimiento.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
+        lblFechaNacimiento.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblFechaNacimiento.setForeground(new java.awt.Color(255, 255, 255));
         lblFechaNacimiento.setText("Fecha N. :");
 
-        lblEmail.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
+        lblEmail.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
         lblEmail.setText("Email:");
 
-        lblPassword.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
+        lblPassword.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(255, 255, 255));
         lblPassword.setText("Password:");
 
-        lblDNI.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
+        lblDNI.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblDNI.setForeground(new java.awt.Color(255, 255, 255));
         lblDNI.setText("DNI:");
 
@@ -186,7 +187,8 @@ public class DialogAlumno extends javax.swing.JDialog {
         );
 
         jbtAgregar.setBackground(new java.awt.Color(47, 162, 186));
-        jbtAgregar.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
+        jbtAgregar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jbtAgregar.setForeground(new java.awt.Color(255, 255, 255));
         jbtAgregar.setText("Agregar");
         jbtAgregar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(204, 204, 204), null, null));
         jbtAgregar.setBorderPainted(false);
@@ -197,7 +199,8 @@ public class DialogAlumno extends javax.swing.JDialog {
         });
 
         jbtSalir.setBackground(new java.awt.Color(47, 162, 186));
-        jbtSalir.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
+        jbtSalir.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jbtSalir.setForeground(new java.awt.Color(255, 255, 255));
         jbtSalir.setText("Salir");
         jbtSalir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jbtSalir.setBorderPainted(false);
@@ -206,6 +209,12 @@ public class DialogAlumno extends javax.swing.JDialog {
                 jbtSalirActionPerformed(evt);
             }
         });
+
+        lblAgregarA.setBackground(new java.awt.Color(255, 255, 255));
+        lblAgregarA.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblAgregarA.setForeground(new java.awt.Color(255, 255, 255));
+        lblAgregarA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAgregarA.setText("Agregar Alumno");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -219,18 +228,21 @@ public class DialogAlumno extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbtSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
+            .addComponent(lblAgregarA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(18, 18, 18)
+                .addComponent(lblAgregarA)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jbtAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                     .addComponent(jbtSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -358,6 +370,7 @@ public class DialogAlumno extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JButton jbtAgregar;
     private javax.swing.JButton jbtSalir;
+    private javax.swing.JLabel lblAgregarA;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblDNI;
     private javax.swing.JLabel lblEmail;
