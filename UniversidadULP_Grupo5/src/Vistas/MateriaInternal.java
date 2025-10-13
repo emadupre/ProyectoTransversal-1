@@ -337,10 +337,12 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
             btnEliminar.setEnabled(true);
             btnDarAlta.setEnabled(true);
             btnDarBaja.setEnabled(true);
+            btnAgregar.setEnabled(false);
         } else {
             txtNombre.setEnabled(false);
             txtDescripcion.setEnabled(false);
             txtCodMateria.setEnabled(false);
+            btnAgregar.setEnabled(true);
         }
     }//GEN-LAST:event_cbHabilitarActionPerformed
 
@@ -358,18 +360,32 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
         int id = (int) tblMateria.getValueAt(fila, 0);
         try {
             Materia materia = new Materia();
+            materia.setId_materia(id);
             materia.setNombre(txtNombre.getText().trim());
             materia.setDescripcion(txtDescripcion.getText().trim());
             materia.setCodigo_materia(txtCodMateria.getText().trim());
-            if (!listaMaterias.contains(materia)) {
-                maniMateria.actualizarPorID(id, materia);
-                JOptionPane.showMessageDialog(this,
-                        "Materia modificada correctamente",
-                        "Éxito",
-                        JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "Ya existe una materia con ese codigo.");
+            
+            boolean codigoRepetido = false;
+            
+            
+             /* le hago un recorrido para ver si existe otra materia con el mismo codigo */
+            for(Materia m : listaMaterias){
+                if(m.getCodigo_materia().equalsIgnoreCase(materia.getCodigo_materia()) && m.getId_materia() != id){
+                codigoRepetido = true;
+                break;
+                }
             }
+            
+            
+            if (!codigoRepetido) {
+            maniMateria.actualizarPorID(id, materia);
+            JOptionPane.showMessageDialog(this,
+                    "Materia modificada correctamente",
+                    "Éxito",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Ya existe una materia con ese código.");
+        }
             limpiarCampos();
             refrescarTabla();
         } catch (Exception e) {
