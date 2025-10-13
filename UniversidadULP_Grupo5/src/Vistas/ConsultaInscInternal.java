@@ -65,14 +65,15 @@ public class ConsultaInscInternal extends javax.swing.JInternalFrame {
         lblNombre = new javax.swing.JLabel();
         lblApellido = new javax.swing.JLabel();
         lblFechaNacimiento = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblConsultaCalificaciones = new javax.swing.JLabel();
+        lblFNacimientoTitle = new javax.swing.JLabel();
+        lblNombreTitle = new javax.swing.JLabel();
+        lblDNITitle = new javax.swing.JLabel();
+        lblApellidoTitle = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(47, 96, 131));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblCalificaciones.setBackground(new java.awt.Color(222, 222, 222));
         tblCalificaciones.setModel(new javax.swing.table.DefaultTableModel(
@@ -88,6 +89,8 @@ public class ConsultaInscInternal extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblCalificaciones);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 64, 490, 408));
+
         listMateriasInscriptas.setBackground(new java.awt.Color(222, 222, 222));
         listMateriasInscriptas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Materias inscriptas:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
         listMateriasInscriptas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -100,105 +103,57 @@ public class ConsultaInscInternal extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(listMateriasInscriptas);
 
-        lblDNI.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 249, 310, 223));
+
+        lblDNI.setFont(new java.awt.Font("Roboto", 3, 18)); // NOI18N
         lblDNI.setForeground(new java.awt.Color(255, 255, 255));
         lblDNI.setText("DNIEJEMPLO");
+        jPanel1.add(lblDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, 23));
 
-        lblNombre.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblNombre.setFont(new java.awt.Font("Roboto", 3, 18)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre.setText("NOMBREEJEMPLO");
+        jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, 21));
 
-        lblApellido.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblApellido.setFont(new java.awt.Font("Roboto", 3, 18)); // NOI18N
         lblApellido.setForeground(new java.awt.Color(255, 255, 255));
         lblApellido.setText("APELLIDOEJEMPLO");
+        jPanel1.add(lblApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 23));
 
-        lblFechaNacimiento.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblFechaNacimiento.setFont(new java.awt.Font("Roboto", 3, 18)); // NOI18N
         lblFechaNacimiento.setForeground(new java.awt.Color(255, 255, 255));
         lblFechaNacimiento.setText("FECHANACIMIENTOEJEMPLO");
+        jPanel1.add(lblFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, 25));
 
-        jLabel10.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Consulta de clasificaciones");
+        lblConsultaCalificaciones.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblConsultaCalificaciones.setForeground(new java.awt.Color(255, 255, 255));
+        lblConsultaCalificaciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblConsultaCalificaciones.setText("Consulta de Calificaciones");
+        jPanel1.add(lblConsultaCalificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 17, 830, -1));
 
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Fecha de nacimiento:");
+        lblFNacimientoTitle.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblFNacimientoTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblFNacimientoTitle.setText("Fecha de nacimiento:");
+        jPanel1.add(lblFNacimientoTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 183, -1));
 
-        jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Nombre:");
+        lblNombreTitle.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblNombreTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreTitle.setText("Nombre:");
+        jPanel1.add(lblNombreTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("DNI:");
+        lblDNITitle.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblDNITitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblDNITitle.setText("DNI:");
+        jPanel1.add(lblDNITitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Apellido:");
+        lblApellidoTitle.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblApellidoTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblApellidoTitle.setText("Apellido:");
+        jPanel1.add(lblApellidoTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 92, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addComponent(jSeparator1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblApellido)
-                            .addComponent(lblFechaNacimiento)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(lblNombre)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(156, 156, 156)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(14, 14, 14))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1)))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
+        btnSalir.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        btnSalir.setText("Salir");
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 480, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -208,7 +163,7 @@ public class ConsultaInscInternal extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
         );
 
         pack();
@@ -284,19 +239,19 @@ public class ConsultaInscInternal extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblApellidoTitle;
+    private javax.swing.JLabel lblConsultaCalificaciones;
     private javax.swing.JLabel lblDNI;
+    private javax.swing.JLabel lblDNITitle;
+    private javax.swing.JLabel lblFNacimientoTitle;
     private javax.swing.JLabel lblFechaNacimiento;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNombreTitle;
     private javax.swing.JList<String> listMateriasInscriptas;
     private javax.swing.JTable tblCalificaciones;
     // End of variables declaration//GEN-END:variables
