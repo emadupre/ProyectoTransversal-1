@@ -52,52 +52,57 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblInscripcionMaterias = new javax.swing.JLabel();
+        lblSelMateria = new javax.swing.JLabel();
         btnInscribirse = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblInscripciones = new javax.swing.JTable();
         btnSalir = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        lblOfertaMaterias = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblMaterias = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblMisInscripciones = new javax.swing.JLabel();
+        lblSelInscrip = new javax.swing.JLabel();
+        lblMateriaSel = new javax.swing.JLabel();
         txtMateriaS = new javax.swing.JTextField();
         txtCodigoMateriaS = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtDescripcionS = new javax.swing.JTextArea();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        lblCodMateria = new javax.swing.JLabel();
         btnBaja = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
+        jSeparador = new javax.swing.JSeparator();
         checkEdicion = new javax.swing.JCheckBox();
         btnEliminar = new javax.swing.JButton();
         btnAlta = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        lblInscripSel = new javax.swing.JLabel();
         txtFechaS = new javax.swing.JTextField();
         txtInscripcionS = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblMateria = new javax.swing.JLabel();
+        lblFechaInscrip = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Inscripcion de Materias ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        lblInscripcionMaterias.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblInscripcionMaterias.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInscripcionMaterias.setText("Inscripcion de Materias ");
+        getContentPane().add(lblInscripcionMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 850, 20));
 
-        jLabel2.setText("Seleccione la materia a la cual desea inscribirse");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, -1));
+        lblSelMateria.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        lblSelMateria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSelMateria.setText("Seleccione la materia a la cual desea inscribirse");
+        getContentPane().add(lblSelMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 370, -1));
 
+        btnInscribirse.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         btnInscribirse.setText("Agregar inscripción");
         btnInscribirse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInscribirseActionPerformed(evt);
             }
         });
-        getContentPane().add(btnInscribirse, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 150, -1));
+        getContentPane().add(btnInscribirse, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 150, -1));
 
+        tblInscripciones.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         tblInscripciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -110,20 +115,23 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblInscripciones);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 310, 290));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 380, 290));
 
+        btnSalir.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 530, 100, -1));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 540, 100, -1));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Oferta de materias");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        lblOfertaMaterias.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblOfertaMaterias.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblOfertaMaterias.setText("Oferta de materias");
+        getContentPane().add(lblOfertaMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 370, -1));
 
+        tblMaterias.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         tblMaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -136,63 +144,86 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 86, 380, 290));
 
-        jLabel4.setText("Mis inscripciones");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, -1));
+        lblMisInscripciones.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblMisInscripciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMisInscripciones.setText("Mis Inscripciones");
+        getContentPane().add(lblMisInscripciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 30, 380, -1));
 
-        jLabel5.setText("Seleccione una inscripción que quiera modificar");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, -1, -1));
+        lblSelInscrip.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        lblSelInscrip.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSelInscrip.setText("Seleccione una inscripción que quiera modificar");
+        getContentPane().add(lblSelInscrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, 310, -1));
 
-        jLabel6.setText("Materia seleccionada:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
+        lblMateriaSel.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblMateriaSel.setText("Materia seleccionada:");
+        getContentPane().add(lblMateriaSel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, -1));
 
         txtMateriaS.setEditable(false);
-        getContentPane().add(txtMateriaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 90, -1));
+        txtMateriaS.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        getContentPane().add(txtMateriaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 450, 90, -1));
 
         txtCodigoMateriaS.setEditable(false);
-        getContentPane().add(txtCodigoMateriaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 450, 80, -1));
+        txtCodigoMateriaS.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        getContentPane().add(txtCodigoMateriaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 80, -1));
 
         txtDescripcionS.setEditable(false);
         txtDescripcionS.setColumns(20);
+        txtDescripcionS.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtDescripcionS.setRows(5);
         jScrollPane3.setViewportView(txtDescripcionS);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 280, 80));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 320, 80));
 
-        jLabel7.setText("Nombre");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, -1));
+        lblNombre.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNombre.setText("Nombre:");
+        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, 20));
 
-        jLabel8.setText("Cod. materia");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, -1, -1));
+        lblCodMateria.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblCodMateria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCodMateria.setText("Cod. materia:");
+        getContentPane().add(lblCodMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, -1, 20));
 
-        btnBaja.setText("Dar de baja inscripción");
-        getContentPane().add(btnBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 440, 160, -1));
+        btnBaja.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        btnBaja.setText("Dar de Baja");
+        getContentPane().add(btnBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 410, -1, -1));
 
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 10, 580));
+        jSeparador.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        getContentPane().add(jSeparador, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 10, 540));
 
+        checkEdicion.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         checkEdicion.setText("Hablitar modificación de inscripciones");
-        getContentPane().add(checkEdicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, -1, -1));
+        getContentPane().add(checkEdicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, -1, -1));
 
-        btnEliminar.setText("Eliminar inscripción");
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, -1, -1));
+        btnEliminar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        btnEliminar.setText("Eliminar");
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, -1, -1));
 
-        btnAlta.setText("Dar de alta inscripción");
-        getContentPane().add(btnAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 400, -1, -1));
+        btnAlta.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        btnAlta.setText("Dar de Alta");
+        getContentPane().add(btnAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, -1, -1));
 
-        jLabel9.setText("Inscripción seleccionada:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 440, -1, -1));
+        lblInscripSel.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblInscripSel.setText("Inscripción seleccionada:");
+        getContentPane().add(lblInscripSel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 450, -1, -1));
 
         txtFechaS.setEditable(false);
-        getContentPane().add(txtFechaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 100, 30));
+        txtFechaS.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        getContentPane().add(txtFechaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 160, 30));
 
         txtInscripcionS.setEditable(false);
-        getContentPane().add(txtInscripcionS, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 470, 160, -1));
+        txtInscripcionS.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        getContentPane().add(txtInscripcionS, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, 160, -1));
 
-        jLabel10.setText("Materia:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, -1, -1));
+        lblMateria.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblMateria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMateria.setText("Materia:");
+        getContentPane().add(lblMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 480, -1, 20));
 
-        jLabel11.setText("Fecha inscripción");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 510, -1, -1));
+        lblFechaInscrip.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblFechaInscrip.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblFechaInscrip.setText("Fecha inscripción:");
+        getContentPane().add(lblFechaInscrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 516, -1, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -304,21 +335,21 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnInscribirse;
     private javax.swing.JButton btnSalir;
     private javax.swing.JCheckBox checkEdicion;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparador;
+    private javax.swing.JLabel lblCodMateria;
+    private javax.swing.JLabel lblFechaInscrip;
+    private javax.swing.JLabel lblInscripSel;
+    private javax.swing.JLabel lblInscripcionMaterias;
+    private javax.swing.JLabel lblMateria;
+    private javax.swing.JLabel lblMateriaSel;
+    private javax.swing.JLabel lblMisInscripciones;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblOfertaMaterias;
+    private javax.swing.JLabel lblSelInscrip;
+    private javax.swing.JLabel lblSelMateria;
     private javax.swing.JTable tblInscripciones;
     private javax.swing.JTable tblMaterias;
     private javax.swing.JTextField txtCodigoMateriaS;
