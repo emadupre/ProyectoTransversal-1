@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 
@@ -17,7 +18,7 @@ public class Inscripcion {
     private int id_usuario;
     private int id_materia;
     private boolean estado;
-    
+    private LocalDate fechaIns;
     public Inscripcion() {
         this.id_inscripcion=-1;
     }
@@ -29,11 +30,20 @@ public class Inscripcion {
         this.estado = estado;
     }
 
-    public Inscripcion(int id_inscripcion, int id_usuario, int id_materia, boolean estado) {
+    public Inscripcion(int id_inscripcion, int id_usuario, int id_materia,LocalDate fechaIns, boolean estado) {
         this.id_inscripcion = id_inscripcion;
         this.id_usuario = id_usuario;
         this.id_materia = id_materia;
         this.estado = estado;
+        this.fechaIns = fechaIns;
+    }
+
+    public LocalDate getFechaIns() {
+        return fechaIns;
+    }
+
+    public void setFechaIns(LocalDate fechaIns) {
+        this.fechaIns = fechaIns;
     }
 
 
