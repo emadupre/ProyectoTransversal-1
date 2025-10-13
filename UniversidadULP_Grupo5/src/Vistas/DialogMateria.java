@@ -43,12 +43,12 @@ public class DialogMateria extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         scrollPane1 = new java.awt.ScrollPane();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblAgregarMateria = new javax.swing.JLabel();
+        lblNombreMateria = new javax.swing.JLabel();
         txtNombreMateria = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lblDescripcionMateria = new javax.swing.JLabel();
         txtDescripcionMateria = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        lblCodigoMateria = new javax.swing.JLabel();
         txtCodigoMateria = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnLimpiarCampos = new javax.swing.JButton();
@@ -88,14 +88,23 @@ public class DialogMateria extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Agregar materia");
+        lblAgregarMateria.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblAgregarMateria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAgregarMateria.setText("Agregar Materia");
 
-        jLabel2.setText("Nombre de la materia:");
+        lblNombreMateria.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblNombreMateria.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNombreMateria.setText("Nombre de la materia:");
 
-        jLabel3.setText("Descripción de la materia:");
+        lblDescripcionMateria.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblDescripcionMateria.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblDescripcionMateria.setText("Descripción de la materia:");
 
-        jLabel4.setText("Código de la materia:");
+        lblCodigoMateria.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblCodigoMateria.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCodigoMateria.setText("Código de la materia:");
 
+        btnAgregar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +112,7 @@ public class DialogMateria extends javax.swing.JDialog {
             }
         });
 
+        btnLimpiarCampos.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         btnLimpiarCampos.setText("Limpiar Campos");
         btnLimpiarCampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +120,7 @@ public class DialogMateria extends javax.swing.JDialog {
             }
         });
 
+        btnCancelar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,51 +133,45 @@ public class DialogMateria extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtCodigoMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(btnAgregar)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                                            .addComponent(btnLimpiarCampos))
-                                        .addComponent(txtNombreMateria, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtDescripcionMateria, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(btnCancelar))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnCancelar)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(btnAgregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                        .addComponent(btnLimpiarCampos))
+                    .addComponent(txtNombreMateria, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDescripcionMateria, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNombreMateria, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtCodigoMateria)
+                    .addComponent(lblDescripcionMateria, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblCodigoMateria, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(lblAgregarMateria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNombreMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addGap(20, 20, 20)
+                .addComponent(lblAgregarMateria)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtDescripcionMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(129, 129, 129)
+                        .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblNombreMateria)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombreMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDescripcionMateria)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDescripcionMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(lblCodigoMateria)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCodigoMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -175,7 +180,7 @@ public class DialogMateria extends javax.swing.JDialog {
                     .addComponent(btnAgregar))
                 .addGap(18, 18, 18)
                 .addComponent(btnCancelar)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -267,15 +272,15 @@ public class DialogMateria extends javax.swing.JDialog {
     private javax.swing.JButton btnLimpiarCampos;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel lblAgregarMateria;
+    private javax.swing.JLabel lblCodigoMateria;
+    private javax.swing.JLabel lblDescripcionMateria;
+    private javax.swing.JLabel lblNombreMateria;
     private java.awt.ScrollPane scrollPane1;
     private javax.swing.JTextField txtCodigoMateria;
     private javax.swing.JTextField txtDescripcionMateria;
