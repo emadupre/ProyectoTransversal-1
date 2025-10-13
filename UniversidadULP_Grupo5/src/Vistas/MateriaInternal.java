@@ -74,11 +74,11 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
         txtDescripcion = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtCodMateria = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblFiltrarNombre = new javax.swing.JLabel();
         rbInactivas = new javax.swing.JRadioButton();
         rbActivas = new javax.swing.JRadioButton();
         rbTodas = new javax.swing.JRadioButton();
-        jLabel2 = new javax.swing.JLabel();
+        lblFiltrarEstado = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -87,15 +87,15 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 600));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblMateria.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblMateria.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lblMateria.setForeground(new java.awt.Color(255, 255, 255));
         lblMateria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMateria.setText("Gestión de materias ");
+        lblMateria.setText("Gestión de Materias");
         lblMateria.setMaximumSize(new java.awt.Dimension(412, 47));
         lblMateria.setMinimumSize(new java.awt.Dimension(412, 47));
         lblMateria.setPreferredSize(new java.awt.Dimension(412, 47));
         lblMateria.setVerifyInputWhenFocusTarget(false);
-        jPanel1.add(lblMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 270, 37));
+        jPanel1.add(lblMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 920, 37));
 
         txtMateria.setBackground(new java.awt.Color(222, 222, 222));
         txtMateria.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -103,8 +103,10 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
                 txtMateriaKeyReleased(evt);
             }
         });
-        jPanel1.add(txtMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 520, -1));
+        jPanel1.add(txtMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 190, -1));
 
+        btnSalir.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +135,7 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
 
         pnlBotones.setBackground(new java.awt.Color(222, 222, 222));
 
+        btnAgregar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +143,7 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
             }
         });
 
+        btnModificar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,6 +151,7 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
             }
         });
 
+        btnEliminar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +159,7 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
             }
         });
 
+        btnDarAlta.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         btnDarAlta.setText("Dar de alta");
         btnDarAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,6 +167,7 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
             }
         });
 
+        btnDarBaja.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         btnDarBaja.setText("Dar de baja");
         btnDarBaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,6 +175,7 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
             }
         });
 
+        cbHabilitar.setFont(new java.awt.Font("Roboto", 2, 13)); // NOI18N
         cbHabilitar.setText("Habilitar Modificación");
         cbHabilitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,7 +205,7 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
         pnlBotonesLayout.setVerticalGroup(
             pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBotonesLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(63, Short.MAX_VALUE)
                 .addComponent(cbHabilitar)
                 .addGap(8, 8, 8)
                 .addComponent(btnAgregar)
@@ -216,16 +224,19 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
 
         pnlTextos.setBackground(new java.awt.Color(222, 222, 222));
 
-        Labelnombre.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Labelnombre.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Labelnombre.setForeground(new java.awt.Color(0, 0, 0));
+        Labelnombre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Labelnombre.setText("Nombre:");
 
-        LabelDescripcion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        LabelDescripcion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         LabelDescripcion.setForeground(new java.awt.Color(0, 0, 0));
+        LabelDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LabelDescripcion.setText("Descripción:");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("Cod. Materia:");
 
         javax.swing.GroupLayout pnlTextosLayout = new javax.swing.GroupLayout(pnlTextos);
@@ -234,14 +245,13 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
             pnlTextosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTextosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlTextosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlTextosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(Labelnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                        .addComponent(LabelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtDescripcion))
+                .addGroup(pnlTextosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Labelnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                    .addComponent(LabelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDescripcion)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCodMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCodMateria))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         pnlTextosLayout.setVerticalGroup(
@@ -259,41 +269,50 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCodMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jPanel1.add(pnlTextos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 220, 210));
 
-        jLabel1.setText("Filtrar por nombre:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, -1, 20));
+        lblFiltrarNombre.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        lblFiltrarNombre.setForeground(new java.awt.Color(255, 255, 255));
+        lblFiltrarNombre.setText("Filtrar por nombre:");
+        jPanel1.add(lblFiltrarNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, -1, 20));
 
+        rbInactivas.setFont(new java.awt.Font("Roboto", 2, 13)); // NOI18N
+        rbInactivas.setForeground(new java.awt.Color(255, 255, 255));
         rbInactivas.setText("Inactivas");
         rbInactivas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbInactivasActionPerformed(evt);
             }
         });
-        jPanel1.add(rbInactivas, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, -1, -1));
+        jPanel1.add(rbInactivas, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 50, -1, -1));
 
+        rbActivas.setFont(new java.awt.Font("Roboto", 2, 13)); // NOI18N
+        rbActivas.setForeground(new java.awt.Color(255, 255, 255));
         rbActivas.setText("Activas");
         rbActivas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbActivasActionPerformed(evt);
             }
         });
-        jPanel1.add(rbActivas, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, -1, -1));
+        jPanel1.add(rbActivas, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 50, -1, -1));
 
+        rbTodas.setFont(new java.awt.Font("Roboto", 2, 13)); // NOI18N
+        rbTodas.setForeground(new java.awt.Color(255, 255, 255));
         rbTodas.setText("Todas");
         rbTodas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbTodasActionPerformed(evt);
             }
         });
-        jPanel1.add(rbTodas, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, -1, -1));
+        jPanel1.add(rbTodas, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 50, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setText("Filtrar por estado:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, -1, 30));
+        lblFiltrarEstado.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        lblFiltrarEstado.setForeground(new java.awt.Color(255, 255, 255));
+        lblFiltrarEstado.setText("Filtrar por estado:");
+        jPanel1.add(lblFiltrarEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, -1, 20));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 610));
 
@@ -555,6 +574,7 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
                 m.getCodigo_materia(),
                 VistaLogin.parsearBooleanaString(m.isEstado())});
         }
+        cbHabilitar.setSelected(false);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelDescripcion;
@@ -567,11 +587,11 @@ public class MateriaInternal extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSalir;
     private javax.swing.ButtonGroup btnsFiltrado;
     private javax.swing.JCheckBox cbHabilitar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblFiltrarEstado;
+    private javax.swing.JLabel lblFiltrarNombre;
     private javax.swing.JLabel lblMateria;
     private javax.swing.JPanel pnlBotones;
     private javax.swing.JPanel pnlTextos;

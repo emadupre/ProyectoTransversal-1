@@ -104,6 +104,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                 });
             }
         }
+        cbHabilitarM.setSelected(false);
     }
     //Arma la cabecera y carga con el método refresh 
 
@@ -168,6 +169,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                     btnDarBaja.setEnabled(true);
                     btnEliminar.setEnabled(true);
                     btnModificar.setEnabled(true);
+                    btnAgregar.setEnabled(false);
                 } else {
                     txtDNI.setEnabled(false);
                     txtNombre.setEnabled(false);
@@ -179,6 +181,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                     btnDarBaja.setEnabled(false);
                     btnEliminar.setEnabled(false);
                     btnModificar.setEnabled(false);
+                    btnAgregar.setEnabled(true);
                 }
             }
         });
@@ -234,11 +237,12 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         Panel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Panel.setForeground(new java.awt.Color(255, 255, 255));
 
-        lblTitulo.setFont(new java.awt.Font("URW Gothic", 1, 36)); // NOI18N
+        lblTitulo.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("GESTION DE ALUMNOS");
         lblTitulo.setToolTipText("");
+        lblTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txtFBuscarDNI.setForeground(new java.awt.Color(161, 154, 147));
         txtFBuscarDNI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -274,6 +278,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         imgULP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imgULP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoULP.png"))); // NOI18N
 
+        jButton1.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -283,52 +288,58 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(47, 96, 131));
 
-        lblNombre.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
+        lblNombre.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre.setText("Nombre:");
 
-        lblApellido.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
+        lblApellido.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblApellido.setForeground(new java.awt.Color(255, 255, 255));
         lblApellido.setText("Apellido:");
 
-        lblFechaNacimiento.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
+        lblFechaNacimiento.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblFechaNacimiento.setForeground(new java.awt.Color(255, 255, 255));
         lblFechaNacimiento.setText("Fecha N. :");
 
-        lblEmail.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
+        lblEmail.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
         lblEmail.setText("Email:");
 
-        lblPassword.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
+        lblPassword.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(255, 255, 255));
         lblPassword.setText("Password:");
 
-        lblDNI.setFont(new java.awt.Font("URW Gothic", 1, 18)); // NOI18N
+        lblDNI.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblDNI.setForeground(new java.awt.Color(255, 255, 255));
         lblDNI.setText("DNI:");
 
+        txtDNI.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtDNI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDNI.setEnabled(false);
 
+        txtNombre.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtNombre.setEnabled(false);
 
+        txtApellido.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtApellido.setEnabled(false);
 
+        txtEmail.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtEmail.setEnabled(false);
 
+        txtPassword.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPassword.setEnabled(false);
 
         jPanel2.setBackground(new java.awt.Color(47, 96, 131));
         jPanel2.setPreferredSize(new java.awt.Dimension(266, 208));
 
+        cbHabilitarM.setFont(new java.awt.Font("Roboto", 2, 13)); // NOI18N
         cbHabilitarM.setForeground(new java.awt.Color(255, 255, 255));
         cbHabilitarM.setText("Habilitar modificación");
 
-        btnAgregar.setFont(new java.awt.Font("URW Gothic", 0, 12)); // NOI18N
+        btnAgregar.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         btnAgregar.setText("Agregar Alumno");
         btnAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -337,7 +348,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEliminar.setFont(new java.awt.Font("URW Gothic", 0, 12)); // NOI18N
+        btnEliminar.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         btnEliminar.setText("Eliminar Alumno");
         btnEliminar.setEnabled(false);
         btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -347,7 +358,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             }
         });
 
-        btnModificar.setFont(new java.awt.Font("URW Gothic", 0, 12)); // NOI18N
+        btnModificar.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         btnModificar.setText("Modificar Alumno");
         btnModificar.setEnabled(false);
         btnModificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -357,7 +368,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDarAlta.setFont(new java.awt.Font("URW Gothic", 0, 12)); // NOI18N
+        btnDarAlta.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         btnDarAlta.setText("Dar de Alta");
         btnDarAlta.setEnabled(false);
         btnDarAlta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -367,7 +378,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDarBaja.setFont(new java.awt.Font("URW Gothic", 0, 12)); // NOI18N
+        btnDarBaja.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         btnDarBaja.setText("Dar de Baja");
         btnDarBaja.setEnabled(false);
         btnDarBaja.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -410,7 +421,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                 .addComponent(btnDarAlta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnDarBaja)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -477,7 +488,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblApellido, lblDNI, lblEmail, lblFechaNacimiento, lblNombre, lblPassword, txtApellido, txtDNI, txtEmail, txtNombre, txtPassword});
 
         rbActivo.setBackground(new java.awt.Color(47, 96, 131));
-        rbActivo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbActivo.setFont(new java.awt.Font("Roboto", 2, 12)); // NOI18N
         rbActivo.setForeground(new java.awt.Color(255, 255, 255));
         rbActivo.setText("Activo");
         rbActivo.addActionListener(new java.awt.event.ActionListener() {
@@ -487,7 +498,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         });
 
         rbInactivo.setBackground(new java.awt.Color(47, 96, 131));
-        rbInactivo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbInactivo.setFont(new java.awt.Font("Roboto", 2, 12)); // NOI18N
         rbInactivo.setForeground(new java.awt.Color(255, 255, 255));
         rbInactivo.setText("Inactivo");
         rbInactivo.addActionListener(new java.awt.event.ActionListener() {
@@ -496,12 +507,12 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             }
         });
 
-        txtFiltrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtFiltrar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         txtFiltrar.setForeground(new java.awt.Color(255, 255, 255));
         txtFiltrar.setText("Filtrar por:");
 
         rbTodo.setBackground(new java.awt.Color(47, 96, 131));
-        rbTodo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbTodo.setFont(new java.awt.Font("Roboto", 2, 12)); // NOI18N
         rbTodo.setForeground(new java.awt.Color(255, 255, 255));
         rbTodo.setSelected(true);
         rbTodo.setText("Todo");
@@ -522,33 +533,34 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                     .addComponent(imgULP)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(81, 81, 81))
                     .addGroup(PanelLayout.createSequentialGroup()
                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(PanelLayout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(PanelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(PanelLayout.createSequentialGroup()
-                                    .addGap(103, 103, 103)
-                                    .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(PanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(PanelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(PanelLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(lblBuscarDNI)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFBuscarDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtFiltrar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rbTodo)
-                                .addGap(18, 18, 18)
-                                .addComponent(rbActivo)
-                                .addGap(18, 18, 18)
-                                .addComponent(rbInactivo)))
-                        .addContainerGap(33, Short.MAX_VALUE))))
+                                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(PanelLayout.createSequentialGroup()
+                                        .addComponent(lblBuscarDNI)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtFBuscarDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtFiltrar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(rbTodo)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(rbActivo)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(rbInactivo))
+                                    .addGroup(PanelLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jButton1)))))
+                        .addContainerGap(25, Short.MAX_VALUE))
+                    .addGroup(PanelLayout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         PanelLayout.setVerticalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -559,8 +571,8 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                         .addComponent(imgULP))
                     .addGroup(PanelLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 21, Short.MAX_VALUE)
+                        .addComponent(lblTitulo)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelLayout.createSequentialGroup()
                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -571,11 +583,11 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                             .addComponent(txtFiltrar)
                             .addComponent(rbTodo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PanelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(PanelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addGap(32, 32, 32))
+                .addGap(86, 86, 86))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
