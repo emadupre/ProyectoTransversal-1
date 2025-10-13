@@ -166,7 +166,7 @@ public class DialogCalificacion extends javax.swing.JDialog {
             if(seleccion == 0){
                 Calificacion cal = new Calificacion(idIns, idAd, tipoEvaluacion, calificacionParseada);
                 maniCal.agregar(cal);
-                JOptionPane.showMessageDialog(this, "Materia agregada correctamente.");
+                JOptionPane.showMessageDialog(this, "Calificación agregada correctamente.");
             }
         } catch (NumberFormatException e){
             JOptionPane.showMessageDialog(this, "Ingrese una calificación valida.");

@@ -198,7 +198,7 @@ public class DialogMateria extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Materia agregada correctamente.");
             limpiarCampos();
             }else{
-            JOptionPane.showMessageDialog(this, "Ya existe una materia con ese código.");
+            JOptionPane.showMessageDialog(this, "Ya existe una materia con ese código de materia.");
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, "Error al agregar materia.");

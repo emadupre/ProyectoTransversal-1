@@ -215,17 +215,19 @@ public class VistaLogin extends javax.swing.JFrame {
             }
             Object usuario = intentarLogin(email, password, rol);
             if(usuario instanceof Alumno){
+                
                 VistaInscripciones ventanaAlumno = new VistaInscripciones((Alumno) usuario);
-                ventanaAlumno.repaint();
+                javax.swing.SwingUtilities.updateComponentTreeUI(ventanaAlumno);
                 ventanaAlumno.setVisible(true);
-                
                 this.dispose();
+                
             } else if(usuario instanceof Administrativo){
-                VistaAlumno ventanaAdministrativo = new VistaAlumno((Administrativo) usuario);
-                ventanaAdministrativo.repaint();
-                ventanaAdministrativo.setVisible(true);
                 
+                VistaAlumno ventanaAdministrativo = new VistaAlumno((Administrativo) usuario);
+                
+                ventanaAdministrativo.setVisible(true);
                 this.dispose();
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Credenciales incorrectas.");
             }
@@ -255,10 +257,16 @@ public class VistaLogin extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         try {
-            javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
-        } catch(Exception e){
-            e.printStackTrace();
+        // *** Establece el Look and Feel Nimbus UNA SOLA VEZ aquí ***
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
+            }
         }
+    } catch(Exception e){
+        e.printStackTrace();
+    }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new VistaLogin().setVisible(true));
     }

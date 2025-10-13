@@ -24,14 +24,14 @@ public class CalificacionDAO implements manipuladorGeneral<Calificacion> {
 
     @Override
     public void agregar(Calificacion calificacion) {
-        String sql = "INSERT INTO calificaciones (id_inscripcion, id_administrativo, calificacion) VALUE (?,?,?)";
+        String sql = "INSERT INTO calificaciones (id_inscripcion, id_administrativo, calificacion, tipo_evaluacion) VALUE (?,?,?,?)";
         Connection con = conexion_BD.getConnection();
 
         try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setInt(1, calificacion.getId_inscripcion());
             ps.setInt(2, calificacion.getId_calificacion());
             ps.setDouble(3, calificacion.getCalificacion());
-
+            ps.setString(4, calificacion.getTipoEvaluacion());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -59,6 +59,7 @@ public class CalificacionDAO implements manipuladorGeneral<Calificacion> {
                     calificacion.setId_administrativo(rs.getInt("id_administrativo"));
                     calificacion.setId_calificacion(rs.getInt("id_calificacion"));
                     calificacion.setCalificacion(rs.getDouble("calificacion"));
+                    calificacion.setTipoEvaluacion(rs.getString("tipo_evaluacion"));
                 }
             }
 
@@ -70,7 +71,7 @@ public class CalificacionDAO implements manipuladorGeneral<Calificacion> {
     }
 
     public HashMap<Integer, ArrayList<Calificacion>> IDinscripcionXCalificacionesPorIdAlumno(int id_alumno) {
-        String sql = "SELECT i.id_inscripcion AS idInscripcionCali, c.id_administrativo, c.calificacion, c.fecha_actualizacion "
+        String sql = "SELECT i.id_inscripcion AS idInscripcionCali, c.id_administrativo, c.calificacion,c.tipo_evaluacion, c.fecha_actualizacion "
                 + "FROM inscripcion i JOIN calificaciones c ON i.id_inscripcion = c.id_inscripcion "
                 + "WHERE i.id_alumno = ?";
         Connection con = conexion_BD.getConnection();
@@ -85,6 +86,7 @@ public class CalificacionDAO implements manipuladorGeneral<Calificacion> {
                         cal.setId_inscripcion(idIns);
                         cal.setId_administrativo(rs.getInt("c.id_administrativo"));
                         cal.setCalificacion(rs.getDouble("c.calificacion"));
+                        cal.setTipoEvaluacion(rs.getString("c.tipo_evaluacion"));
                         cal.setFechaModificacion(rs.getDate("fecha_actualizacion").toLocalDate());
                         ArrayList<Calificacion> calificacionPorMateria;
                         if(listaCalificaciones.containsKey(idIns)){

@@ -43,6 +43,7 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
     int seleccionInscripcion = -1;
     int seleccionCalificacion = -1;
     List<Alumno> listaAlumnos;
+    List<Inscripcion> listaInscripciones;
     private Administrativo usuario;
 
     public CalificacionesInternal(Administrativo usuario) {
@@ -75,8 +76,6 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
         tblAlumnos = new javax.swing.JTable();
         pnlInscripciones = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtBuscarPorNombreMateria = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblInscripciones = new javax.swing.JTable();
         pnlCalificaciones = new javax.swing.JPanel();
@@ -100,6 +99,12 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlCalificacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtBuscarAlumno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarAlumnoKeyReleased(evt);
+            }
+        });
 
         jLabel3.setText("Buscar por DNI:");
 
@@ -159,10 +164,6 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Inscripciones");
         pnlInscripciones.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
-        pnlInscripciones.add(txtBuscarPorNombreMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 240, -1));
-
-        jLabel4.setText("Buscar por nombre de materia:");
-        pnlInscripciones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 31, 187, -1));
 
         tblInscripciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -177,7 +178,7 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
         ));
         jScrollPane4.setViewportView(tblInscripciones);
 
-        pnlInscripciones.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 270, 460));
+        pnlInscripciones.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 270, 500));
 
         pnlCalificacion.add(pnlInscripciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 290, 560));
 
@@ -344,15 +345,38 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         int filaS = tblInscripciones.getSelectedRow();
         if (filaS > -1) {
-            String nombreMateria = (String) tblInscripciones.getValueAt(filaS, 2);
-            JFrame padre = (JFrame) SwingUtilities.getWindowAncestor(this);
-            DialogCalificacion ventanaAgregar = new DialogCalificacion(padre, true,nombreMateria,seleccionInscripcion, usuario.getId_administrativo(), seleccionAlumno);
-            ventanaAgregar.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Seleccione una inscripcion a la cual agregarle una calificación.");
+            try {
+                String nombreMateria = (String) tblInscripciones.getValueAt(filaS, 2);
+                JFrame padre = (JFrame) SwingUtilities.getWindowAncestor(this);
+                DialogCalificacion ventanaAgregar = new DialogCalificacion(padre, true, nombreMateria, seleccionInscripcion, usuario.getId_administrativo(), seleccionAlumno);
+                ventanaAgregar.setVisible(true);
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(this, "Seleccione una inscripcion y un alumno a la cual agregarle una calificación.");
+            } catch (Exception a){
+                JOptionPane.showMessageDialog(this, "Error al abrir ventana de agregar calificación.");
+                a.printStackTrace();
+            }
         }
-
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void txtBuscarAlumnoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarAlumnoKeyReleased
+        String caracterDNI = txtBuscarAlumno.getText();
+        DefaultTableModel modelo = (DefaultTableModel) tblAlumnos.getModel();
+        modelo.setRowCount(0);
+        try {
+            for (Alumno a : listaAlumnos) {
+                String dni = Integer.toString(a.getDni());
+                if (dni.startsWith(caracterDNI)) {
+                    modelo.addRow(new Object[]{
+                        a.getId_alumno(), a.getDni(), a.getNombre(),
+                        a.getApellido(), VistaLogin.parsearBooleanaString(a.isEstado())
+                    });
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_txtBuscarAlumnoKeyReleased
 
     private void armarCabeceras() {
         String[] cabeceraAlumnos = {"id_alumno", "DNI", "Nombre", "Apellido", "Estado"};
@@ -412,11 +436,11 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
     }
 
     private void rellenarTablaInscripciones(int idAlumno) {
-        List<Inscripcion> listaIns = maniIns.listarInscripcionesPorAlumno(idAlumno);
+        listaInscripciones = maniIns.listarInscripcionesPorAlumno(idAlumno);
         List<Materia> listaMaterias = maniMat.listar();
         DefaultTableModel modelo = (DefaultTableModel) tblInscripciones.getModel();
         modelo.setRowCount(0);
-        for (Inscripcion i : listaIns) {
+        for (Inscripcion i : listaInscripciones) {
             for (Materia m : listaMaterias) {
                 if (i.getId_materia() == m.getId_materia()) {
                     modelo.addRow(new Object[]{
@@ -439,6 +463,12 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
         }
     }
 
+    private void limpiarCamposAlumnoInscripcion() {
+        txtMateriaS.setText("");
+        txtEstadoS.setText("");
+        txtAlumnoS.setText("");
+    }
+
     private void agregarListenerTablaAlumnos() {
         tblAlumnos.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -455,6 +485,10 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
                     String dni = Integer.toString((int) tblAlumnos.getValueAt(filaS, 1));
                     txtAlumnoS.setText(dni + " - " + apellido + " " + nombre);
 
+                } else {
+                    DefaultTableModel modelo = (DefaultTableModel) tblInscripciones.getModel();
+                    modelo.setRowCount(0);
+                    limpiarCamposAlumnoInscripcion();
                 }
             }
         });
@@ -475,6 +509,8 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
                     String estadoIns = (String) tblInscripciones.getValueAt(filaS, 3);
                     txtMateriaS.setText(nombreMateria);
                     txtEstadoS.setText(estadoIns);
+                } else {
+                    limpiarCamposAlumnoInscripcion();
                 }
             }
         });
@@ -514,7 +550,6 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -532,7 +567,6 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblInscripciones;
     private javax.swing.JTextField txtAlumnoS;
     private javax.swing.JTextField txtBuscarAlumno;
-    private javax.swing.JTextField txtBuscarPorNombreMateria;
     private javax.swing.JTextField txtCalificacion;
     private javax.swing.JTextField txtEstadoS;
     private javax.swing.JTextField txtMateriaS;

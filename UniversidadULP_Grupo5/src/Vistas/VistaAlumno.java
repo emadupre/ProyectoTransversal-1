@@ -21,6 +21,7 @@ public class VistaAlumno extends javax.swing.JFrame {
     public VistaAlumno(Administrativo usuario) {
         this.usuario = usuario;
         initComponents();
+        javax.swing.SwingUtilities.updateComponentTreeUI(this);
         this.setSize(1100, 730);
     }
 
