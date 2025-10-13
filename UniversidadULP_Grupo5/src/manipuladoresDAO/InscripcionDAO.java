@@ -83,6 +83,7 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
                     inscripcion.setId_materia(rs.getInt("id_materia"));
                     inscripcion.setId_usuario(rs.getInt("id_alumno"));
                     inscripcion.setEstado(rs.getBoolean("estado"));
+                    inscripcion.setFechaIns(rs.getDate("fechainscripcion").toLocalDate());
                     inscripciones.add(inscripcion);
                 }
             }
@@ -150,6 +151,7 @@ public class InscripcionDAO implements manipuladorGeneral <Inscripcion> {
                     inscripcion.setId_materia(rs.getInt("id_materia"));
                     inscripcion.setId_usuario(rs.getInt("id_alumno"));
                     inscripcion.setEstado(rs.getBoolean("estado"));
+                    inscripcion.setFechaIns(rs.getDate("fechainscripcion").toLocalDate());
                     inscripciones.add(inscripcion);
                 }
             }
