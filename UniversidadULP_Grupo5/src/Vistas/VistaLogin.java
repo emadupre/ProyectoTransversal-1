@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import manipuladoresDAO.AdministrativoDAO;
 import manipuladoresDAO.AlumnoDAO;
 import Modelo.Administrativo;
-import universidadulp_grupo5.Alumno;
+import Modelo.Alumno;
 
 /**
  *

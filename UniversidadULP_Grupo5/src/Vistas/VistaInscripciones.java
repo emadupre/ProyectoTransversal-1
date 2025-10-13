@@ -7,7 +7,7 @@ package Vistas;
 
 
 import java.time.LocalDate;
-import universidadulp_grupo5.Alumno;
+import Modelo.Alumno;
 
 /**
  *

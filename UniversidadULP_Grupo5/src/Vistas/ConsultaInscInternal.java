@@ -17,9 +17,9 @@ import manipuladoresDAO.AdministrativoDAO;
 import manipuladoresDAO.CalificacionDAO;
 import manipuladoresDAO.MateriaDAO;
 import Modelo.Administrativo;
-import universidadulp_grupo5.Alumno;
-import universidadulp_grupo5.Calificacion;
-import universidadulp_grupo5.Materia;
+import Modelo.Alumno;
+import Modelo.Calificacion;
+import Modelo.Materia;
 
 /**
  *

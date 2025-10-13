@@ -8,7 +8,7 @@ package Vistas;
 import java.util.List;
 import javax.swing.JOptionPane;
 import manipuladoresDAO.MateriaDAO;
-import universidadulp_grupo5.Materia;
+import Modelo.Materia;
 
 /**
  *

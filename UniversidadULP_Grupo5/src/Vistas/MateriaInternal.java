@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import manipuladoresDAO.MateriaDAO;
-import universidadulp_grupo5.Materia;
+import Modelo.Materia;
 
 /**
  *

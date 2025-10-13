@@ -10,14 +10,16 @@ import manipuladoresDAO.CalificacionDAO;
 import manipuladoresDAO.InscripcionDAO;
 import manipuladoresDAO.MateriaDAO;
 import Modelo.Administrativo;
-import universidadulp_grupo5.Alumno;
-import universidadulp_grupo5.Calificacion;
+import Modelo.Alumno;
+import Modelo.Calificacion;
 import Modelo.Inscripcion;
-import universidadulp_grupo5.Materia;
+import Modelo.Materia;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -41,8 +43,10 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
     int seleccionInscripcion = -1;
     int seleccionCalificacion = -1;
     List<Alumno> listaAlumnos;
+    private Administrativo usuario;
 
     public CalificacionesInternal(Administrativo usuario) {
+        this.usuario = usuario;
         initComponents();
         armarCabeceras();
         rellenarTablaAlumno();
@@ -199,6 +203,11 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
         pnlCalificaciones.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 168, 330, 260));
 
         btnAgregar.setText("Agregar calificación");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
         pnlCalificaciones.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 6, 151, -1));
 
         btnEliminar.setText("Eliminar calificación");
@@ -218,11 +227,6 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
         pnlCalificaciones.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 50, -1, -1));
 
         txtTipoEvaluacion.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo evaluación"));
-        txtTipoEvaluacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTipoEvaluacionActionPerformed(evt);
-            }
-        });
         pnlCalificaciones.add(txtTipoEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 160, -1));
 
         txtCalificacion.setBorder(javax.swing.BorderFactory.createTitledBorder("Calificación\n"));
@@ -309,8 +313,8 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         String tipo = txtTipoEvaluacion.getText();
         String calificacion = txtCalificacion.getText();
-        
-        if(tipo.isEmpty() || calificacion.isEmpty()){
+
+        if (tipo.isEmpty() || calificacion.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Faltan campos que rellenar.");
             return;
         }
@@ -320,16 +324,12 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
             maniCal.actualizarPorID(seleccionCalificacion, cal);
             JOptionPane.showMessageDialog(this, "Calificación actualizada con éxito");
             rellenarTablaCalificaciones(seleccionInscripcion);
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Debe ingresar una calificación valida");
-        } catch (Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al modificar la calificación");
         }
     }//GEN-LAST:event_btnModificarActionPerformed
-
-    private void txtTipoEvaluacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoEvaluacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTipoEvaluacionActionPerformed
 
     private void checkEdicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkEdicionActionPerformed
         if (checkEdicion.isSelected()) {
@@ -340,6 +340,19 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
             txtCalificacion.setEnabled(false);
         }
     }//GEN-LAST:event_checkEdicionActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        int filaS = tblInscripciones.getSelectedRow();
+        if (filaS > -1) {
+            String nombreMateria = (String) tblInscripciones.getValueAt(filaS, 2);
+            JFrame padre = (JFrame) SwingUtilities.getWindowAncestor(this);
+            DialogCalificacion ventanaAgregar = new DialogCalificacion(padre, true,nombreMateria,seleccionInscripcion, usuario.getId_administrativo(), seleccionAlumno);
+            ventanaAgregar.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Seleccione una inscripcion a la cual agregarle una calificación.");
+        }
+
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void armarCabeceras() {
         String[] cabeceraAlumnos = {"id_alumno", "DNI", "Nombre", "Apellido", "Estado"};

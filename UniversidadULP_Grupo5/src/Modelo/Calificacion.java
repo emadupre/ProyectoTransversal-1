@@ -1,5 +1,5 @@
 
-package universidadulp_grupo5;
+package Modelo;
 
 import java.time.LocalDate;
 import java.util.Objects;

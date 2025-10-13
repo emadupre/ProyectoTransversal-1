@@ -12,10 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.mariadb.jdbc.Statement;
-import universidadulp_grupo5.Alumno;
+import Modelo.Alumno;
 
 /**
  *

@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import manipuladoresDAO.AlumnoDAO;
-import universidadulp_grupo5.Alumno;
+import Modelo.Alumno;
 
 /**
  *
@@ -215,7 +215,6 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         txtApellido = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         txtPassword = new javax.swing.JTextField();
-        jDFechaN = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         cbHabilitarM = new javax.swing.JCheckBox();
         btnAgregar = new javax.swing.JButton();
@@ -223,6 +222,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         btnDarAlta = new javax.swing.JButton();
         btnDarBaja = new javax.swing.JButton();
+        jDFechaN = new com.toedter.calendar.JDateChooser();
         rbActivo = new javax.swing.JRadioButton();
         rbInactivo = new javax.swing.JRadioButton();
         txtFiltrar = new javax.swing.JLabel();
@@ -321,12 +321,6 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
 
         txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPassword.setEnabled(false);
-
-        jDFechaN.setBackground(new java.awt.Color(47, 96, 131));
-        jDFechaN.setDateFormatString("dd-MM-yyyy");
-        jDFechaN.setEnabled(false);
-        jDFechaN.setMaxSelectableDate(new java.util.Date(1199156474000L));
-        jDFechaN.setMinSelectableDate(new java.util.Date(-2240510326000L));
 
         jPanel2.setBackground(new java.awt.Color(47, 96, 131));
         jPanel2.setPreferredSize(new java.awt.Dimension(266, 208));
@@ -437,10 +431,10 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtDNI)
                             .addComponent(txtNombre)
-                            .addComponent(txtApellido)
                             .addComponent(txtEmail)
                             .addComponent(txtPassword)
-                            .addComponent(jDFechaN, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
+                            .addComponent(jDFechaN, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -463,19 +457,20 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                     .addComponent(lblApellido)
                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblFechaNacimiento)
-                    .addComponent(jDFechaN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEmail)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPassword)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblFechaNacimiento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblEmail)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPassword)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDFechaN, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -553,7 +548,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                                 .addComponent(rbActivo)
                                 .addGap(18, 18, 18)
                                 .addComponent(rbInactivo)))
-                        .addContainerGap(30, Short.MAX_VALUE))))
+                        .addContainerGap(33, Short.MAX_VALUE))))
         );
         PanelLayout.setVerticalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

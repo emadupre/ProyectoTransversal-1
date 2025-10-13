@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import manipuladoresDAO.AlumnoDAO;
-import universidadulp_grupo5.Alumno;
+import Modelo.Alumno;
 
 /**
  *

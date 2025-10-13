@@ -14,8 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import org.mariadb.jdbc.Statement;
-import universidadulp_grupo5.Calificacion;
-import universidadulp_grupo5.Materia;
+import Modelo.Calificacion;
 
 /**
  *

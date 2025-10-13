@@ -15,9 +15,9 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import manipuladoresDAO.InscripcionDAO;
 import manipuladoresDAO.MateriaDAO;
-import universidadulp_grupo5.Alumno;
+import Modelo.Alumno;
 import Modelo.Inscripcion;
-import universidadulp_grupo5.Materia;
+import Modelo.Materia;
 
 /**
  *
