@@ -57,15 +57,25 @@ public class DialogCalificacion extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lblCalificacion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        pnlAgregar.setBackground(new java.awt.Color(47, 96, 131));
+
+        txtCalificacion.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+
+        txtTipoEvaluacion.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+
+        lblCalificacion.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblCalificacion.setForeground(new java.awt.Color(255, 255, 255));
         lblCalificacion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblCalificacion.setText("Calificación:");
 
-        lblTipoEvaluacion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblTipoEvaluacion.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblTipoEvaluacion.setForeground(new java.awt.Color(255, 255, 255));
         lblTipoEvaluacion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblTipoEvaluacion.setText("Tipo de evaluación:");
 
-        btnAgregar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        btnAgregar.setBackground(new java.awt.Color(47, 96, 131));
+        btnAgregar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar calificación");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,7 +83,9 @@ public class DialogCalificacion extends javax.swing.JDialog {
             }
         });
 
-        btnLimpiar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        btnLimpiar.setBackground(new java.awt.Color(47, 96, 131));
+        btnLimpiar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpiar.setText("Limpiar campos");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,7 +93,9 @@ public class DialogCalificacion extends javax.swing.JDialog {
             }
         });
 
-        btnCancelar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        btnCancelar.setBackground(new java.awt.Color(47, 96, 131));
+        btnCancelar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Salir");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,33 +103,32 @@ public class DialogCalificacion extends javax.swing.JDialog {
             }
         });
 
-        lblAgregarC.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblAgregarC.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblAgregarC.setForeground(new java.awt.Color(255, 255, 255));
         lblAgregarC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAgregarC.setText("Agregar Calificacion");
+        lblAgregarC.setText("AGREGAR CALIFICACION");
 
         javax.swing.GroupLayout pnlAgregarLayout = new javax.swing.GroupLayout(pnlAgregar);
         pnlAgregar.setLayout(pnlAgregarLayout);
         pnlAgregarLayout.setHorizontalGroup(
             pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblAgregarC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlAgregarLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblTipoEvaluacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtTipoEvaluacion)
+                    .addComponent(txtCalificacion)
                     .addGroup(pnlAgregarLayout.createSequentialGroup()
-                        .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lblCalificacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblTipoEvaluacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE))
-                        .addGap(37, 37, 37))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnCancelar)
-                        .addGroup(pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtTipoEvaluacion, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCalificacion, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlAgregarLayout.createSequentialGroup()
-                                .addComponent(btnAgregar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnLimpiar)))))
-                .addContainerGap(15, Short.MAX_VALUE))
-            .addComponent(lblAgregarC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAgregar)
+                        .addGap(41, 41, 41)
+                        .addComponent(btnLimpiar))
+                    .addComponent(lblCalificacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAgregarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlAgregarLayout.setVerticalGroup(
             pnlAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,14 +149,14 @@ public class DialogCalificacion extends javax.swing.JDialog {
                     .addComponent(btnLimpiar))
                 .addGap(18, 18, 18)
                 .addComponent(btnCancelar)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

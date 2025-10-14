@@ -43,6 +43,7 @@ public class DialogMateria extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         scrollPane1 = new java.awt.ScrollPane();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        jPanelAgregarMateria = new javax.swing.JPanel();
         lblAgregarMateria = new javax.swing.JLabel();
         lblNombreMateria = new javax.swing.JLabel();
         txtNombreMateria = new javax.swing.JTextField();
@@ -53,7 +54,6 @@ public class DialogMateria extends javax.swing.JDialog {
         btnAgregar = new javax.swing.JButton();
         btnLimpiarCampos = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,24 +87,43 @@ public class DialogMateria extends javax.swing.JDialog {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(47, 96, 131));
+        setForeground(new java.awt.Color(47, 96, 131));
 
-        lblAgregarMateria.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jPanelAgregarMateria.setBackground(new java.awt.Color(47, 96, 131));
+
+        lblAgregarMateria.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblAgregarMateria.setForeground(new java.awt.Color(255, 255, 255));
         lblAgregarMateria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAgregarMateria.setText("Agregar Materia");
+        lblAgregarMateria.setText("AGREGAR MATERIA");
 
-        lblNombreMateria.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        lblNombreMateria.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNombreMateria.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblNombreMateria.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreMateria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombreMateria.setText("Nombre de la materia:");
 
-        lblDescripcionMateria.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        lblDescripcionMateria.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        txtNombreMateria.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtNombreMateria.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        lblDescripcionMateria.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblDescripcionMateria.setForeground(new java.awt.Color(255, 255, 255));
+        lblDescripcionMateria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDescripcionMateria.setText("Descripción de la materia:");
 
-        lblCodigoMateria.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        lblCodigoMateria.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        txtDescripcionMateria.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtDescripcionMateria.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        lblCodigoMateria.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblCodigoMateria.setForeground(new java.awt.Color(255, 255, 255));
+        lblCodigoMateria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCodigoMateria.setText("Código de la materia:");
 
-        btnAgregar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        txtCodigoMateria.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtCodigoMateria.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        btnAgregar.setBackground(new java.awt.Color(47, 96, 131));
+        btnAgregar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,7 +131,9 @@ public class DialogMateria extends javax.swing.JDialog {
             }
         });
 
-        btnLimpiarCampos.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        btnLimpiarCampos.setBackground(new java.awt.Color(47, 96, 131));
+        btnLimpiarCampos.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnLimpiarCampos.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpiarCampos.setText("Limpiar Campos");
         btnLimpiarCampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,7 +141,9 @@ public class DialogMateria extends javax.swing.JDialog {
             }
         });
 
-        btnCancelar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        btnCancelar.setBackground(new java.awt.Color(47, 96, 131));
+        btnCancelar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,59 +151,69 @@ public class DialogMateria extends javax.swing.JDialog {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnCancelar)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(btnAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                        .addComponent(btnLimpiarCampos))
-                    .addComponent(txtNombreMateria, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDescripcionMateria, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreMateria, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtCodigoMateria)
-                    .addComponent(lblDescripcionMateria, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblCodigoMateria, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout jPanelAgregarMateriaLayout = new javax.swing.GroupLayout(jPanelAgregarMateria);
+        jPanelAgregarMateria.setLayout(jPanelAgregarMateriaLayout);
+        jPanelAgregarMateriaLayout.setHorizontalGroup(
+            jPanelAgregarMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAgregarMateriaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelAgregarMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAgregarMateriaLayout.createSequentialGroup()
+                        .addGroup(jPanelAgregarMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtNombreMateria, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                            .addComponent(txtDescripcionMateria, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCodigoMateria)
+                            .addComponent(lblCodigoMateria, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelAgregarMateriaLayout.createSequentialGroup()
+                                .addComponent(btnAgregar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnLimpiarCampos)
+                                .addGap(31, 31, 31)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblNombreMateria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblDescripcionMateria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addComponent(lblAgregarMateria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanelAgregarMateriaLayout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(lblAgregarMateria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+        jPanelAgregarMateriaLayout.setVerticalGroup(
+            jPanelAgregarMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAgregarMateriaLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addComponent(lblAgregarMateria)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(79, 79, 79))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblNombreMateria)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombreMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblDescripcionMateria)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDescripcionMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGap(18, 18, 18)
+                .addComponent(lblNombreMateria)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombreMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDescripcionMateria)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDescripcionMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblCodigoMateria)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCodigoMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelAgregarMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimpiarCampos)
                     .addComponent(btnAgregar))
                 .addGap(18, 18, 18)
                 .addComponent(btnCancelar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelAgregarMateria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelAgregarMateria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -271,10 +304,10 @@ public class DialogMateria extends javax.swing.JDialog {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnLimpiarCampos;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.Box.Filler filler2;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanelAgregarMateria;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lblAgregarMateria;

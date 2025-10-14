@@ -70,31 +70,32 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
         pnlCalificacion = new javax.swing.JPanel();
         pnlAlumnos = new javax.swing.JPanel();
         txtBuscarAlumno = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblBuscarDNI = new javax.swing.JLabel();
+        lblAlumnos = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblAlumnos = new javax.swing.JTable();
-        pnlInscripciones = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tblInscripciones = new javax.swing.JTable();
         pnlCalificaciones = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblCalificaciones = new javax.swing.JTable();
-        btnAgregar = new javax.swing.JButton();
+        txtTipoEvaluacion = new javax.swing.JTextField();
+        checkEdicion = new javax.swing.JCheckBox();
         btnEliminar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        txtTipoEvaluacion = new javax.swing.JTextField();
+        btnAgregar = new javax.swing.JButton();
         txtCalificacion = new javax.swing.JTextField();
-        checkEdicion = new javax.swing.JCheckBox();
+        lblCalificaciones = new javax.swing.JLabel();
+        pnlInscripciones = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblInscripciones = new javax.swing.JTable();
+        lblMaterias = new javax.swing.JLabel();
         pnlSeleccion = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblAlumno = new javax.swing.JLabel();
         txtAlumnoS = new javax.swing.JTextField();
         txtMateriaS = new javax.swing.JTextField();
+        lblMateria = new javax.swing.JLabel();
+        lblEInscripcion = new javax.swing.JLabel();
         txtEstadoS = new javax.swing.JTextField();
+        lblInscripciones = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -109,10 +110,14 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel3.setText("Buscar por DNI:");
+        lblBuscarDNI.setFont(new java.awt.Font("Roboto", 2, 13)); // NOI18N
+        lblBuscarDNI.setForeground(new java.awt.Color(255, 255, 255));
+        lblBuscarDNI.setText("Buscar por DNI:");
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setText("Alumnos");
+        lblAlumnos.setFont(new java.awt.Font("Roboto Black", 3, 18)); // NOI18N
+        lblAlumnos.setForeground(new java.awt.Color(255, 255, 255));
+        lblAlumnos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAlumnos.setText("Alumnos");
 
         tblAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -132,66 +137,35 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
         pnlAlumnosLayout.setHorizontalGroup(
             pnlAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAlumnosLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(pnlAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAlumnosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(pnlAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                    .addComponent(lblAlumnos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAlumnosLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(txtBuscarAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+            .addGroup(pnlAlumnosLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(lblBuscarDNI)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtBuscarAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlAlumnosLayout.setVerticalGroup(
             pnlAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAlumnosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(2, 2, 2)
-                .addComponent(jLabel3)
-                .addGap(7, 7, 7)
-                .addComponent(txtBuscarAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblAlumnos)
+                .addGap(8, 8, 8)
+                .addGroup(pnlAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBuscarAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBuscarDNI))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        pnlCalificacion.add(pnlAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 560));
-
-        pnlInscripciones.setBackground(new java.awt.Color(47, 91, 131));
-        pnlInscripciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setText("Inscripciones");
-        pnlInscripciones.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
-
-        tblInscripciones.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane4.setViewportView(tblInscripciones);
-
-        pnlInscripciones.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 270, 500));
-
-        pnlCalificacion.add(pnlInscripciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 290, 560));
+        pnlCalificacion.add(pnlAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 360, 410));
 
         pnlCalificaciones.setBackground(new java.awt.Color(47, 91, 131));
         pnlCalificaciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setText("Calificaciones");
-        pnlCalificaciones.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 114, 24));
 
         tblCalificaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -206,98 +180,166 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
         ));
         jScrollPane3.setViewportView(tblCalificaciones);
 
-        pnlCalificaciones.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 168, 330, 260));
+        pnlCalificaciones.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 330, 220));
 
-        btnAgregar.setText("Agregar calificación");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
-        pnlCalificaciones.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 6, 151, -1));
+        txtTipoEvaluacion.setBackground(new java.awt.Color(47, 91, 131));
+        txtTipoEvaluacion.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtTipoEvaluacion.setForeground(new java.awt.Color(255, 255, 255));
+        txtTipoEvaluacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTipoEvaluacion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo evaluación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 13))); // NOI18N
+        pnlCalificaciones.add(txtTipoEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 160, 60));
 
-        btnEliminar.setText("Eliminar calificación");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-        pnlCalificaciones.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 94, 151, -1));
-
-        btnModificar.setText("Modificar calificación");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
-        pnlCalificaciones.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 50, -1, -1));
-
-        txtTipoEvaluacion.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo evaluación"));
-        pnlCalificaciones.add(txtTipoEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 160, -1));
-
-        txtCalificacion.setBorder(javax.swing.BorderFactory.createTitledBorder("Calificación\n"));
-        pnlCalificaciones.add(txtCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 160, -1));
-
+        checkEdicion.setFont(new java.awt.Font("Roboto", 2, 13)); // NOI18N
+        checkEdicion.setForeground(new java.awt.Color(255, 255, 255));
         checkEdicion.setText("Habilitar modificación");
         checkEdicion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkEdicionActionPerformed(evt);
             }
         });
-        pnlCalificaciones.add(checkEdicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 160, -1));
+        pnlCalificaciones.add(checkEdicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, 30));
 
-        pnlCalificacion.add(pnlCalificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 120, 350, 430));
+        btnEliminar.setBackground(new java.awt.Color(47, 96, 131));
+        btnEliminar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar calificación");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        pnlCalificaciones.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 160, -1));
 
-        jLabel6.setText("Alumno:");
+        btnModificar.setBackground(new java.awt.Color(47, 96, 131));
+        btnModificar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificar.setText("Modificar calificación");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+        pnlCalificaciones.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 160, -1));
 
-        jLabel7.setText("Materia:");
+        btnAgregar.setBackground(new java.awt.Color(47, 96, 131));
+        btnAgregar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setText("Agregar calificación");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+        pnlCalificaciones.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 160, -1));
 
-        jLabel9.setText("Estado inscripción:");
+        txtCalificacion.setBackground(new java.awt.Color(47, 91, 131));
+        txtCalificacion.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        txtCalificacion.setForeground(new java.awt.Color(255, 255, 255));
+        txtCalificacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCalificacion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Calificación\n", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 13))); // NOI18N
+        pnlCalificaciones.add(txtCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 160, 70));
+
+        lblCalificaciones.setFont(new java.awt.Font("Roboto Black", 3, 18)); // NOI18N
+        lblCalificaciones.setForeground(new java.awt.Color(255, 255, 255));
+        lblCalificaciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCalificaciones.setText("Calificaciones");
+        pnlCalificaciones.add(lblCalificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 120, 30));
+
+        pnlCalificacion.add(pnlCalificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 350, 390));
+
+        pnlInscripciones.setBackground(new java.awt.Color(47, 91, 131));
+        pnlInscripciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblInscripciones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane4.setViewportView(tblInscripciones);
+
+        pnlInscripciones.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 270, 340));
+
+        lblMaterias.setFont(new java.awt.Font("Roboto Black", 3, 18)); // NOI18N
+        lblMaterias.setForeground(new java.awt.Color(255, 255, 255));
+        lblMaterias.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMaterias.setText("Materias");
+        pnlInscripciones.add(lblMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 270, -1));
+
+        pnlCalificacion.add(pnlInscripciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 290, 400));
+
+        pnlSeleccion.setBackground(new java.awt.Color(47, 91, 131));
+
+        lblAlumno.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        lblAlumno.setForeground(new java.awt.Color(255, 255, 255));
+        lblAlumno.setText("Alumno:");
 
         txtAlumnoS.setEditable(false);
+        txtAlumnoS.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
 
         txtMateriaS.setEditable(false);
+        txtMateriaS.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+
+        lblMateria.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        lblMateria.setForeground(new java.awt.Color(255, 255, 255));
+        lblMateria.setText("Materia:");
+
+        lblEInscripcion.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        lblEInscripcion.setForeground(new java.awt.Color(255, 255, 255));
+        lblEInscripcion.setText("E. Inscripción:");
 
         txtEstadoS.setEditable(false);
+        txtEstadoS.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout pnlSeleccionLayout = new javax.swing.GroupLayout(pnlSeleccion);
         pnlSeleccion.setLayout(pnlSeleccionLayout);
         pnlSeleccionLayout.setHorizontalGroup(
             pnlSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSeleccionLayout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addGroup(pnlSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtAlumnoS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                    .addComponent(txtMateriaS, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtEstadoS, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+                .addContainerGap()
+                .addGroup(pnlSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEInscripcion)
+                    .addComponent(lblAlumno))
+                .addGap(8, 8, 8)
+                .addGroup(pnlSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtAlumnoS, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMateriaS, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEstadoS, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         pnlSeleccionLayout.setVerticalGroup(
             pnlSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSeleccionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtAlumnoS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(txtAlumnoS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
                 .addGroup(pnlSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtMateriaS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                    .addComponent(txtMateriaS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(pnlSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblEInscripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEstadoS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        pnlCalificacion.add(pnlSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 330, 110));
+        pnlCalificacion.add(pnlSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 290, 110));
 
-        getContentPane().add(pnlCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        lblInscripciones.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblInscripciones.setForeground(new java.awt.Color(255, 255, 255));
+        lblInscripciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInscripciones.setText("INSCRIPCIONES");
+        pnlCalificacion.add(lblInscripciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1000, -1));
+
+        getContentPane().add(pnlCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -553,16 +595,17 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JCheckBox checkEdicion;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel lblAlumno;
+    private javax.swing.JLabel lblAlumnos;
+    private javax.swing.JLabel lblBuscarDNI;
+    private javax.swing.JLabel lblCalificaciones;
+    private javax.swing.JLabel lblEInscripcion;
+    private javax.swing.JLabel lblInscripciones;
+    private javax.swing.JLabel lblMateria;
+    private javax.swing.JLabel lblMaterias;
     private javax.swing.JPanel pnlAlumnos;
     private javax.swing.JPanel pnlCalificacion;
     private javax.swing.JPanel pnlCalificaciones;

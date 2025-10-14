@@ -85,26 +85,31 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
         lblFechaInscrip = new javax.swing.JLabel();
         txtDescripcionS = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(47, 96, 131));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblInscripcionMaterias.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblInscripcionMaterias.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblInscripcionMaterias.setForeground(new java.awt.Color(255, 255, 255));
         lblInscripcionMaterias.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblInscripcionMaterias.setText("Inscripcion de Materias ");
-        getContentPane().add(lblInscripcionMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 850, 20));
+        lblInscripcionMaterias.setText("INSCRIPCION DE MATERIAS");
+        getContentPane().add(lblInscripcionMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 970, 20));
 
         lblSelMateria.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        lblSelMateria.setForeground(new java.awt.Color(255, 255, 255));
         lblSelMateria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSelMateria.setText("Seleccione la materia a la cual desea inscribirse");
-        getContentPane().add(lblSelMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 370, -1));
+        getContentPane().add(lblSelMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 420, -1));
 
+        btnInscribirse.setBackground(new java.awt.Color(47, 96, 131));
         btnInscribirse.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        btnInscribirse.setForeground(new java.awt.Color(255, 255, 255));
         btnInscribirse.setText("Agregar inscripción");
         btnInscribirse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInscribirseActionPerformed(evt);
             }
         });
-        getContentPane().add(btnInscribirse, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 150, -1));
+        getContentPane().add(btnInscribirse, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 150, -1));
 
         tblInscripciones.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         tblInscripciones.setModel(new javax.swing.table.DefaultTableModel(
@@ -119,21 +124,24 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblInscripciones);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 380, 290));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 470, 290));
 
+        btnSalir.setBackground(new java.awt.Color(47, 96, 131));
         btnSalir.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 540, 100, -1));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 570, 100, -1));
 
         lblOfertaMaterias.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblOfertaMaterias.setForeground(new java.awt.Color(255, 255, 255));
         lblOfertaMaterias.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblOfertaMaterias.setText("Oferta de materias");
-        getContentPane().add(lblOfertaMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 370, -1));
+        getContentPane().add(lblOfertaMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 420, -1));
 
         tblMaterias.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         tblMaterias.setModel(new javax.swing.table.DefaultTableModel(
@@ -146,96 +154,117 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(tblMaterias);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 86, 380, 290));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 430, 290));
 
         lblMisInscripciones.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblMisInscripciones.setForeground(new java.awt.Color(255, 255, 255));
         lblMisInscripciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMisInscripciones.setText("Mis Inscripciones");
-        getContentPane().add(lblMisInscripciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 30, 380, -1));
+        getContentPane().add(lblMisInscripciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 470, -1));
 
         lblSelInscrip.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        lblSelInscrip.setForeground(new java.awt.Color(255, 255, 255));
         lblSelInscrip.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSelInscrip.setText("Seleccione una inscripción que quiera modificar");
-        getContentPane().add(lblSelInscrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, 310, -1));
+        getContentPane().add(lblSelInscrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 470, -1));
 
         lblMateriaSel.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblMateriaSel.setForeground(new java.awt.Color(255, 255, 255));
         lblMateriaSel.setText("Materia seleccionada:");
-        getContentPane().add(lblMateriaSel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, -1));
+        getContentPane().add(lblMateriaSel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
 
         txtMateriaS.setEditable(false);
         txtMateriaS.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        getContentPane().add(txtMateriaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 450, 150, -1));
+        txtMateriaS.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(txtMateriaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, 150, -1));
 
         txtCodigoMateriaS.setEditable(false);
         txtCodigoMateriaS.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        getContentPane().add(txtCodigoMateriaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 450, 80, -1));
+        txtCodigoMateriaS.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(txtCodigoMateriaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, 80, -1));
 
         lblNombre.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombre.setText("Nombre:");
-        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, 20));
+        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, -1, 20));
 
         lblCodMateria.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblCodMateria.setForeground(new java.awt.Color(255, 255, 255));
         lblCodMateria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCodMateria.setText("Cod. materia:");
-        getContentPane().add(lblCodMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 450, -1, 20));
+        getContentPane().add(lblCodMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 480, -1, 20));
 
+        btnBaja.setBackground(new java.awt.Color(47, 96, 131));
         btnBaja.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        btnBaja.setForeground(new java.awt.Color(255, 255, 255));
         btnBaja.setText("Dar de Baja");
         btnBaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBajaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 410, -1, -1));
+        getContentPane().add(btnBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 440, -1, -1));
 
         jSeparador.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        getContentPane().add(jSeparador, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 10, 540));
+        getContentPane().add(jSeparador, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 10, 540));
 
         checkEdicion.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        checkEdicion.setForeground(new java.awt.Color(255, 255, 255));
         checkEdicion.setText("Hablitar modificación de inscripciones");
-        getContentPane().add(checkEdicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, -1, -1));
+        getContentPane().add(checkEdicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, -1, -1));
 
+        btnEliminar.setBackground(new java.awt.Color(47, 96, 131));
         btnEliminar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, -1, -1));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, -1, -1));
 
+        btnAlta.setBackground(new java.awt.Color(47, 96, 131));
         btnAlta.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        btnAlta.setForeground(new java.awt.Color(255, 255, 255));
         btnAlta.setText("Dar de Alta");
         btnAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAltaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, -1, -1));
+        getContentPane().add(btnAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 440, -1, -1));
 
         lblInscripSel.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblInscripSel.setForeground(new java.awt.Color(255, 255, 255));
         lblInscripSel.setText("Inscripción seleccionada:");
-        getContentPane().add(lblInscripSel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 450, -1, -1));
+        getContentPane().add(lblInscripSel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, -1, -1));
 
         txtFechaS.setEditable(false);
         txtFechaS.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        getContentPane().add(txtFechaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 130, 30));
+        txtFechaS.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(txtFechaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 540, 130, 30));
 
         txtInscripcionS.setEditable(false);
         txtInscripcionS.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        getContentPane().add(txtInscripcionS, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, 270, -1));
+        txtInscripcionS.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(txtInscripcionS, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 510, 270, -1));
 
         lblMateria.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblMateria.setForeground(new java.awt.Color(255, 255, 255));
         lblMateria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMateria.setText("Materia:");
-        getContentPane().add(lblMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 480, -1, 20));
+        getContentPane().add(lblMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 510, -1, 20));
 
         lblFechaInscrip.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblFechaInscrip.setForeground(new java.awt.Color(255, 255, 255));
         lblFechaInscrip.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblFechaInscrip.setText("Fecha inscripción:");
-        getContentPane().add(lblFechaInscrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 516, -1, 20));
-        getContentPane().add(txtDescripcionS, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 320, 70));
+        getContentPane().add(lblFechaInscrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 550, -1, 20));
+
+        txtDescripcionS.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(txtDescripcionS, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 320, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
