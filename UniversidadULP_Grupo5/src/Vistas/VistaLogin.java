@@ -230,6 +230,8 @@ public class VistaLogin extends javax.swing.JFrame {
                 
             } else {
                 JOptionPane.showMessageDialog(this, "Credenciales incorrectas.");
+                txtEmail.setText("");
+                txtPassword.setText("");
             }
         } catch (Exception e){
             JOptionPane.showMessageDialog(this, "Error al intentar iniciar sesión");
