@@ -246,7 +246,6 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
         if (seleccion == 0) {
             try {
                 inscrip = new Inscripcion(alumno.getId_alumno(), seleccionMat, true);
-
                 maniIns.agregar(inscrip);
                 rellenarTablaMaterias(tblMaterias);
                 rellenarTablaInscripciones(tblInscripciones);
@@ -361,15 +360,18 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         listaInscripciones = maniIns.listarInscripcionesPorAlumno(alumno.getId_alumno());
         modelo.setRowCount(0);
-        ArrayList<Materia> listaMateriasFiltrada = new ArrayList<>();
+        List<Materia> listaMateriasFiltrada = new ArrayList<>();
         try {
             List<Materia> listarMaterias = maniMat.listar();
             for (Inscripcion i : listaInscripciones) {
                 for (Materia m : listarMaterias) {
                     if (i.getId_materia() != m.getId_materia() && m.isEstado() && !listaMateriasFiltrada.contains(m)) {
                         listaMateriasFiltrada.add(m);
-                    }
+                    } 
                 }
+            }
+            if(listaMateriasFiltrada.isEmpty()){
+                listaMateriasFiltrada = maniMat.listar();
             }
             for (Materia m : listaMateriasFiltrada) {
                 modelo.addRow(new Object[]{m.getId_materia(), m.getNombre(),

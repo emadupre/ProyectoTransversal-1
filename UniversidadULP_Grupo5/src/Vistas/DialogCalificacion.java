@@ -82,7 +82,7 @@ public class DialogCalificacion extends javax.swing.JDialog {
         });
 
         btnCancelar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        btnCancelar.setText("Cancelar");
+        btnCancelar.setText("Salir");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -172,6 +172,10 @@ public class DialogCalificacion extends javax.swing.JDialog {
         }
         try {
             Double calificacionParseada = Double.parseDouble(calificacion);
+            if(calificacionParseada < 1.0 || calificacionParseada > 10.00){
+                JOptionPane.showMessageDialog(this, "Ingrese una calificacion entre 1.00 y 10.00");
+                return;
+            }
             alumno = maniAlum.buscarPorId(idAl);
             int seleccion = JOptionPane.showConfirmDialog(this, 
                     "¿Esta seguro que desea agregar la calificacion al alumno: "

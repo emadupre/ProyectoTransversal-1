@@ -24,14 +24,15 @@ public class CalificacionDAO implements manipuladorGeneral<Calificacion> {
 
     @Override
     public void agregar(Calificacion calificacion) {
-        String sql = "INSERT INTO calificaciones (id_inscripcion, id_administrativo, calificacion, tipo_evaluacion) VALUE (?,?,?,?)";
+        String sql = "INSERT INTO calificaciones (id_inscripcion, id_administrativo, tipo_evaluacion, calificacion) VALUE (?,?,?,?)";
         Connection con = conexion_BD.getConnection();
 
         try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setInt(1, calificacion.getId_inscripcion());
-            ps.setInt(2, calificacion.getId_calificacion());
-            ps.setDouble(3, calificacion.getCalificacion());
-            ps.setString(4, calificacion.getTipoEvaluacion());
+            ps.setInt(2, calificacion.getId_administrativo());
+            ps.setString(3, calificacion.getTipoEvaluacion());
+            ps.setDouble(4, calificacion.getCalificacion());
+            
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {

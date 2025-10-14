@@ -355,6 +355,7 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
                 JFrame padre = (JFrame) SwingUtilities.getWindowAncestor(this);
                 DialogCalificacion ventanaAgregar = new DialogCalificacion(padre, true, nombreMateria, seleccionInscripcion, usuario.getId_administrativo(), seleccionAlumno);
                 ventanaAgregar.setVisible(true);
+                 rellenarTablaCalificaciones(seleccionInscripcion);
             } catch (NullPointerException e) {
                 JOptionPane.showMessageDialog(this, "Seleccione una inscripcion y un alumno a la cual agregarle una calificación.");
             } catch (Exception a){
