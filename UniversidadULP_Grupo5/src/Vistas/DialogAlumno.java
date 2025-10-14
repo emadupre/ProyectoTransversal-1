@@ -79,44 +79,48 @@ public class DialogAlumno extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel3.setBackground(new java.awt.Color(47, 162, 186));
+        jPanel3.setBackground(new java.awt.Color(47, 96, 131));
 
-        jPanel7.setBackground(new java.awt.Color(47, 162, 186));
+        jPanel7.setBackground(new java.awt.Color(47, 96, 131));
 
-        lblNombre.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblNombre.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre.setText("Nombre:");
 
-        lblApellido.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblApellido.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblApellido.setForeground(new java.awt.Color(255, 255, 255));
         lblApellido.setText("Apellido:");
 
-        lblFechaNacimiento.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblFechaNacimiento.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblFechaNacimiento.setForeground(new java.awt.Color(255, 255, 255));
         lblFechaNacimiento.setText("Fecha N. :");
 
-        lblEmail.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblEmail.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
         lblEmail.setText("Email:");
 
-        lblPassword.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblPassword.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(255, 255, 255));
         lblPassword.setText("Password:");
 
-        lblDNI.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblDNI.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblDNI.setForeground(new java.awt.Color(255, 255, 255));
         lblDNI.setText("DNI:");
 
+        txtDNI.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtDNI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDNI.setEnabled(true);
 
         txtNombre.setEditable(true);
+        txtNombre.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtNombre.setEnabled(true);
 
+        txtApellido.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtApellido.setEnabled(true);
 
+        txtEmail.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtEmail.setEnabled(true);
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -126,11 +130,13 @@ public class DialogAlumno extends javax.swing.JDialog {
         });
 
         txtPassword.setEditable(true);
+        txtPassword.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPassword.setEnabled(true);
 
-        jDFechaN.setBackground(new java.awt.Color(47, 162, 186));
+        jDFechaN.setBackground(new java.awt.Color(47, 96, 131));
         jDFechaN.setDateFormatString("dd-MM-yyyy");
+        jDFechaN.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jDFechaN.setMaxSelectableDate(new java.util.Date(1199156480000L));
         jDFechaN.setMinSelectableDate(new java.util.Date(-2240510320000L));
 
@@ -186,8 +192,8 @@ public class DialogAlumno extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jbtAgregar.setBackground(new java.awt.Color(47, 162, 186));
-        jbtAgregar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jbtAgregar.setBackground(new java.awt.Color(47, 96, 131));
+        jbtAgregar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jbtAgregar.setForeground(new java.awt.Color(255, 255, 255));
         jbtAgregar.setText("Agregar");
         jbtAgregar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(204, 204, 204), null, null));
@@ -198,8 +204,8 @@ public class DialogAlumno extends javax.swing.JDialog {
             }
         });
 
-        jbtSalir.setBackground(new java.awt.Color(47, 162, 186));
-        jbtSalir.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jbtSalir.setBackground(new java.awt.Color(47, 96, 131));
+        jbtSalir.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jbtSalir.setForeground(new java.awt.Color(255, 255, 255));
         jbtSalir.setText("Salir");
         jbtSalir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -211,10 +217,10 @@ public class DialogAlumno extends javax.swing.JDialog {
         });
 
         lblAgregarA.setBackground(new java.awt.Color(255, 255, 255));
-        lblAgregarA.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblAgregarA.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lblAgregarA.setForeground(new java.awt.Color(255, 255, 255));
         lblAgregarA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAgregarA.setText("Agregar Alumno");
+        lblAgregarA.setText("AGREGAR ALUMNO");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -227,8 +233,8 @@ public class DialogAlumno extends javax.swing.JDialog {
                         .addComponent(jbtAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbtSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
             .addComponent(lblAgregarA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
@@ -236,13 +242,13 @@ public class DialogAlumno extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(lblAgregarA)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(29, 29, 29)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jbtAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addComponent(jbtSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(77, Short.MAX_VALUE))
+                    .addComponent(jbtAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbtSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
