@@ -84,8 +84,8 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
         lblMateria = new javax.swing.JLabel();
         lblFechaInscrip = new javax.swing.JLabel();
         txtDescripcionS = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
 
-        setBackground(new java.awt.Color(47, 96, 131));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblInscripcionMaterias.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
@@ -265,6 +265,10 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
 
         txtDescripcionS.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(txtDescripcionS, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 320, 70));
+
+        jPanel1.setBackground(new java.awt.Color(47, 91, 131));
+        jPanel1.setLayout(new javax.swing.OverlayLayout(jPanel1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -507,6 +511,7 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnInscribirse;
     private javax.swing.JButton btnSalir;
     private javax.swing.JCheckBox checkEdicion;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparador;

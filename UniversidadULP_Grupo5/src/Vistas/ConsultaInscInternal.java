@@ -153,6 +153,11 @@ public class ConsultaInscInternal extends javax.swing.JInternalFrame {
 
         btnSalir.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 480, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -183,6 +188,11 @@ public class ConsultaInscInternal extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Error al cargar las calificaciones");
         }
     }//GEN-LAST:event_listMateriasInscriptasValueChanged
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void rellenarCabeceras(JTable tabla) {
         String[] cabeceras = {"Nombre administrativo", "Tipo de evaluación", "Calificación", "Fecha de subida"};

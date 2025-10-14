@@ -84,6 +84,7 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
         btnAgregar = new javax.swing.JButton();
         txtCalificacion = new javax.swing.JTextField();
         lblCalificaciones = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         pnlInscripciones = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblInscripciones = new javax.swing.JTable();
@@ -159,7 +160,7 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
                     .addComponent(lblBuscarDNI))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pnlCalificacion.add(pnlAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 360, 410));
@@ -245,7 +246,18 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
         lblCalificaciones.setText("Calificaciones");
         pnlCalificaciones.add(lblCalificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 120, 30));
 
-        pnlCalificacion.add(pnlCalificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 350, 390));
+        jButton1.setBackground(new java.awt.Color(47, 96, 131));
+        jButton1.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        pnlCalificaciones.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 160, -1));
+
+        pnlCalificacion.add(pnlCalificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 350, 410));
 
         pnlInscripciones.setBackground(new java.awt.Color(47, 91, 131));
         pnlInscripciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -328,7 +340,7 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
                 .addGroup(pnlSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEInscripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEstadoS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pnlCalificacion.add(pnlSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 290, 110));
@@ -339,7 +351,7 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
         lblInscripciones.setText("INSCRIPCIONES");
         pnlCalificacion.add(lblInscripciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1000, -1));
 
-        getContentPane().add(pnlCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, -1));
+        getContentPane().add(pnlCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -425,6 +437,10 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_txtBuscarAlumnoKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void armarCabeceras() {
         String[] cabeceraAlumnos = {"id_alumno", "DNI", "Nombre", "Apellido", "Estado"};
@@ -595,6 +611,7 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JCheckBox checkEdicion;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
