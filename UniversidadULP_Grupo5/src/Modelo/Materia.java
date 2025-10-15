@@ -88,14 +88,14 @@ public class Materia implements Comparable<Materia>{
         /* si el objeto m es el mismo que está como "guardado en la memoria" no hace falta comparar */
         if( this == m ) return true;
         
-        /* si es null o no es de la misma clase no pueden ser iguales */
+        /* si es null o no es de la misma c lase no pueden ser iguales */
         if (m == null || getClass() != m.getClass()) return false;
         
         /* se convierte el objeto m en una materia para poder ver los atributos */
         Materia materia = (Materia) m;
         
         /* se realiza la igualdad, dos materias son iguales si tienen el mismo id_materia */
-        return id_materia == materia.id_materia;
+        return this.codigo_materia.equals(materia.codigo_materia);
     }
     
     public int hashCode(){
