@@ -40,7 +40,7 @@ public class VistaLogin extends javax.swing.JFrame {
             return "Inactiva";
         }
     }
-    
+       
     public VistaLogin() {
         this.setContentPane(fondos);
         initComponents();
