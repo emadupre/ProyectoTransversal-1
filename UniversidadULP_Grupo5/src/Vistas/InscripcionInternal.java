@@ -75,7 +75,6 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
         lblCodMateria = new javax.swing.JLabel();
         btnBaja = new javax.swing.JButton();
         jSeparador = new javax.swing.JSeparator();
-        checkEdicion = new javax.swing.JCheckBox();
         btnEliminar = new javax.swing.JButton();
         btnAlta = new javax.swing.JButton();
         lblInscripSel = new javax.swing.JLabel();
@@ -175,12 +174,12 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
 
         txtMateriaS.setEditable(false);
         txtMateriaS.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtMateriaS.setForeground(new java.awt.Color(255, 255, 255));
+        txtMateriaS.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txtMateriaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, 150, -1));
 
         txtCodigoMateriaS.setEditable(false);
         txtCodigoMateriaS.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtCodigoMateriaS.setForeground(new java.awt.Color(255, 255, 255));
+        txtCodigoMateriaS.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txtCodigoMateriaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, 80, -1));
 
         lblNombre.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
@@ -208,11 +207,6 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
 
         jSeparador.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparador, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 10, 540));
-
-        checkEdicion.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        checkEdicion.setForeground(new java.awt.Color(255, 255, 255));
-        checkEdicion.setText("Hablitar modificación de inscripciones");
-        getContentPane().add(checkEdicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, -1, -1));
 
         btnEliminar.setBackground(new java.awt.Color(47, 96, 131));
         btnEliminar.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
@@ -243,12 +237,12 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
 
         txtFechaS.setEditable(false);
         txtFechaS.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtFechaS.setForeground(new java.awt.Color(255, 255, 255));
+        txtFechaS.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txtFechaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 540, 130, 30));
 
         txtInscripcionS.setEditable(false);
         txtInscripcionS.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        txtInscripcionS.setForeground(new java.awt.Color(255, 255, 255));
+        txtInscripcionS.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txtInscripcionS, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 510, 270, -1));
 
         lblMateria.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
@@ -263,7 +257,7 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
         lblFechaInscrip.setText("Fecha inscripción:");
         getContentPane().add(lblFechaInscrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 550, -1, 20));
 
-        txtDescripcionS.setForeground(new java.awt.Color(255, 255, 255));
+        txtDescripcionS.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txtDescripcionS, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 320, 70));
 
         jPanel1.setBackground(new java.awt.Color(47, 91, 131));
@@ -510,7 +504,6 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnInscribirse;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JCheckBox checkEdicion;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
