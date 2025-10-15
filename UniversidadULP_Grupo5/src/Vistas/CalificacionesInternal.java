@@ -361,7 +361,7 @@ public class CalificacionesInternal extends javax.swing.JInternalFrame {
             int seleccion = JOptionPane.showConfirmDialog(this, "¿Esta seguro que sea eliminar esta calificacion?", "CONFIRMACION", YES_NO_OPTION);
             if (seleccion == 0) {
                 maniCal.eliminar(seleccionCalificacion);
-                JOptionPane.showMessageDialog(this, "Materia eliminada con exito.");
+                JOptionPane.showMessageDialog(this, "Calificación eliminada con exito.");
                 rellenarTablaCalificaciones(seleccionInscripcion);
             }
         } catch (Exception e) {
