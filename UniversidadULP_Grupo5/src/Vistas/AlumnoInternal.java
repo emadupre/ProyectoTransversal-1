@@ -24,6 +24,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import manipuladoresDAO.AlumnoDAO;
 import Modelo.Alumno;
+import java.util.List;
 
 /**
  *
@@ -74,9 +75,8 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
 
     //método refresh, vuelve a llamar a la base de datos y la carga en la tabla nuevamente.
     private void refreshTabla() {
-        modelo.setRowCount(0);
-
         ArrayList<Alumno> lista = maniAlum.listar();
+        modelo.setRowCount(0);
         String fecha = "";
         ArrayList<Alumno> listaAct = new ArrayList<>();
         if (!lista.isEmpty()) {
@@ -247,9 +247,9 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         txtFBuscarDNI.setForeground(new java.awt.Color(161, 154, 147));
         txtFBuscarDNI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtFBuscarDNI.setText("Ingrese DNI sin puntos");
-        txtFBuscarDNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFBuscarDNIActionPerformed(evt);
+        txtFBuscarDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFBuscarDNIKeyReleased(evt);
             }
         });
 
@@ -421,7 +421,7 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                 .addComponent(btnDarAlta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnDarBaja)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -534,28 +534,25 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(PanelLayout.createSequentialGroup()
+                                .addComponent(lblBuscarDNI)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtFBuscarDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(PanelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PanelLayout.createSequentialGroup()
+                                .addComponent(txtFiltrar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rbTodo)
                                 .addGap(18, 18, 18)
+                                .addComponent(rbActivo)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbInactivo))
+                            .addGroup(PanelLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(PanelLayout.createSequentialGroup()
-                                        .addComponent(lblBuscarDNI)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtFBuscarDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtFiltrar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(rbTodo)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(rbActivo)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(rbInactivo))
-                                    .addGroup(PanelLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jButton1)))))
+                                    .addComponent(PanelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton1))))
                         .addContainerGap(25, Short.MAX_VALUE))
                     .addGroup(PanelLayout.createSequentialGroup()
                         .addGap(103, 103, 103)
@@ -638,42 +635,6 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
             txtPassword.setText(pass);
         }
     }//GEN-LAST:event_tablaAlumnoMouseClicked
-
-    private void txtFBuscarDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFBuscarDNIActionPerformed
-        // TODO add your handling code here:
-        try {
-            int dni = Integer.parseInt(txtFBuscarDNI.getText());
-            modelo.setRowCount(0);
-
-            Alumno alum = maniAlum.buscarPorDNI(dni);
-
-            String fecha = "";
-
-            fecha = alum.getFecha_nacimiento().format(dtf);
-
-            Object[] fila = {
-                alum.getId_alumno(),
-                alum.getDni(),
-                alum.getNombre(),
-                alum.getApellido(),
-                fecha,
-                alum.getEmail(),
-                alum.getPassword(),
-                alum.isEstado()
-            };
-            modelo.addRow(fila);
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar un DNI válido y sin puntos");
-        } finally {
-
-            txtFBuscarDNI.setText("");
-
-            txtFBuscarDNI.transferFocus();
-
-        }
-
-    }//GEN-LAST:event_txtFBuscarDNIActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
 
@@ -779,6 +740,24 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         refreshTabla();
     }//GEN-LAST:event_rbInactivoActionPerformed
+
+    private void txtFBuscarDNIKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFBuscarDNIKeyReleased
+        String caracter = txtFBuscarDNI.getText();
+        modelo.setRowCount(0);
+        try {
+            List<Alumno> listaAlumnos = maniAlum.listar();
+            for(Alumno a : listaAlumnos){
+                if(Integer.toString(a.getDni()).startsWith(caracter)){
+                    modelo.addRow(new Object[] {a.getId_alumno(), a.getDni(), a.getNombre(),
+                    a.getApellido(), a.getFecha_nacimiento(), 
+                    a.getEmail(), a.getPassword(), VistaLogin.parsearBooleanaString(a.isEstado())
+                    });
+                }
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_txtFBuscarDNIKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
