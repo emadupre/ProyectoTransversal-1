@@ -227,7 +227,6 @@ public class DialogMateria extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Rellene todos los campos necesario.");
             return;
         }
-        
         try{
         boolean estado = true;
         Materia materia = new Materia(nombre, descripcion, codigo, estado); 
