@@ -16,6 +16,7 @@ import manipuladoresDAO.MateriaDAO;
 import Modelo.Alumno;
 import Modelo.Inscripcion;
 import Modelo.Materia;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
 import javax.swing.JTextField;
@@ -272,6 +273,15 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
         int seleccion = JOptionPane.showConfirmDialog(this, "¿Esta seguro que deseas inscribirte a la materia seleccionada?", "CONFIRMACION", YES_NO_OPTION);
         if (seleccion == 0) {
             try {
+                for (Inscripcion i : listaInscripciones) {
+                    if (i.getId_materia() == seleccionMat) {
+                        if (i.getFechaIns().getYear() == LocalDate.now().getYear()) {
+                            JOptionPane.showMessageDialog(this, "Ya existe una inscripcion para este año"
+                                    + " para la materia seleccionada el año actual.");
+                            return;
+                        }
+                    }
+                }
                 inscrip = new Inscripcion(alumno.getId_alumno(), seleccionMat, true);
                 maniIns.agregar(inscrip);
                 rellenarTablaMaterias(tblMaterias);
@@ -388,18 +398,14 @@ public class InscripcionInternal extends javax.swing.JInternalFrame {
         listaInscripciones = maniIns.listarInscripcionesPorAlumno(alumno.getId_alumno());
         modelo.setRowCount(0);
         List<Materia> listaMateriasFiltrada = new ArrayList<>();
+        List<Materia> listarMaterias = maniMat.listar();
         try {
-            List<Materia> listarMaterias = maniMat.listar();
-            for (Inscripcion i : listaInscripciones) {
                 for (Materia m : listarMaterias) {
-                    if (i.getId_materia() != m.getId_materia() && m.isEstado() && !listaMateriasFiltrada.contains(m)) {
+                    if (m.isEstado() && !listaMateriasFiltrada.contains(m)) {
                         listaMateriasFiltrada.add(m);
-                    } 
+                    }
                 }
-            }
-            if(listaMateriasFiltrada.isEmpty()){
-                listaMateriasFiltrada = maniMat.listar();
-            }
+            
             for (Materia m : listaMateriasFiltrada) {
                 modelo.addRow(new Object[]{m.getId_materia(), m.getNombre(),
                     m.getDescripcion(),
