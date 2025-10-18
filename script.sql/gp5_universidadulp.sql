@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-10-2025 a las 02:31:14
+-- Tiempo de generación: 18-10-2025 a las 00:34:40
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -187,7 +187,8 @@ ALTER TABLE `administrativo`
 --
 ALTER TABLE `alumno`
   ADD PRIMARY KEY (`id_alumno`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `dni` (`dni`);
 
 --
 -- Indices de la tabla `calificaciones`
