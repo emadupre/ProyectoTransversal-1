@@ -136,9 +136,8 @@ public class DialogAlumno extends javax.swing.JDialog {
 
         jDFechaN.setBackground(new java.awt.Color(47, 96, 131));
         jDFechaN.setDateFormatString("dd-MM-yyyy");
-        jDFechaN.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jDFechaN.setMaxSelectableDate(new java.util.Date(1199156480000L));
-        jDFechaN.setMinSelectableDate(new java.util.Date(-2240510320000L));
+        jDFechaN.setMaxSelectableDate(new java.util.Date(1230778880000L));
+        jDFechaN.setMinSelectableDate(new java.util.Date(-2240510299000L));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -287,32 +286,39 @@ public class DialogAlumno extends javax.swing.JDialog {
 
                 Alumno alum = new Alumno(dni, email, pass, nombre, apellido, fn, estado);
 
-                if (lista.contains(alum)) {
-                    JOptionPane.showMessageDialog(this, "Ya existe un alumno con DNI: " + dni);
-                    clear();
-                } else {
-                    maniAlum.agregar(alum);
-
-                    clear();
-
-                    Object[] opciones = {"Si", "No"};
-                    int eleccion = JOptionPane.showOptionDialog(
-                            null, //null para centrar
-                            "Alumno agregado exitosamente\n¿Desea agregar otro alumno?", //texto a mostrar
-                            "", //título de la ventana
-                            JOptionPane.DEFAULT_OPTION, //botones de opciones (default si definimos un objeto de opciones)
-                            JOptionPane.QUESTION_MESSAGE, //ícono que muestra
-                            null, //icono personalizado (si no queres ninguno se pone null, si no una ruta/
-                            opciones, //espera un arreglo de tipo objeto con mensajes de los botones (null si definiste las opciones mas arriba)
-                            null // null para ningun botón preseleccionado (sino opciones[indice del boton preseleccionado]
-                    );
-
-                    if (eleccion == 1) {
-                        this.dispose();
+                for (Alumno alum1 : lista) {
+                    if (alum1.getDni() == alum.getDni()) {
+                        JOptionPane.showMessageDialog(this, "Ya existe un alumno con DNI: " + alum.getDni());
+                        clear();
+                        return;
+                    }
+                    if (alum1.getEmail().equals(alum.getEmail())) {
+                        JOptionPane.showMessageDialog(this, "Ya existe un alumno con email: \n" + alum.getEmail());
+                        clear();
+                        return;
                     }
                 }
-            }
 
+                maniAlum.agregar(alum);
+
+                clear();
+
+                Object[] opciones = {"Si", "No"};
+                int eleccion = JOptionPane.showOptionDialog(
+                        null, //null para centrar
+                        "Alumno agregado exitosamente\n¿Desea agregar otro alumno?",
+                        "",
+                        JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        opciones,
+                        null
+                );
+
+                if (eleccion == 1) {
+                    this.dispose();
+                }
+            }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Dato Incorrecto, se espera un DNI");
         }
