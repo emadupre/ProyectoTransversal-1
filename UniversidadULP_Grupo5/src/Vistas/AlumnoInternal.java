@@ -106,8 +106,8 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
         }
         cbHabilitarM.setSelected(false);
     }
+    
     //Arma la cabecera y carga con el método refresh 
-
     private void armarCabecerayLlenar(JTable tabla) {
         //Cabecera
         tabla.setModel(modelo);
@@ -423,6 +423,10 @@ public class AlumnoInternal extends javax.swing.JInternalFrame {
                 .addComponent(btnDarBaja)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jDFechaN.setBackground(new java.awt.Color(47, 96, 131));
+        jDFechaN.setMaxSelectableDate(new java.util.Date(1199156501000L));
+        jDFechaN.setMinSelectableDate(new java.util.Date(-2240510299000L));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
