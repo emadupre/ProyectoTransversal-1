@@ -25,7 +25,7 @@ Este es el Proyecto Transversal para el Sistema de Gestión de la Universidad de
 - [Permitir registrar la calificación final de una materia que está cursando un alumno.]
 - [Permitir el alta, baja y modificación de los alumnos y las materias.]
 
-![Vista Diseñador](./img/vista-diseñador.jpg)
+![Vista Diseñador](./img/vista-diseñador.png)
 
 ## Para clonar: 📦
 Clona el repositorio:
